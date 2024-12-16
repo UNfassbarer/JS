@@ -1,24 +1,3 @@
-/*// Eingabefeld erstellen
-let inputField = document.createElement("input");
-inputField.setAttribute("type", "text");
-inputField.setAttribute("placeholder", "Geben Sie etwas ein");
-
-// Textarea erstellen
-let textArea = document.createElement("textarea");
-textArea.setAttribute("placeholder", "Geben Sie hier mehr Text ein");
-
-// Button erstellen
-let button = document.createElement("button");
-button.innerHTML = "Klicken Sie mich!";
-button.addEventListener("click", function() {
-    alert("Button wurde geklickt!");
-});
-
-// Alle Elemente dem Body hinzufügen
-document.body.appendChild(inputField);
-document.body.appendChild(textArea);
-document.body.appendChild(button);
-*/
 let kraft_anzahl = prompt("Bitte Anzahl der wirkenden Kräfte eingeben");
 let kraft = prompt("Bitte jede kraft, mit `,` getrennt eingaben").split(",").map(Number);
 let kraft_winkel = prompt("Bitte Winkel der einzelnen kräfte, durch `,` getrennt eingeben").split(",").map(Number);
@@ -59,4 +38,4 @@ function F_GES() {
 }
 function F_ALPHA() {
      return Math.round(Math.atan2(y_ges,x_ges) * (180 / Math.PI)*1000)/1000
-}
+}  
