@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const canvas = document.getElementById('forcesCanvas'); 
+document.addEventListener('DOMContentLoaded', function () {
+    const canvas = document.getElementById('forcesCanvas');
     const ctx = canvas.getContext('2d');
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
@@ -56,6 +56,14 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.fillText(label, endX + 5, endY - 5);
     }
 
+    // Funktion zum Berechnen der optimalen Skalierung
+    function calculateScale() {
+        const maxForce = Math.max(...kraft, 1); // Größte Kraft ermitteln, Standardwert 1 vermeiden Div/0
+        const maxCanvasDimension = Math.min(canvas.width, canvas.height) / 2; // Hälfte der Canvas-Abmessung
+        const scaleFactor = maxCanvasDimension / maxForce; // Skalierung basierend auf Canvas-Größe
+        return Math.min(scaleFactor, scale); // Skalierung auf Benutzerlimit begrenzen
+    }
+
     // Funktion zum Zeichnen der Kräfte und der Resultierenden Kraft
     function drawForces() {
         // Canvas leeren
@@ -67,11 +75,14 @@ document.addEventListener('DOMContentLoaded', function() {
         let xGes = 0;
         let yGes = 0;
 
+        // Dynamische Skalierung berechnen
+        const dynamicScale = calculateScale();
+
         // Kräfte zeichnen und Berechnungen durchführen
         kraft.forEach((force, index) => {
             const angleRad = kraftWinkel[index] * (Math.PI / 180); // Winkel in Bogenmaß
-            const x = force * Math.cos(angleRad) * scale; // X-Koordinate
-            const y = force * Math.sin(angleRad) * scale; // Y-Koordinate
+            const x = force * Math.cos(angleRad) * dynamicScale; // X-Koordinate
+            const y = force * Math.sin(angleRad) * dynamicScale; // Y-Koordinate
 
             drawArrow(centerX, centerY, centerX + x, centerY - y, 'blue', `Kraft ${index + 1}`);
 
@@ -81,13 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Resultierende Kraft zeichnen
-        const resultX = xGes * scale;
-        const resultY = yGes * scale;
+        const resultX = xGes * dynamicScale;
+        const resultY = yGes * dynamicScale;
         drawArrow(centerX, centerY, centerX + resultX, centerY - resultY, 'red', 'Resultierende Kraft');
 
         // Berechnungen im HTML anzeigen
         const outputSection = document.getElementById('output-section');
-        outputSection.innerHTML = 
+        outputSection.innerHTML =
             `<div class="results">
                 <h3>Berechnetes Ergebnis</h3>
                 <p>Summe der Kräfte in X: ${xGes.toFixed(2)} N</p>
@@ -105,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const Fy = force * Math.sin(angleRad);
 
             const row = document.createElement('tr');
-            row.innerHTML = 
+            row.innerHTML =
                 `<td>${index + 1}</td>
                 <td>${force.toFixed(2)}</td>
                 <td>${kraftWinkel[index]}</td>
@@ -118,10 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event-Listener für das Hinzufügen von Zeilen
-    document.getElementById('add-row').addEventListener('click', function() {
+    document.getElementById('add-row').addEventListener('click', function () {
         const tableBody = document.getElementById('force-table-body');
         const row = document.createElement('tr');
-        row.innerHTML = 
+        row.innerHTML =
             `<td>${tableBody.children.length + 1}</td>
             <td><input type="number" name="force" class="force-input" required></td>
             <td><input type="number" name="angle" class="angle-input" required></td>`;
@@ -133,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Event-Listener für das Entfernen von Zeilen
-    document.getElementById('remove-row').addEventListener('click', function() {
+    document.getElementById('remove-row').addEventListener('click', function () {
         const tableBody = document.getElementById('force-table-body');
         if (tableBody.children.length > 0) {
             tableBody.removeChild(tableBody.lastChild);
@@ -157,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event-Listener für den Zoom-Regler
-    document.getElementById('zoom-slider').addEventListener('input', function(event) {
+    document.getElementById('zoom-slider').addEventListener('input', function (event) {
         scale = parseFloat(event.target.value); // Setze den Maßstab auf den Wert des Sliders
         drawForces(); // Zeichnen und Berechnung neu ausführen
     });
