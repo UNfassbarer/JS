@@ -3,26 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Textfeld-Ereignis</title>
 </head>
 <body>
-  <input id="myInput_1" placeholder="Gib etwas ein">
-  <input id="option_1" placeholder="Was willst du machen">
-  <input id="myInput_2" placeholder="Gib etwas ein">
-  <p id="output">Output...</p>
-  <script>
-    const inputField_1 = document.getElementById("myInput_1");
-    const inputField_2 = document.getElementById("myInput_2");
-    const optionField = document.getElementById("option_1");
-    const outputField = document.getElementById("output");
-
-    function updateOutput() {
-      outputField.innerText = `Eingegeben: ${inputField_1.value}, ${optionField.value}, ${inputField_2.value}`;
-    }
-
-    inputField_1.addEventListener("input", updateOutput);
-    inputField_2.addEventListener("input", updateOutput);
-    optionField.addEventListener("input", updateOutput);
-  </script>
+  <script src="calculation.js"></script>
 </body>
 </html>
