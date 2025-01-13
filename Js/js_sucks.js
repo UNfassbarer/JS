@@ -16,7 +16,7 @@ console.log(null === undefined);// false (strikte Gleichheit, verschiedene Typen
 
 // 4. Schlechte Designentscheidungen
 console.log(typeof NaN);        // "number" (NaN wird als Zahl angesehen, obwohl es "Not-a-Number" bedeutet)
-console.log(0.1 + 0.2);         // 0.30000000000000004 (Gleitkomma-Ungenauigkeit)
+console.log(0.1+0.2==0.3);      // false --> 0.30000000000000004 (Gleitkomma-Ungenauigkeit)
 
 // 5. Globals und das `this`-Keyword
 function foo() {
