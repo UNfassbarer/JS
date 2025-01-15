@@ -1,4 +1,4 @@
-function triangle(){
+function triangle(){ // only works on Windows->no support from JS
     function getInputLength(input){
         const parts = Array.from(input.matchAll(/[\p{Emoji}\u200D\uFE0F]|./gu));
         return parts.length;
