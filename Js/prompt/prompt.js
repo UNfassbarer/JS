@@ -1,9 +1,9 @@
 // Nachricht mit allen Möglichkeiten
 let nachricht = "🌟 Willkommen! 🌟\n\n"; // Emojis und Zeilenumbrüche
-nachricht += "💡 Optionen:\n"; 
+nachricht += "💡 Optionen:\n";
 nachricht += "\t1️⃣ Neue Datei erstellen\n"; // Tabulatoren und Emojis
-nachricht += "\t2️⃣ Datei öffnen\r\n"; 
-nachricht += "\t3️⃣ Beenden\n\n"; 
+nachricht += "\t2️⃣ Datei öffnen\r\n";
+nachricht += "\t3️⃣ Beenden\n\n";
 nachricht += "⭐ Hinweis:\n\"Wähle eine gültige Option, um fortzufahren.\"\n"; // Anführungszeichen und weitere Zeilenumbrüche
 nachricht += "--------------------------------\n"; // Trennlinie
 nachricht += "\u2713 Deine Eingabe wird verarbeitet..."; // Unicode-Zeichen (✓)
