@@ -21,4 +21,3 @@ document.write(`Das kapital beträgt: ${kapital} <br>`);
 document.write(`Das Endkapital beträgt: ${Endkapital}`);
 document.close();
 }
-Kapital_js()

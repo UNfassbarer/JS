@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" id="first_input" value="test" onclick="programm()">
+    <button id="first_button" onclick="programm()">test</button>
+    <h3 id="text">test</h3>
+<script>
+let i = 0
+function programm(){
+i++
+document.getElementById("text").innerHTML =`${i} klick!`
+}
+</script>
+</body>
+</html>
