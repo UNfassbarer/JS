@@ -5,16 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
+<style>
+    div{
+        color: rgb(157, 15, 167);
+        font: 1em sans-serif;
+        empty-cells: show;
+        display: block;
+        overflow: hidden;
+        list-style: armenian;
+    }
+    h2{
+        display: block;
+        color: rgb(13, 203, 255);
+    }
+</style>
 <body>
-    <input type="button" id="first_input" value="test" onclick="programm()">
-    <button id="first_button" onclick="programm()">test</button>
-    <h3 id="text">test</h3>
+    <div>Random Number Between:<br>
+        <input type="number" id="min_number"> and 
+        <input type="number" id="max_number"><br>
+        <input type="button" id="first_input" value="roll dice" onclick="programm()">
+        <h2><output id="output"></output></h2>
+    </div>
 <script>
-let i = 0
 function programm(){
-i++
-document.getElementById("text").innerHTML =`${i} klick!`
+    let min =  parseInt(document.getElementById("min_number").value)
+    let max =  parseInt(document.getElementById("max_number").value)
+    const randomNumber = (desi) =>{
+    let random_output = "Invalid Input!"
+    if(desi){
+    random_output = Math.floor(Math.random() * (max - min + 1)) + min
+    document.getElementById("output").innerHTML = random_output
+        }else{
+            document.getElementById("output").innerHTML = random_output
+        }
+    }
+    !isNaN(min && max) ? randomNumber(true):randomNumber(false)
 }
 </script>
 </body>
