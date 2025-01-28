@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.container {
+    display: flex; /* Setzt Flexbox als Layout-Option */
+    justify-content: center; /* Zentriert die Elemente horizontal */
+    align-items: center; /* Zentriert die Elemente vertikal */
+}
+.item {
+    margin: 10px; /* Fügt einen Abstand zwischen den Elementen hinzu */
+}
+
+h1 { 
+    font-size: 25px; /* Setzt die Schriftgröße */
+}
+body {
+        background-color: rgb(150, 135, 135);
+}
+button:hover{
+    background-color: rgb(40, 200, 40);
+    transform: scale(1.1);
+}
+</style>
+<div class="container">
+<h1 class="item" id="headline_1">R-G-B</h1>
+<button class="item" id="button" onclick="programm()">Start RGB</button>
+<p class="item" id="a">a</p>
+<p class="item" id="b">b</p>
+<p class="item" id="c">c</p>
+</div>
+<script>
+    let desi = 1, a, b, c, d, end, isAnimating = true, quest
+    let intervall_1, intervall_2
+    function programm() {
+        a = 0, b = 0, c = 0, d = false
+        if (isAnimating) {
+            document.getElementById("button").innerHTML = `End RGB`
+            quest = true
+            changeColor_1() //start
+            isAnimating = false
+        } else {
+            document.getElementById("button").innerHTML = `Start RGB`
+            quest = false //end
+            isAnimating = true
+            clearInterval(intervall_1)
+            clearInterval(intervall_2)
+            resetColers()
+        }
+    }
+    function changeColor_1() {
+        intervall_1 = setInterval(() => {
+            if (quest) {
+                if (a < 255) {
+                    a++
+                } else if (b < 255) {
+                    b++
+                } else if (c < 255) {
+                    c++
+                }
+                else if (c === 255) {
+                    clearInterval(intervall_1)
+                    changeColor_2()
+                }
+                updateColers()
+            } else {
+                resetColers()
+            }
+        }, 1)
+    }
+    function changeColor_2() {
+        intervall_2 = setInterval(() => {
+            if (a > 0) {
+                a--
+            } else if (b > 0) {
+                b--
+            } else if (c > 0) {
+                c--
+            } else if (c === 0) {
+                clearInterval(intervall_2)
+                changeColor_1()
+            }
+            updateColers()
+        }, 1)
+    }
+    function updateColers() {
+        document.getElementById("a").innerHTML = a
+        document.getElementById("b").innerHTML = b
+        document.getElementById("c").innerHTML = c
+        document.getElementById("headline_1").style.color = `rgb(${a},${b},${c})`
+    }
+    function resetColers() {
+        a = 0, b = 0, c = 0
+        updateColers()
+    }
+</script>
+</body>
+
+</html>
