@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div class="test">
+<input type="range" name="hi" id="input_1" onclick="programm()"><br>
+<output id="out" >output</output>
+</div>
+<script>
+    let intervall
+    function programm (){
+            clearInterval(intervall)
+            counter()
+    }
+    function counter() {
+        let input = document.getElementById("input_1").value
+        let i = 0
+        intervall = setInterval(() => {
+            if (i>=input) {
+                clearInterval(intervall)
+            }
+            document.getElementById("out").innerHTML = i
+            i++
+        }, 50);  
+        }
+</script>
+</body>
+</html> 

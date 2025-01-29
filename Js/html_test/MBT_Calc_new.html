@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBT Force Calculation</title>
+</head><br>
+<input type="number" id="input" placeholder="Insert number of forces">
+<button type="button" id="button_1" onclick="programm()">Add forces</button>
+<button type="button" id="button_2" onclick="programmTest()">Controll</button>
+<div id="controll">controll</div>
+<div id="forces_container"></div>
+<div id="angles_container"></div>
+<div id="sin_a"></div>
+<div id="cos_a"></div>
+
+<body>
+    <script>
+        function programm(){
+        let sin_a,cos_a
+        let input = document.getElementById("input").value
+        for (let i = 1; i <= input; i++) {
+            addForces(i)
+            addAngles(i)
+            }
+        }
+        function addForces(i){
+            let newElement = document.createElement("input")
+            let br = document.createElement("br")
+            newElement.type = "number"
+            newElement.id = `force_input_${i}`
+            newElement.placeholder = `Force: ${i}`
+            document.getElementById("forces_container").appendChild(newElement)
+            document.getElementById("forces_container").appendChild(br)
+        }
+        function addAngles(i){
+            let newElement = document.createElement("input")
+            let br = document.createElement("br")
+            newElement.type = "number"
+            newElement.id = `angle_input_${i}`
+            newElement.placeholder = `Angle: ${i}`
+            document.getElementById("angles_container").appendChild(newElement)
+            document.getElementById("angles_container").appendChild(br)
+        }
+
+    function programmTest(){
+        document.getElementById("controll").innerHTML = document.getElementById("force_input_1").value
+    }
+    function calculation(){
+        for (let i = 1; i <= input; i++) {
+            angle = document.getElementById(`angle_input_${i}`).value
+            document.getElementById("sin_a") = angle
+            document.getElementById("cos_a") = angle
+            SIN_A()
+            COS_A()
+        }
+    }
+
+    function SIN_A() {
+          return Math.round(Math.sin(angle* (Math.PI / 180)) * 1000) / 1000
+     }
+     function COS_A() {
+          return Math.round(Math.cos(angle * (Math.PI / 180)) * 1000) / 1000
+     }
+     function KRAFT_Y(sin_a) {
+          return Math.round(sin_a * kraft[kraft_zähler - 1] * 1000) / 1000
+     }
+     function KRAFT_X(cos_a) {
+          return Math.round(cos_a * kraft[kraft_zähler - 1] * 1000) / 1000
+     }
+     function F_GES() {
+          return Math.round(Math.sqrt(Math.pow(x_ges, 2) + Math.pow(y_ges, 2)) * 1000) / 1000
+     }
+     function F_ALPHA() {
+          return Math.round(Math.atan2(y_ges, x_ges) * (180 / Math.PI) * 1000) / 1000
+     }
+
+    </script>
+</body>
+</html>
