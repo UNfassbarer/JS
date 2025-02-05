@@ -8,24 +8,31 @@
 </head><br>
 <input type="number" id="input" placeholder="Insert number of forces">
 <button type="button" id="button_1" onclick="programm()">Add forces</button>
-<button type="button" id="button_2" onclick="programmTest()">Controll</button>
-<div id="controll">controll</div>
-<div id="forces_container"></div>
-<div id="angles_container"></div>
-<div id="sin_a"></div>
-<div id="cos_a"></div>
+<button type="button" id="button_2" onclick="calculation()">Start Calculation</button>
+<div id="forces_container">forces_container</div>
+<div id="angles_container">angles_container</div>
+<!-- output -->
+<div id="sin_a_container">sin_a:</div>
+<div id="cos_a_container">cos_a:</div>
+<div id="force_y_container">force_y:</div>
+<div id="force_x_container">force_x:</div>
+<div id="force_y_ges_container">force_y:</div>
+<div id="force_x_ges_container">force_x:</div>
+<div id="force_ges_container">force_ges:</div>
+<div id="angle_force_ges_container">angle_force_ges:</div>
 
 <body>
     <script>
-        function programm(){
-        let sin_a,cos_a
-        let input = document.getElementById("input").value
-        for (let i = 1; i <= input; i++) {
-            addForces(i)
-            addAngles(i)
+        function programm() {
+            let input = document.getElementById("input").value
+            document.getElementById("forces_container").innerHTML = '';
+            document.getElementById("angles_container").innerHTML = '';
+            for (let i = 1; i <= input; i++) {
+                addForces(i)
+                addAngles(i)
             }
         }
-        function addForces(i){
+        function addForces(i) {
             let newElement = document.createElement("input")
             let br = document.createElement("br")
             newElement.type = "number"
@@ -34,7 +41,7 @@
             document.getElementById("forces_container").appendChild(newElement)
             document.getElementById("forces_container").appendChild(br)
         }
-        function addAngles(i){
+        function addAngles(i) {
             let newElement = document.createElement("input")
             let br = document.createElement("br")
             newElement.type = "number"
@@ -43,39 +50,56 @@
             document.getElementById("angles_container").appendChild(newElement)
             document.getElementById("angles_container").appendChild(br)
         }
-
-    function programmTest(){
-        document.getElementById("controll").innerHTML = document.getElementById("force_input_1").value
-    }
-    function calculation(){
-        for (let i = 1; i <= input; i++) {
-            angle = document.getElementById(`angle_input_${i}`).value
-            document.getElementById("sin_a") = angle
-            document.getElementById("cos_a") = angle
-            SIN_A()
-            COS_A()
+        function calculation() {
+            document.getElementById(`sin_a_container`).innerHTML =``
+            document.getElementById(`cos_a_container`).innerHTML =``
+            document.getElementById(`force_y_container`).innerHTML =``
+            document.getElementById(`force_x_container`).innerHTML =``
+            document.getElementById(`force_ges_container`).innerHTML=``
+            document.getElementById(`angle_force_ges_container`).innerHTML=``
+            let input = document.getElementById("input").value
+            let sin,cosinusA,KraftY,KraftX,x_ges = 0,y_ges = 0
+            let angele,force
+            for (let i = 1; i <= input; i++) {
+                angle = document.getElementById(`angle_input_${i}`).value
+                force = document.getElementById(`force_input_${i}`).value
+            console.log(`angle: ${angle}`)
+            console.log(`force: ${force}`) 
+                 SIN_A(i)
+                 COS_A(i)
+                 KRAFT_Y(i)
+                 KRAFT_X(i)
+                x_ges += KraftX
+                y_ges += KraftY
+            }
+            document.getElementById(`force_y_ges_container`).innerHTML= `Force ges in Y-Direction:${y_ges}`
+            document.getElementById(`force_x_ges_container`).innerHTML= `Force ges in X-Direction:${x_ges}`
+             F_GES()
+             F_ALPHA()
+        function SIN_A(i) {
+            sinusA = Math.round(Math.sin(angle * (Math.PI / 180)) * 1000) / 1000
+            document.getElementById(`sin_a_container`).innerHTML += `Sinus Alpha ${i}:${sinusA}<br>`
+        }
+        function COS_A(i) {
+            cosinusA = Math.round(Math.cos(angle * (Math.PI / 180)) * 1000) / 1000
+            document.getElementById(`cos_a_container`).innerHTML += `Cosinus Alpha ${i}:${cosinusA}<br>`
+        }
+        function KRAFT_Y(i) {
+            KraftY = Math.round(sinusA * force * 1000) / 1000
+            document.getElementById(`force_y_container`).innerHTML += `Force ${i} in Y-direction:${KraftY}<br>`
+        }
+        function KRAFT_X(i) {
+            KraftX = Math.round(cosinusA * force * 1000) / 1000
+            document.getElementById(`force_x_container`).innerHTML += `Force ${i} in X-direction:${KraftX}<br>`
+        }
+        function F_GES() {
+            document.getElementById(`force_ges_container`).innerHTML = Math.round(Math.sqrt(Math.pow(x_ges, 2) + Math.pow(y_ges, 2)) * 1000) / 1000
+        }
+        function F_ALPHA() {
+            document.getElementById(`angle_force_ges_container`).innerHTML = Math.round(Math.atan2(y_ges, x_ges) * (180 / Math.PI) * 1000) / 1000
         }
     }
-
-    function SIN_A() {
-          return Math.round(Math.sin(angle* (Math.PI / 180)) * 1000) / 1000
-     }
-     function COS_A() {
-          return Math.round(Math.cos(angle * (Math.PI / 180)) * 1000) / 1000
-     }
-     function KRAFT_Y(sin_a) {
-          return Math.round(sin_a * kraft[kraft_zähler - 1] * 1000) / 1000
-     }
-     function KRAFT_X(cos_a) {
-          return Math.round(cos_a * kraft[kraft_zähler - 1] * 1000) / 1000
-     }
-     function F_GES() {
-          return Math.round(Math.sqrt(Math.pow(x_ges, 2) + Math.pow(y_ges, 2)) * 1000) / 1000
-     }
-     function F_ALPHA() {
-          return Math.round(Math.atan2(y_ges, x_ges) * (180 / Math.PI) * 1000) / 1000
-     }
-
     </script>
 </body>
+
 </html>
