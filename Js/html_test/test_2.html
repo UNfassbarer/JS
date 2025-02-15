@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist</title>
+</head>
+<style>
+</style>
+<body>
+    <div>
+        <input id="input" placeholder="Input">
+        <input type="button" id="button" value="add" onclick="add_to_list()">
+        <input type="button" id="button" value="new list" onclick="new_list()">
+        <p id="list">list:</p>
+    </div>
+</body>
+<script>
+let counter = 0;
+function add_to_list() {
+    let input = document.getElementById("input").value
+    if (input.trim() === "") return
+    counter++
+    document.getElementById("list").innerHTML += `<br> ${counter}. ${input}`
+}
+function new_list(){
+    counter = 0
+    document.getElementById("list").innerHTML = "list:"
+}
+</script>
+</html>

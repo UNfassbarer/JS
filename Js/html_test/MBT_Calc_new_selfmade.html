@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,40 +7,41 @@
 </head>
 <style>
 body {
-        background-color: rgb(150, 135, 135);
+        background-color: rgb(135, 138, 150);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        flex-wrap: wrap;
+}
+
+button{
+    border-radius: 40px;
+    background-color: rgba(84, 80, 80, 0.689);
+    padding: 5px;
 }
 button:hover{
-    background-color: rgb(33, 225, 33);
+    background-color: rgba(33, 225, 33, 0.59);
     transform: scale(1.1);
+    transition: 2s;
+    border-radius: 40px;
+    padding: 7px;
 }
-.container1 {
-    display: flex; /* Setzt Flexbox als Layout-Option */
-    justify-content: center; /* Zentriert die Elemente horizontal */
-    align-items: center; /* Zentriert die Elemente vertikal */
-    margin: 10px;
+
+body{
+    margin-top: 50px;
 }
-.container2 {
-    display: flex; /* Setzt Flexbox als Layout-Option */
-    justify-content: center; /* Zentriert die Elemente horizontal */
-    align-items: center; /* Zentriert die Elemente vertikal */
-}
-.container3 {
-    display: flex; /* Setzt Flexbox als Layout-Option */
-    justify-content: center; /* Zentriert die Elemente horizontal */
-    align-items: center; /* Zentriert die Elemente vertikal */
-}
-.container4 {
-    display: flex; /* Setzt Flexbox als Layout-Option */
-    justify-content: center; /* Zentriert die Elemente horizontal */
-    align-items: center; /* Zentriert die Elemente vertikal */
-}
-.container5 {
-    display: flex; /* Setzt Flexbox als Layout-Option */
-    justify-content: center; /* Zentriert die Elemente horizontal */
-    align-items: center; /* Zentriert die Elemente vertikal */
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 40px;
+    color: white;
+    text-shadow: 2px 2px 9px rgba(0,0,0,0.75);
 }
 </style>
  <body>
+    <h1>Zentrales Kräftesystem</h1>
+
     <div class="container1">
     <input type="number" id="input" placeholder="Insert number of forces">-
     <button type="button" id="button_1" onclick="programm()">Add forces</button>-
@@ -68,6 +68,7 @@ button:hover{
         <div id="angle_force_ges_container"></div>
     </strong>
 </div>
+</body>
     <script>
         function programm() {
             let input = document.getElementById("input").value
@@ -105,12 +106,7 @@ button:hover{
             container.appendChild(br)
         }
         function calculation() {
-            SinA = ""
-            CosA = ""
-            ForceX = ""
-            ForceY = ""
-            ForceGes = ""
-            AngleGes = ""
+            SinA = "",CosA = "",ForceX = "",ForceY = "",ForceGes = "",AngleGes = ""
             let input = document.getElementById("input").value;
             let ForceX_ges = 0, ForceY_ges = 0, angle, force, sinusA, cosinusA, KraftX, KraftY;
             for (let i = 1; i <= input; i++) {
@@ -158,12 +154,12 @@ button:hover{
         }
         function advanced() {
             if (document.getElementById("checkbox").checked) {
-                document.getElementById("sin_a_container").innerHTML = SinA;
-                document.getElementById("cos_a_container").innerHTML = CosA;
-                document.getElementById("force_y_container").innerHTML = ForceY;
-                document.getElementById("force_x_container").innerHTML = ForceX;
-                document.getElementById("force_y_ges_container").innerHTML = ForceYGes;
-                document.getElementById("force_x_ges_container").innerHTML = ForceXGes;
+                document.getElementById("sin_a_container").innerHTML += SinA;
+                document.getElementById("cos_a_container").innerHTML += CosA;
+                document.getElementById("force_y_container").innerHTML += ForceY;
+                document.getElementById("force_x_container").innerHTML += ForceX;
+                document.getElementById("force_y_ges_container").innerHTML += ForceYGes;
+                document.getElementById("force_x_ges_container").innerHTML += ForceXGes;
             } else {
                 document.getElementById("sin_a_container").innerHTML = "";
                 document.getElementById("cos_a_container").innerHTML = "";
@@ -174,5 +170,4 @@ button:hover{
             }
         }
     </script>
-</body>
 </html>
