@@ -19,6 +19,7 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.75);
+    text-align: center;
 }
 
 button {
@@ -41,15 +42,40 @@ button:hover {
     max-width: 500px;
     background: rgba(0, 0, 0, 0.2);
     padding: 10px;
-    margin: 5px;
+    margin: 5px auto;
     color: white;
     border-radius: 10px;
     text-align: center;
+    display: block;
+}
+.final_output{
+    width: 70%;
+    max-width: 500px;
+    background: rgba(153, 43, 43, 0.2);
+    padding: 10px;
+    margin: 5px auto;
+    border-radius: 10px;
+    text-align: center;
+}
+.final_output:empty{
+    display: none;
 }
 
 .output:empty {
     display: none;
 }
+.force_input{
+    width: 70%;
+    max-width: 500px;
+    background: rgba(153, 43, 43, 0.2);
+    padding: 10px;
+    margin: 5px auto;
+    border-radius: 10px;
+    text-align: center;
+}
+/* .force_input:empty{
+    display: none;
+} */
 
 </style>
 
@@ -61,16 +87,16 @@ button:hover {
         <input type="number" id="input" placeholder="Insert number of forces">
         <button type="button" id="button_2" onclick="calculation()">Start Calculation</button><br>
         Show advanced calculations: <input type="checkbox" id="checkbox" placeholder="_">
-        <div id="forces_container"></div>
-        <div id="angles_container"></div>
+        <div class="force_input" id="forces_container">test1</div>
+        <div class="force_input" id="angles_container">test2</div>
         <div class="output" id="sin_a_container"></div>
         <div class="output" id="cos_a_container"></div>
         <div class="output" id="force_y_container"></div>
         <div class="output" id="force_x_container"></div>
         <div class="output" id="force_y_ges_container"></div>
-        <div class="output" id="force_x_ges_container"></div>
-        <strong id="force_ges_container"></strong>
-        <strong id="angle_force_ges_container"></strong>
+        <div class="output" id="force_x_ges_container"></div><br>
+        <strong><div class="final_output" id="final_force_container"></div></strong>
+        <strong><div class="final_output" id="final_angle_container"></div></strong>
     </div>
 </body>
 <script>
@@ -104,7 +130,7 @@ button:hover {
         newElement.id = `angle_input_${i}`
         newElement.placeholder = `Angle: ${i}`
         text.innerText = `${i}. Angle: `
-        let container = document.getElementById("forces_container")
+        let container = document.getElementById("angles_container")
         container.appendChild(text)
         container.appendChild(newElement)
         container.appendChild(br)
@@ -153,8 +179,8 @@ button:hover {
             AngleGes = Math.round(Math.atan2(ForceY_ges, ForceX_ges) * (180 / Math.PI) * 1000) / 1000;
             AngleGes < 0 ? AngleGes = 360 + AngleGes : false
         }
-        document.getElementById("force_ges_container").innerHTML = `Final force: ${ForceGes}`;
-        document.getElementById("angle_force_ges_container").innerHTML = `Angle of final force: ${AngleGes}°`;
+        document.getElementById("final_force_container").innerHTML = `Final force: ${ForceGes}`;
+        document.getElementById("final_angle_container").innerHTML = `Angle of final force: ${AngleGes}°`;
     }
     function clear(){
         document.getElementById("sin_a_container").innerHTML = "";
