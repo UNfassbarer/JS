@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar with Subcategories</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Maschinenbau Stoffübersicht</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -107,7 +108,7 @@
             transform: rotate(180deg);
         }
 
-        .content {
+        .content_class {
             margin-left: 260px;
             padding: 50px;
             flex-grow: 1;
@@ -152,41 +153,51 @@
             <a href="#">Contact</a>
         </div>
     </div>
-    <div class="content">
-        <h1 id="test">Welcome</h1>
-        <p>Hover over a category to see more information.</p>
+    <div class="content_class">
+        <h1 id="headline">Welcome</h1>
+        <p id="main_content">Hover over a category to see more information.</p>
     </div>
     <script>
-        const Werkstoffnummern = document.getElementById("werkstoffnummern");
-        const Reinheit = document.getElementById("reinheit");
-        const Legierungsgrad = document.getElementById("legierungsgrad");
-        const Verwendung = document.getElementById("verwendung");
-        const Wärmebehandlung = document.getElementById("wärmebehandlung");
-        const Baustähle = document.getElementById("baustähle");
-        const Kohlenstoffstähle = document.getElementById("kohlenstoffstähle");
-        const Werkzeugstähle = document.getElementById("werkzeugstähle");
-        const Schnellarbeitsstähle = document.getElementById("schnellarbeitsstähle");
-        const Gusseisen = document.getElementById("gusseisen");
+        // const Werkstoffnummern = document.getElementById("werkstoffnummern");
+        // const Reinheit = document.getElementById("reinheit");
+        // const Legierungsgrad = document.getElementById("legierungsgrad");
+        // const Verwendung = document.getElementById("verwendung");
+        // const Wärmebehandlung = document.getElementById("wärmebehandlung");
+        // const Baustähle = document.getElementById("baustähle");
+        // const Kohlenstoffstähle = document.getElementById("kohlenstoffstähle");
+        // const Werkzeugstähle = document.getElementById("werkzeugstähle");
+        // const Schnellarbeitsstähle = document.getElementById("schnellarbeitsstähle");
+        // const Gusseisen = document.getElementById("gusseisen");
+        // const Zug = document.getElementById("zug");
+        // const Druck = document.getElementById("druck");
+        // const Abscherung = document.getElementById("abscherung");
+        // const Verdrehung = document.getElementById("verdrehung");
+        // const Knickung = document.getElementById("knickung");
 
-        const Zug = document.getElementById("zug");
-        const Druck = document.getElementById("druck");
-        const Abscherung = document.getElementById("abscherung");
-        const Verdrehung = document.getElementById("verdrehung");
-        const Knickung = document.getElementById("knickung");
-
-        function change_content(element, content_element, content) {
-        element.addEventListener("mouseover", function () {
-            document.getElementById(content_element).innerHTML = content;
+        function changeContent(category,div,file,file_div) {
+        change_content_2(category)
+    $(`#${category}`).hover(
+        () => 
+        loadContent(category,div,file,file_div)
+    
+    );
+}
+function loadContent(category,div,file,file_div) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    const inhalt = doc.getElementById(file_div);
+                    document.getElementById(div).innerHTML = inhalt.innerHTML;
+                })
+        }
+        function change_content_2(category) {
+        document.getElementById(category).addEventListener("mouseover", function () {
+            document.getElementById("headline").innerHTML = (`${category}`).toUpperCase();
         });
     }
-    change_content(Wärmebehandlung, "test", "Schnellarbeitsstähle_test_lol");
-
-    // Add similar event listeners for other elements if needed, e.g.:
-    // change_content(Zug, "test", "Zug_test_content");
-    // change_content(Druck, "test", "Druck_test_content");
-</script>
-
+        changeContent("zug","main_content","test_1.html","content");
     </script>
 </body>
-
 </html>
