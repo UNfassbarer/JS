@@ -10,32 +10,52 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            background-color: rgb(95, 207, 224);
         }
 
-        .sidebar {
+        .right_pos_fix {
+            padding: 50px;
+            position: absolute;
+        }
+
+        .sidebar_left,
+        .sidebar_right {
             width: 250px;
             height: 100vh;
             background: #333;
             color: white;
             padding: 25px;
             position: fixed;
-            left: -240px;
             top: 0;
             transition: left 0.25s ease-in-out;
         }
 
-        .sidebar:hover {
+        .sidebar_left {
+            left: -240px;
+        }
+
+        .sidebar_right {
+            right: -240px;
+        }
+
+        .sidebar_left:hover {
             left: 0;
         }
 
-        .sidebar a {
+        .sidebar_right:hover {
+            right: 0;
+        }
+
+        .sidebar_left a,
+        .sidebar_right a {
             display: block;
             color: white;
             padding: 8px;
             text-decoration: none;
         }
 
-        .sidebar a:hover {
+        .sidebar_left a:hover,
+        .sidebar_right a:hover {
             background: #575757;
         }
 
@@ -49,34 +69,36 @@
         }
 
         .submenu_special:hover {
-            background-color: aqua;
-            color: black;
+            background: #575757;
+            border: 2px solid rgb(0, 38, 255);
+            border-radius: 10px;
+            transform: scale(1.1);
         }
 
         .category:hover .submenu {
             display: block;
         }
 
-        .icon {
-            width: 45px;
-            height: 10px;
+        .icon_left {
+            width: 25px;
+            height: 25px;
             background-color: black;
-            border-radius: 50%;
+            border-radius: 60%;
             position: absolute;
             right: 8px;
             top: 20px;
             transition: all 0.3s ease-in-out;
         }
 
-        .sidebar:hover .icon {
+        .sidebar_left:hover .icon_left {
             width: 30px;
             height: 4px;
             background-color: black;
             border-radius: 0;
         }
 
-        .icon::before,
-        .icon::after {
+        .icon_left::before,
+        .icon_left::after {
             content: "";
             position: absolute;
             width: 30px;
@@ -86,16 +108,16 @@
             opacity: 0;
         }
 
-        .icon::before {
+        .icon_left::before {
             top: -8px;
         }
 
-        .icon::after {
+        .icon_left::after {
             bottom: -8px;
         }
 
-        .sidebar:hover .icon::before,
-        .sidebar:hover .icon::after {
+        .sidebar_left:hover .icon_left::before,
+        .sidebar_left:hover .icon_left::after {
             opacity: 1;
         }
 
@@ -108,18 +130,41 @@
             transform: rotate(180deg);
         }
 
-        .content_class {
-            margin-left: 260px;
-            padding: 50px;
-            flex-grow: 1;
-            text-align: center;
-        }
+        #content_class {
+    background: linear-gradient(to right, #333ce6, #8209de);
+    width: 60%;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 10px;
+}   
+
+#headline {
+    padding: 10px;
+    text-align: center; 
+}
+
+#main_content {
+    margin-top: -20px;
+    text-align: center;  
+}
+
     </style>
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="icon"></div>
+    <div class="sidebar_right">
+        <div class="right_pos_fix">
+            <h2 class="head_right">Maschinenbau_2</h2>
+            <div class="category">
+                <a href="#">Einteilung der Stähle <span class="arrow">▼</span></a>
+                <div class="submenu">
+                    <div class="submenu_special_right"> test^1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar_left">
+        <div class="icon_left"></div>
         <h2>Maschinenbau</h2>
         <div class="category">
             <a href="#">Einteilung der Stähle <span class="arrow">▼</span></a>
@@ -153,51 +198,39 @@
             <a href="#">Contact</a>
         </div>
     </div>
-    <div class="content_class">
+    <div id="content_class">
         <h1 id="headline">Welcome</h1>
-        <p id="main_content">Hover over a category to see more information.</p>
+        <p  id="main_content">Hover over a category to see more information.</p>
     </div>
     <script>
-        // const Werkstoffnummern = document.getElementById("werkstoffnummern");
-        // const Reinheit = document.getElementById("reinheit");
-        // const Legierungsgrad = document.getElementById("legierungsgrad");
-        // const Verwendung = document.getElementById("verwendung");
-        // const Wärmebehandlung = document.getElementById("wärmebehandlung");
-        // const Baustähle = document.getElementById("baustähle");
-        // const Kohlenstoffstähle = document.getElementById("kohlenstoffstähle");
-        // const Werkzeugstähle = document.getElementById("werkzeugstähle");
-        // const Schnellarbeitsstähle = document.getElementById("schnellarbeitsstähle");
-        // const Gusseisen = document.getElementById("gusseisen");
-        // const Zug = document.getElementById("zug");
-        // const Druck = document.getElementById("druck");
-        // const Abscherung = document.getElementById("abscherung");
-        // const Verdrehung = document.getElementById("verdrehung");
-        // const Knickung = document.getElementById("knickung");
-
-        function changeContent(category,div,file,file_div) {
-        change_content_2(category)
-    $(`#${category}`).hover(
-        () => 
-        loadContent(category,div,file,file_div)
-    
-    );
-}
-function loadContent(category,div,file,file_div) {
+        function changeContent(category, div, file) {
+            change_content_2(category)
+            $(`#${category}`).hover(() => loadContent(category, div, file)
+            );
+        }
+        function loadContent(category, div, file) {
             fetch(file)
                 .then(response => response.text())
                 .then(data => {
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(data, 'text/html');
-                    const inhalt = doc.getElementById(file_div);
+                    const inhalt = doc.getElementById(category);
                     document.getElementById(div).innerHTML = inhalt.innerHTML;
                 })
         }
         function change_content_2(category) {
-        document.getElementById(category).addEventListener("mouseover", function () {
-            document.getElementById("headline").innerHTML = (`${category}`).toUpperCase();
+            document.getElementById(category).addEventListener("mouseover", function () {
+                document.getElementById("headline").innerHTML = (`${category}`).toUpperCase();
+            });
+        }
+
+
+        $('.submenu_special').each(function () {
+            changeContent(`${this.id}`, "main_content", "test_1.html")
         });
-    }
-        changeContent("zug","main_content","test_1.html","content");
+
+
     </script>
 </body>
+
 </html>
