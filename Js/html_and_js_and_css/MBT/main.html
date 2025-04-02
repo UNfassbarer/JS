@@ -6,152 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Maschinenbau Stoffübersicht</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: rgb(95, 207, 224);
-        }
-
-        .right_pos_fix {
-            padding: 50px;
-            position: absolute;
-        }
-
-        .sidebar_left,
-        .sidebar_right {
-            width: 250px;
-            height: 100vh;
-            background: #333;
-            color: white;
-            padding: 25px;
-            position: fixed;
-            top: 0;
-            transition: left 0.25s ease-in-out;
-        }
-
-        .sidebar_left {
-            left: -240px;
-        }
-
-        .sidebar_right {
-            right: -240px;
-        }
-
-        .sidebar_left:hover {
-            left: 0;
-        }
-
-        .sidebar_right:hover {
-            right: 0;
-        }
-
-        .sidebar_left a,
-        .sidebar_right a {
-            display: block;
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-        }
-
-        .sidebar_left a:hover,
-        .sidebar_right a:hover {
-            background: #575757;
-        }
-
-        .submenu {
-            display: none;
-            padding-left: 20px;
-        }
-
-        .submenu_special {
-            padding: 5px;
-        }
-
-        .submenu_special:hover {
-            background: #575757;
-            border: 2px solid rgb(0, 38, 255);
-            border-radius: 10px;
-            transform: scale(1.1);
-        }
-
-        .category:hover .submenu {
-            display: block;
-        }
-
-        .icon_left {
-            width: 25px;
-            height: 25px;
-            background-color: black;
-            border-radius: 60%;
-            position: absolute;
-            right: 8px;
-            top: 20px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .sidebar_left:hover .icon_left {
-            width: 30px;
-            height: 4px;
-            background-color: black;
-            border-radius: 0;
-        }
-
-        .icon_left::before,
-        .icon_left::after {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 4px;
-            background-color: black;
-            transition: all 0.3s ease-in-out;
-            opacity: 0;
-        }
-
-        .icon_left::before {
-            top: -8px;
-        }
-
-        .icon_left::after {
-            bottom: -8px;
-        }
-
-        .sidebar_left:hover .icon_left::before,
-        .sidebar_left:hover .icon_left::after {
-            opacity: 1;
-        }
-
-        .arrow {
-            display: inline-block;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .category:hover .arrow {
-            transform: rotate(180deg);
-        }
-
-        #content_class {
-    background: linear-gradient(to right, #333ce6, #8209de);
-    width: 60%;
-    height: 100px;
-    margin: 0 auto;
-    border-radius: 10px;
-}   
-
-#headline {
-    padding: 10px;
-    text-align: center; 
-}
-
-#main_content {
-    margin-top: -20px;
-    text-align: center;  
-}
-
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+    <div class="moving-lines"></div>
     <div class="sidebar_right">
         <div class="right_pos_fix">
             <h2 class="head_right">Maschinenbau_2</h2>
@@ -164,73 +23,118 @@
         </div>
     </div>
     <div class="sidebar_left">
-        <div class="icon_left"></div>
+        <div class="menu-icon"></div>
         <h2>Maschinenbau</h2>
         <div class="category">
-            <a href="#">Einteilung der Stähle <span class="arrow">▼</span></a>
+            <a href="#" class="headlala">Einteilung der Stähle <span class="arrow">▼</span></a>
             <div class="submenu">
-                <div class="submenu_special" id="werkstoffnummern" href="#">Werkstoffnummern</div>
-                <div class="submenu_special" id="reinheit" href="#">Reinheit</div>
-                <div class="submenu_special" id="legierungsgrad" href="#">Legierungsgrad</div>
-                <div class="submenu_special" id="verwendung" href="#">Verwendung</div>
-                <div class="submenu_special" id="wärmebehandlung" href="#">Wärmebehandlung</div>
-                <div class="submenu_special" id="baustähle" href="#">Baustähle</div>
-                <div class="submenu_special" id="kohlenstoffstähle" href="#">Kohlenstoffstähle</div>
-                <div class="submenu_special" id="werkzeugstähle" href="#">Werkzeugstähle</div>
-                <div class="submenu_special" id="schnellarbeitsstähle" href="#">Schnellarbeitsstähle</div>
-                <div class="submenu_special" id="gusseisen" href="#">Gusseisen</div>
+                <div class="submenu_special" id="werkstoffnummern" href="#"><a href="#">Werkstoffnummern</a></div>
+                <div class="submenu_special" id="reinheit" href="#"><a href="#">Reinheit</a></div>
+                <div class="submenu_special" id="legierungsgrad" href="#"><a href="#">Legierungsgrad</a></div>
+                <div class="submenu_special" id="verwendung" href="#"><a href="#">Verwendung</a></div>
+                <div class="submenu_special" id="wärmebehandlung" href="#"><a href="#">Wärmebehandlung</a></div>
+                <div class="submenu_special" id="baustähle" href="#"><a href="#">Baustähle</a></div>
+                <div class="submenu_special" id="kohlenstoffstähle" href="#"><a href="#">Kohlenstoffstähle</a></div>
+                <div class="submenu_special" id="werkzeugstähle" href="#"><a href="#">Werkzeugstähle</a></div>
+                <div class="submenu_special" id="schnellarbeitsstähle" href="#"><a href="#">Schnellarbeitsstähle</a>
+                </div>
+                <div class="submenu_special" id="gusseisen" href="#"><a href="#">Gusseisen</a></div>
             </div>
         </div>
         <div class="category">
-            <a href="#">Fertigkeitslehre <span class="arrow">▼</span></a>
+            <a href="#" class="head">Fertigkeitslehre <span class="arrow">▼</span></a>
             <div class="submenu">
-                <div class="submenu_special" id="zug" href="#">Zug</div>
-                <div class="submenu_special" id="druck" href="#">Druck</div>
-                <div class="submenu_special" id="abscherung" href="#">Abscherung</div>
-                <div class="submenu_special" id="verdrehung" href="#">Verdrehung</div>
-                <div class="submenu_special" id="knickung" href="#">Knickung</div>
+                <div class="submenu_special" id="zug" href="#"><a href="#">Zug</a></div>
+                <div class="submenu_special" id="druck" href="#"><a href="#">Druck</a></div>
+                <div class="submenu_special" id="abscherung" href="#"><a href="#">Abscherung</a></div>
+                <div class="submenu_special" id="verdrehung" href="#"><a href="#">Verdrehung</a></div>
+                <div class="submenu_special" id="knickung" href="#"><a href="#">Knickung</a></div>
             </div>
         </div>
         <div class="category">
             <a href="#">About</a>
         </div>
+        <div class="box"></div>
         <div class="category">
             <a href="#">Contact</a>
         </div>
     </div>
     <div id="content_class">
         <h1 id="headline">Welcome</h1>
-        <p  id="main_content">Hover over a category to see more information.</p>
+        <p id="main_content">Hover over a category to see more information.</p>
+
+        <div class="content-container style-2 hidden" id="werkstoffnummern_content"><img src="example.jpg"
+                alt="Example Image">
+            <h2>Werkstoffnummern</h2>
+            <p>Informationen zu Werkstoffnummern.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="reinheit_content"><img src="example.jpg" alt="Example Image">
+            <h2>Reinheit</h2>
+            <p>Informationen zur Reinheit.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="legierungsgrad_content"><img src="example.jpg"
+                alt="Example Image">
+            <h2>Legierungsgrad</h2>
+            <p>Informationen zum Legierungsgrad.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="verwendung_content"><img src="example.jpg"
+                alt="Example Image">
+            <h2>Verwendung</h2>
+            <p>Informationen zur Verwendung.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="wärmebehandlung_content"><img src="example.jpg"
+                alt="Example Image">
+            <h2>Wärmebehandlung</h2>
+            <p>Informationen zur Wärmebehandlung.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="baustähle_content"><img src="example.jpg" alt="Example Image">
+            <h2>Baustähle</h2>
+            <p>Informationen zu Baustählen.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="kohlenstoffstähle_content"><img src="example.jpg"
+                alt="Example Image">
+            <h2>Kohlenstoffstähle</h2>
+            <p>Informationen zu Kohlenstoffstählen.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="werkzeugstähle_content"><img src="example.jpg"
+                alt="Example Image">
+            <h2>Werkzeugstähle</h2>
+            <p>Informationen zu Werkzeugstählen.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="schnellarbeitsstähle_content"><img src="example.jpg"
+                alt="Example Image">
+            <h2>Schnellarbeitsstähle</h2>
+            <p>Informationen zu Schnellarbeitsstählen.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="gusseisen_content"><img src="example.jpg" alt="Example Image">
+            <h2>Gusseisen</h2>
+            <p>Informationen zu Gusseisen.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="zug_content"><img src="example.jpg" alt="Example Image">
+            <h2>Zug</h2>
+            <p>Informationen zu Zug.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="druck_content"><img src="example.jpg" alt="Example Image">
+            <h2>Druck</h2>
+            <p>Informationen zu Druck.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="abscherung_content"><img src="example.jpg"
+                alt="Example Image">
+            <h2>Abscherung</h2>
+            <p>Informationen zu Abscherung.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="verdrehung_content"><img src="example.jpg"
+                alt="Example Image">
+            <h2>Verdrehung</h2>
+            <p>Informationen zu Verdrehung.</p>
+        </div>
+        <div class="content-container style-2 hidden" id="knickung_content"><img src="example.jpg" alt="Example Image">
+            <h2>Knickung</h2>
+            <p>Informationen zu Knickung.</p>
+        </div>
+
     </div>
-    <script>
-        function changeContent(category, div, file) {
-            change_content_2(category)
-            $(`#${category}`).hover(() => loadContent(category, div, file)
-            );
-        }
-        function loadContent(category, div, file) {
-            fetch(file)
-                .then(response => response.text())
-                .then(data => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, 'text/html');
-                    const inhalt = doc.getElementById(category);
-                    document.getElementById(div).innerHTML = inhalt.innerHTML;
-                })
-        }
-        function change_content_2(category) {
-            document.getElementById(category).addEventListener("mouseover", function () {
-                document.getElementById("headline").innerHTML = (`${category}`).toUpperCase();
-            });
-        }
-
-
-        $('.submenu_special').each(function () {
-            changeContent(`${this.id}`, "main_content", "test_1.html")
-        });
-
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

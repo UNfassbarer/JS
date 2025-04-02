@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .hidden { display: none; }
+        /* .content-container { margin-bottom: 20px; padding: 15px; border-radius: 8px; }
+        .style-1 { background-color: #e0f7fa; color: #006064; }
+        .style-2 { background-color: #ffe0b2; color: #bf360c; } */
+    </style>
+</head>
+<body>
+    <div id="dynamic-content">
+        <!-- Vorbereitete, versteckte Container -->
+        <div class="content-container style-1 hidden" id="block-1">
+            <h2>Artikel 1</h2>
+            <p>Dies ist der komplette Inhalt von Block 1.</p>
+            <img src="https://via.placeholder.com/150/006064/ffffff?text=Bild1" alt="Bild 1">
+        </div>
+
+        <div class="content-container style-2 hidden" id="block-2">
+            <h2>Artikel 2</h2>
+            <p>Dies ist der komplette Inhalt von Block 2.</p>
+            <img src="https://via.placeholder.com/150/bf360c/ffffff?text=Bild2" alt="Bild 2">
+        </div>
+    </div>
+
+    <button onclick="showDiv('block-1')">Block 1 Anzeigen</button>
+    <button onclick="showDiv('block-2')">Block 2 Anzeigen</button>
+
+    <script>
+        function showDiv(divId) {
+            // Alle Blöcke ausblenden
+            document.querySelectorAll('.content-container').forEach(div => {
+                div.classList.add('hidden');
+            });
+
+            // Gewählten Block einblenden
+            document.getElementById(divId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
