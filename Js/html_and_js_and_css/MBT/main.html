@@ -4,13 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Maschinenbau Stoffübersicht</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div class="moving-lines"></div>
     <div class="sidebar_right">
         <div class="right_pos_fix">
             <h2 class="head_right">Maschinenbau_2</h2>
@@ -59,10 +57,12 @@
             <a href="#">Contact</a>
         </div>
     </div>
-    <div id="content_class">
-        <h1 id="headline">Welcome</h1>
-        <p id="main_content">Hover over a category to see more information.</p>
-
+    <div class="TensionCalc">
+        <input type="number" id="tention" placeholder="Spannung"><br>
+        <input type="number" id="force" placeholder="Kraft"><br>
+        <input type="number" id="area" placeholder="Fläche"><br>
+        <output id="output"></output>
+    </div>
         <div class="content-container style-2 hidden" id="werkstoffnummern_content"><img src="example.jpg"
                 alt="Example Image">
             <h2>Werkstoffnummern</h2>
@@ -132,9 +132,7 @@
             <h2>Knickung</h2>
             <p>Informationen zu Knickung.</p>
         </div>
-
-    </div>
-    <script src="script.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
