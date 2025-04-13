@@ -26,6 +26,11 @@ body{
     z-index: 0;
 }
 
+.TensionCalc{
+    background:red;
+    z-index: 10;
+}
+
 .right_pos_fix {
     padding: 50px;
     position: absofixlute;
@@ -58,6 +63,7 @@ body{
     writing-mode: vertical-rl;
     top: 0;
     left: 0;
+    z-index: 2;
 }
 
 .sidebar_left,
@@ -176,4 +182,5 @@ body{
 .category:hover .arrow {
     transform: rotate(180deg);
 }
-.hidden { display: none; }
+.hidden_content { display: none; }
+.hidden_calc { display: none;}

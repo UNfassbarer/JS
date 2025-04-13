@@ -15,7 +15,7 @@
             <div class="category">
                 <a href="#">Einteilung der Stähle <span class="arrow">▼</span></a>
                 <div class="submenu">
-                    <div class="submenu_special_right"> test^1</div>
+                    <div class="submenu_special_right" id="test_calc"> test^1</div>
                 </div>
             </div>
         </div>
@@ -49,90 +49,83 @@
                 <div class="submenu_special" id="knickung" href="#"><a href="#">Knickung</a></div>
             </div>
         </div>
-        <div class="category">
-            <a href="#">About</a>
-        </div>
-        <div class="box"></div>
-        <div class="category">
-            <a href="#">Contact</a>
-        </div>
     </div>
-    <div class="TensionCalc">
+
+    <div class="TensionCalc hidden_calc" id="calculator">
         <input type="number" id="tention" placeholder="Spannung"><br>
         <input type="number" id="force" placeholder="Kraft"><br>
         <input type="number" id="area" placeholder="Fläche"><br>
         <output id="output"></output>
     </div>
-        <div class="content-container style-2 hidden" id="werkstoffnummern_content"><img src="example.jpg"
-                alt="Example Image">
-            <h2>Werkstoffnummern</h2>
-            <p>Informationen zu Werkstoffnummern.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="reinheit_content"><img src="example.jpg" alt="Example Image">
-            <h2>Reinheit</h2>
-            <p>Informationen zur Reinheit.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="legierungsgrad_content"><img src="example.jpg"
-                alt="Example Image">
-            <h2>Legierungsgrad</h2>
-            <p>Informationen zum Legierungsgrad.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="verwendung_content"><img src="example.jpg"
-                alt="Example Image">
-            <h2>Verwendung</h2>
-            <p>Informationen zur Verwendung.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="wärmebehandlung_content"><img src="example.jpg"
-                alt="Example Image">
-            <h2>Wärmebehandlung</h2>
-            <p>Informationen zur Wärmebehandlung.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="baustähle_content"><img src="example.jpg" alt="Example Image">
-            <h2>Baustähle</h2>
-            <p>Informationen zu Baustählen.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="kohlenstoffstähle_content"><img src="example.jpg"
-                alt="Example Image">
-            <h2>Kohlenstoffstähle</h2>
-            <p>Informationen zu Kohlenstoffstählen.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="werkzeugstähle_content"><img src="example.jpg"
-                alt="Example Image">
-            <h2>Werkzeugstähle</h2>
-            <p>Informationen zu Werkzeugstählen.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="schnellarbeitsstähle_content"><img src="example.jpg"
-                alt="Example Image">
-            <h2>Schnellarbeitsstähle</h2>
-            <p>Informationen zu Schnellarbeitsstählen.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="gusseisen_content"><img src="example.jpg" alt="Example Image">
-            <h2>Gusseisen</h2>
-            <p>Informationen zu Gusseisen.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="zug_content"><img src="example.jpg" alt="Example Image">
-            <h2>Zug</h2>
-            <p>Informationen zu Zug.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="druck_content"><img src="example.jpg" alt="Example Image">
-            <h2>Druck</h2>
-            <p>Informationen zu Druck.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="abscherung_content"><img src="example.jpg"
-                alt="Example Image">
-            <h2>Abscherung</h2>
-            <p>Informationen zu Abscherung.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="verdrehung_content"><img src="example.jpg"
-                alt="Example Image">
-            <h2>Verdrehung</h2>
-            <p>Informationen zu Verdrehung.</p>
-        </div>
-        <div class="content-container style-2 hidden" id="knickung_content"><img src="example.jpg" alt="Example Image">
-            <h2>Knickung</h2>
-            <p>Informationen zu Knickung.</p>
-        </div>
-        <script src="script.js"></script>
+
+
+    <div class="content-container style-2 hidden_content" id="werkstoffnummern_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Werkstoffnummern</h2>
+        <p>Informationen zu Werkstoffnummern.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="reinheit_content"><img src="example.jpg" alt="Example Image">
+        <h2>Reinheit</h2>
+        <p>Informationen zur Reinheit.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="legierungsgrad_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Legierungsgrad</h2>
+        <p>Informationen zum Legierungsgrad.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="verwendung_content"><img src="example.jpg" alt="Example Image">
+        <h2>Verwendung</h2>
+        <p>Informationen zur Verwendung.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="wärmebehandlung_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Wärmebehandlung</h2>
+        <p>Informationen zur Wärmebehandlung.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="baustähle_content"><img src="example.jpg" alt="Example Image">
+        <h2>Baustähle</h2>
+        <p>Informationen zu Baustählen.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="kohlenstoffstähle_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Kohlenstoffstähle</h2>
+        <p>Informationen zu Kohlenstoffstählen.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="werkzeugstähle_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Werkzeugstähle</h2>
+        <p>Informationen zu Werkzeugstählen.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="schnellarbeitsstähle_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Schnellarbeitsstähle</h2>
+        <p>Informationen zu Schnellarbeitsstählen.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="gusseisen_content"><img src="example.jpg" alt="Example Image">
+        <h2>Gusseisen</h2>
+        <p>Informationen zu Gusseisen.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="zug_content"><img src="example.jpg" alt="Example Image">
+        <h2>Zug</h2>
+        <p>Informationen zu Zug.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="druck_content"><img src="example.jpg" alt="Example Image">
+        <h2>Druck</h2>
+        <p>Informationen zu Druck.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="abscherung_content"><img src="example.jpg" alt="Example Image">
+        <h2>Abscherung</h2>
+        <p>Informationen zu Abscherung.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="verdrehung_content"><img src="example.jpg" alt="Example Image">
+        <h2>Verdrehung</h2>
+        <p>Informationen zu Verdrehung.</p>
+    </div>
+    <div class="content-container style-2 hidden_content" id="knickung_content"><img src="example.jpg" alt="Example Image">
+        <h2>Knickung</h2>
+        <p>Informationen zu Knickung.</p>
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
