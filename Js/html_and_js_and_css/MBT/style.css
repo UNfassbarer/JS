@@ -27,9 +27,12 @@ body{
 }
 
 .TensionCalc{
-    background:red;
-    z-index: 10;
+    display: none; 
+    padding: 10px; 
+    background-color: lightgreen;
+    z-index: 15;
 }
+
 
 .right_pos_fix {
     padding: 50px;
@@ -119,7 +122,9 @@ body{
     visibility: visible;
 }
 
-
+.submenu_special_right{
+    background-color: #0ff;
+}
 
 .submenu_special {
     border-radius: 15px;
@@ -183,4 +188,3 @@ body{
     transform: rotate(180deg);
 }
 .hidden_content { display: none; }
-.hidden_calc { display: none;}

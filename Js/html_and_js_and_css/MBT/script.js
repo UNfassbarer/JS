@@ -23,6 +23,7 @@
 // $('.submenu_special').each(function () {
 //     changeContent(`${this.id}`, "main_content", "test_1.html")
 // });
+
 function showContentDiv(divId) {
     document.querySelectorAll('.content-container').forEach(div => {
         div.classList.add('hidden_content');
@@ -41,59 +42,57 @@ const calculate = (input) => {
     tention = parseFloat(document.getElementById("tention").value);
     force = parseFloat(document.getElementById("force").value);
     area = parseFloat(document.getElementById("area").value);
-    function error(){console.log("Error: Wrong input or empty input")}
-    function is_tention_area(){return !isNaN(tention) && !isNaN(area)}
-    function is_tention_force(){return !isNaN(tention) && !isNaN(force)}
-    function is_area_force(){return !isNaN(force) && !isNaN(area)}
+    function error() { console.log("Error: Wrong input or empty input") }
+    function is_tention_area() { return !isNaN(tention) && !isNaN(area) }
+    function is_tention_force() { return !isNaN(tention) && !isNaN(force) }
+    function is_area_force() { return !isNaN(force) && !isNaN(area) }
     switch (input) {
         case "tention":
             if (is_tention_area()) {
                 document.getElementById("area").value = force / tention;
             } else if (is_tention_force()) {
                 document.getElementById("force").value = area * tention;
-            } else if (isNaN(tention)) {error()}
-            else{console.log("else...")}
+            } else if (isNaN(tention)) { error() }
+            else { console.log("else...") }
             break;
         case "area":
             if (is_tention_area()) {
                 document.getElementById("force").value = area * tention
             } else if (is_area_force()) {
                 document.getElementById("tention").value = force / area;
-            } else if (isNaN(area)) {error()}
+            } else if (isNaN(area)) { error() }
             break;
         case "force":
             if (is_tention_force()) {
-                document.getElementById("area").value = force / tention;          
+                document.getElementById("area").value = force / tention;
             } else if (is_area_force()) {
                 document.getElementById("tention").value = force * area;
-            } else if (isNaN(force)) {error()}
+            } else if (isNaN(force)) { error() }
             break;
-    }}
+    }
+}
 
-   const showCalculator = () => {
+function showCalculator() {
     console.log("test");
-        document.querySelectorAll('.TensionCalc').forEach(div => {
-            div.classList.add('hidden_calc');
-        });
-        document.getElementById("calculator").classList.remove("hidden_calc");
-   }
-
-
-// document.getElementById("submenu_special_right").addEventListener("mouseenter", showCalculator());
-// document.getElementById("tention").addEventListener("change", () => calculate("tention"));
-// document.getElementById("force").addEventListener("change", () => calculate("force"));
-// document.getElementById("area").addEventListener("change", () => calculate("area"));
-// document.getElementById("tention").addEventListener("input", () => calculate("tention"));
-// document.getElementById("force").addEventListener("input", () => calculate("force"));
-// document.getElementById("area").addEventListener("input", () => calculate("area"));
-
-window.addEventListener("DOMContentLoaded", () => {
-    // Show calculator on hover
-    document.getElementById("").addEventListener("mouseenter", showCalculator);
-  
-    // Add input listeners
-    ["tention", "force", "area"].forEach(id => {
-      document.getElementById(id).addEventListener("input", () => calculate(id));
-      document.getElementById(id).addEventListener("change", () => calculate(id));
+    document.querySelectorAll('.TensionCalc').forEach(div => {
+        div.classList.add('hidden_calc');
     });
-  });
+    document.getElementById("calculator").classList.remove('hidden_calc');
+}
+    document.getElementById('test_calc').addEventListener('mouseenter', () => {
+        console.log('Mouse entered (using mouseenter)');
+      });
+
+
+      const el1 = document.getElementById('test_calc');
+      const el2 = document.getElementById('calculator');
+    
+      el1.addEventListener('mouseenter', () => {
+        el2.style.display = 'block';
+      });
+
+
+    ["tention", "force", "area"].forEach(id => {
+        document.getElementById(id).addEventListener("input", () => calculate(id));
+        document.getElementById(id).addEventListener("change", () => calculate(id));
+    });
