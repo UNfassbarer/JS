@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frohe Ostern</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fff8f0 0%, #f8f4ff 100%);
+      color: #333;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .fade-in {
+      transform: translateX(-50px) rotate(-2deg);
+      opacity: 0;
+      filter: blur(2px);
+      transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      will-change: transform, opacity, filter;
+    }
+
+    .visible {
+      transform: translateX(0) rotate(0);
+      opacity: 1;
+      filter: blur(0);
+    }
+
+    header, .section, #sliding-div {
+      padding: 2rem;
+      text-align: center;
+      margin: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    header {
+      background: linear-gradient(45deg, #ffdbe6 0%, #ffebf3 100%);
+      color: #8b2c5a;
+      border-left: 8px solid #d95f76;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #d95f76;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #d95f76 0%, #ffb6c1 100%);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .visible .section h2::after {
+      transform: scaleX(1);
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      perspective: 1000px;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-style: preserve-3d;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05) rotate(2deg) translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .message {
+      background: linear-gradient(to right, #fef3c7 0%, #fff9e6 100%);
+      margin: 2rem auto;
+      padding: 2rem;
+      max-width: 600px;
+      border-radius: 1rem;
+      font-size: 1.1rem;
+      color: #8a4b00;
+      border-left: 6px solid #f59e0b;
+      transform: scale(0.95);
+      transition: transform 0.5s ease;
+    }
+
+    .visible .message {
+      transform: scale(1);
+    }
+
+    #sliding-div {
+      background: linear-gradient(135deg, #dcedc8 0%, #e8f5e9 100%);
+      font-size: 1.5rem;
+      color: #33691e;
+      margin: 2rem;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #sliding-div::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+      transform: translateX(-100%);
+      transition: transform 0.8s ease;
+    }
+
+    .visible#sliding-div::before {
+      transform: translateX(100%);
+    }
+
+    footer {
+      background: linear-gradient(45deg, #fcd5ce 0%, #ffebe9 100%);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b3f3f;
+      margin-top: 2rem;
+      border-top: 3px solid #f08080;
+    }
+
+    .button_1 {
+      position: fixed;
+      top: 50px;
+      right: 50px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #22cc4a 0%, #f6a2d7 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      z-index: 100;
+      transform: scale(1);
+    }
+
+    .button_1:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .button_1:active {
+      transform: scale(0.98);
+    }
+
+    .button_extra {
+      animation: pulse 1.5s infinite;
+      background: linear-gradient(135deg, #f6a2d7 0%, #22cc4a 100%) !important;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    #test {
+      padding: 10px 15px;
+      border: 2px solid #f08080;
+      border-radius: 50px;
+      margin-right: 10px;
+      width: 200px;
+      transition: all 0.3s ease;
+    }
+
+    #test:focus {
+      outline: none;
+      border-color: #d95f76;
+      box-shadow: 0 0 0 3px rgba(217, 95, 118, 0.2);
+    }
+
+    #submit {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #f08080 0%, #d95f76 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header id="section1" class="fade-in">
+    <h1>🌸 Frohe Ostern! 🐰</h1>
+    <p>Ich wünsche euch entspannung, liebe und farbenfrohe Frühlings-vibes!</p>
+  </header>
+
+  <div class="section fade-in" id="section2">
+    <h2>🌷 Oster-Gallery</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1585401398257-c6c1a30adf5d?auto=format&fit=crop&w=400&q=80" alt="Easter eggs">
+      <img src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?auto=format&fit=crop&w=400&q=80" alt="Spring flowers">
+      <img src="https://images.unsplash.com/photo-1587213811864-7d4f8f20bc55?auto=format&fit=crop&w=400&q=80" alt="Easter bunny">
+    </div>
+  </div>
+
+  <div class="section fade-in" id="section3">
+    <h2>💌 Was persönlisches</h2>
+    <div class="message">
+      <p>
+        Hey, ich wünsche euch allen alles leibe zu Ostern, frohes Festmahl und
+                      tolle Ostergeschenke mit vielen netten Menchen.🐣💛
+      </p>
+    </div>
+  </div>
+
+  <div id="sliding-div" class="fade-in">
+    🐇 Random Überrschung am Ende ;) 🐇
+  </div>
+  <button onclick="revealNext()" class="button_1" id="b_1">Click ME</button>
+  <footer>
+    <input type="search" name="test" id="test" placeholder="Osterwünsche ? "><button id="submit" onclick="submit_wish()">Wunsch absenden...</button>
+  </footer>
+
+  <script>
+    const submit_wish = () =>{
+        if (document.getElementById("test").value != ""){
+            document.getElementById("test").value = ""
+            alert("Wunsch wurde Versendet...")
+        }
+    }
+    const ids = ['section1', 'section2', 'section3', 'sliding-div'];
+    let counter = 0;
+    
+    function revealNext() {
+      if(counter === 0){
+        document.getElementById("b_1").classList.add("button_extra");
+      }
+      
+      if (counter < ids.length) {
+        document.getElementById(ids[counter]).classList.add('visible');
+        counter++;
+      } else {
+        counter = 0;
+      }
+    }
+    
+    // Easter egg - confetti when all elements are revealed
+    function checkAllVisible() {
+      const allVisible = ids.every(id => 
+        document.getElementById(id).classList.contains('visible')
+      );
+      
+      if (allVisible) {
+        createConfetti();
+      }
+    }
+    
+    function createConfetti() {
+      const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+      
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.borderRadius = '50%';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = '-10px';
+        confetti.style.zIndex = '1000';
+        
+        document.body.appendChild(confetti);
+        
+        const animation = confetti.animate([
+          { top: '-10px', transform: 'rotate(0deg)' },
+          { top: '100vh', transform: 'rotate(360deg)' }
+        ], {
+          duration: Math.random() * 3000 + 2000,
+          easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)'
+        });
+        
+        animation.onfinish = () => confetti.remove();
+      }
+    }
+    
+    // Check for all visible after each click
+    document.getElementById('b_1').addEventListener('click', checkAllVisible);
+  </script>
+</body>
+</html>

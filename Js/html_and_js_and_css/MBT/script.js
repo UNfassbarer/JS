@@ -74,25 +74,24 @@ const calculate = (input) => {
 
 function showCalculator() {
     console.log("test");
-    document.querySelectorAll('.TensionCalc').forEach(div => {
+    document.querySelectorAll('.TentionCalc').forEach(div => {
         div.classList.add('hidden_calc');
     });
     document.getElementById("calculator").classList.remove('hidden_calc');
 }
-    document.getElementById('test_calc').addEventListener('mouseenter', () => {
-        console.log('Mouse entered (using mouseenter)');
-      });
+document.getElementById('test_calc').addEventListener('mouseenter', () => {
+    console.log('Mouse entered (using mouseenter)');
+});
 
 
-      const el1 = document.getElementById('test_calc');
-      const el2 = document.getElementById('calculator');
-    
-      el1.addEventListener('mouseenter', () => {
-        el2.style.display = 'block';
-      });
+const el1 = document.getElementById('test_calc');
+const el2 = document.getElementById('calculator');
 
+el1.addEventListener('mouseenter', () => {
+    el2.style.display = 'block';
+});
 
-    ["tention", "force", "area"].forEach(id => {
-        document.getElementById(id).addEventListener("input", () => calculate(id));
-        document.getElementById(id).addEventListener("change", () => calculate(id));
-    });
+["tention", "force", "area"].forEach(id => {
+    document.getElementById(id).addEventListener("input", () => calculate(id));
+    document.getElementById(id).addEventListener("change", () => calculate(id));
+});
