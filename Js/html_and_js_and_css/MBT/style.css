@@ -42,29 +42,49 @@ body {
     position: fixed;
     right: 120px;
     top: 20px;
-    width: 35px;
-    height: 35px;
     background: rgba(255, 255, 255, 0.1);
     color: white;
     border: 2px solid rgba(0, 191, 255, 0.4);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: all 0.45s ease-in-out;
     z-index: 1;
     overflow: hidden;
     white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-  .info-box strong{
-    color:#0ff;
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
+  /* Versteckt den Inhalt anfangs */
+  .info-box-content {
+    opacity: 0;
+    max-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.45s ease-in-out;
+    white-space: nowrap;
+  }
+  
+  /* Beim Hover: Box passt sich dem Inhalt an */
   .info-box:hover {
-    padding: 70px;
+    width: auto;
+    height: auto;
+    padding: 15px 20px;
+    white-space: normal; /* erlaubt Umbrüche, falls nötig */
   }
   
+  /* Inhalt wird sichtbar */
+  .info-box:hover .info-box-content {
+    opacity: 1;
+    max-width: 500px; /* großzügiger Maxwert */
+    max-height: 1000px; /* falls mehrzeilig */
+  }
 
 .menu-icon-left {
     position: relative;
