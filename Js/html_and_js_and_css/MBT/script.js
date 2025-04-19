@@ -24,6 +24,15 @@
 //     changeContent(`${this.id}`, "main_content", "test_1.html")
 // });
 
+const el1 = document.getElementById('show_calculator');
+const el2 = document.getElementById('calculator');
+
+el1.addEventListener('mouseenter', () => {
+    el2.style.display = 'block';
+});
+function ClearAll(){
+    document.getElementById('calculator').style.display = 'none';
+}
 function showContentDiv(divId) {
     document.querySelectorAll('.content-container').forEach(div => {
         div.classList.add('hidden_content');
@@ -31,7 +40,7 @@ function showContentDiv(divId) {
     document.getElementById(divId).classList.remove('hidden_content');
 }
 
-document.querySelectorAll('.submenu_special').forEach(element => {
+document.querySelectorAll('.submenu_special_left').forEach(element => {
     element.addEventListener('mouseenter', (event) => {
         showContentDiv(`${event.target.id}` + "_content")
     });
@@ -79,17 +88,7 @@ function showCalculator() {
     });
     document.getElementById("calculator").classList.remove('hidden_calc');
 }
-document.getElementById('test_calc').addEventListener('mouseenter', () => {
-    console.log('Mouse entered (using mouseenter)');
-});
 
-
-const el1 = document.getElementById('test_calc');
-const el2 = document.getElementById('calculator');
-
-el1.addEventListener('mouseenter', () => {
-    el2.style.display = 'block';
-});
 
 ["tention", "force", "area"].forEach(id => {
     document.getElementById(id).addEventListener("input", () => calculate(id));

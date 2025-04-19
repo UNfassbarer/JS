@@ -26,6 +26,8 @@ body {
 }
 
 .TentionCalc {
+    position: fixed;
+    top: 20px;
     border-radius: 20px;
     background: rgba(200, 220, 255, 0.15);
     -webkit-backdrop-filter: blur(12px);
@@ -49,42 +51,71 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: all 0.45s ease-in-out;
     z-index: 1;
     overflow: hidden;
-    white-space: nowrap;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  /* Versteckt den Inhalt anfangs */
-  .info-box-content {
+    transition: all 0.3s ease-in;
+}
+.B_clear{   
+    color: white;
+    width: 30px;
+    height: 30px;
+    background: rgb(23, 132, 132);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
     opacity: 0;
-    max-width: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.45s ease-in-out;
-    white-space: nowrap;
-  }
-  
-  /* Beim Hover: Box passt sich dem Inhalt an */
-  .info-box:hover {
-    width: auto;
-    height: auto;
-    padding: 15px 20px;
-    white-space: normal; /* erlaubt Umbrüche, falls nötig */
-  }
-  
-  /* Inhalt wird sichtbar */
-  .info-box:hover .info-box-content {
+    position: fixed;
+    top: 30px;
+    right: 25px;
+    transition: all 0.125s ease-in;
+}
+.B_clear:hover{
+    color: rgba(197, 16, 179, 0.4);
+    border: 3px solid rgba(211, 24, 192, 0.4);
+    background: rgb(19, 197, 216);
+    font-size: 16px;
+}
+
+.info-box h1{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 40px;
+    color: #0ff;
+    font-family: 'Georgia', serif;
+    opacity: 1;   
+    transition: opacity 1.5s ease-in;
+}
+.info-box:hover .B_clear{
     opacity: 1;
-    max-width: 500px; /* großzügiger Maxwert */
-    max-height: 1000px; /* falls mehrzeilig */
-  }
+}
+
+.info-box:hover h1{
+    opacity: 0;
+    transition: opacity 0.1s ease-in;
+}
+
+.info-box-content {
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.info-box:hover {
+    width: 150px;
+    height: 150px;
+
+}
+
+.info-box:hover .info-box-content {
+    opacity: 1;
+}
 
 .menu-icon-left {
     position: relative;
@@ -176,10 +207,11 @@ body {
 }
 */
 
-.textbox{
+.textbox {
     padding: 35px;
-    position: absofixlute;    
+    position: absofixlute;
 }
+
 .sidebar_left:hover {
     left: 0;
 }
@@ -211,7 +243,7 @@ body {
     visibility: visible;
 }
 
-.submenu_special {
+.submenu_special_left, .submenu_special_right{
     border-radius: 15px;
     overflow: hidden;
     width: 225px;
@@ -224,14 +256,14 @@ body {
     transition: all 0.5s ease;
 }
 
-.submenu_special a {
+.submenu_special_left a, .submenu_special_right a {
     color: #0ff;
     font-size: 1rem;
     position: relative;
     z-index: 2;
 }
 
-.submenu_special::before {
+.submenu_special_left::before , .submenu_special_right::before{
     content: '';
     position: absolute;
     top: -50%;
@@ -247,7 +279,7 @@ body {
     opacity: 0;
 }
 
-.submenu_special:hover {
+.submenu_special_left:hover ,.submenu_special_right:hover{
     background: #111;
     border: 2px solid rgb(1, 12, 71);
     border-radius: 15px;
@@ -255,7 +287,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
 
-.submenu_special:hover::before {
+.submenu_special_left:hover::before , .submenu_special_right:hover::before{
     opacity: 1;
     transform: rotate(-45deg) translateY(100%);
 }
