@@ -96,7 +96,7 @@
     }
 
     .gallery img:hover {
-      transform: scale(1.05) rotate(2deg) translateY(-10px);
+      transform: scale(1.05) translateY(-10px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     }
 
@@ -225,34 +225,32 @@
 
   <header id="section1" class="fade-in">
     <h1>🌸 Frohe Ostern! 🐰</h1>
-    <p>Ich wünsche euch entspannung, liebe und farbenfrohe Frühlings-vibes!</p>
+    <p>Ich wünsche euch allen Entspannung, Liebe und farbenfrohe Frühlings-vibes!</p>
   </header>
 
   <div class="section fade-in" id="section2">
     <h2>🌷 Oster-Gallery</h2>
     <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1585401398257-c6c1a30adf5d?auto=format&fit=crop&w=400&q=80" alt="Easter eggs">
-      <img src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?auto=format&fit=crop&w=400&q=80" alt="Spring flowers">
-      <img src="https://images.unsplash.com/photo-1587213811864-7d4f8f20bc55?auto=format&fit=crop&w=400&q=80" alt="Easter bunny">
+      <img src="https://duckduckgo.com/?q=free+img+links&t=ffab&iar=images&iai=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F420%2F759%2Foriginal%2Fvector-link-icon.jpg">
     </div>
   </div>
 
   <div class="section fade-in" id="section3">
-    <h2>💌 Was persönlisches</h2>
+    <h2>💌 Was persönliches</h2>
     <div class="message">
       <p>
-        Hey, ich wünsche euch allen alles leibe zu Ostern, frohes Festmahl und
-                      tolle Ostergeschenke mit vielen netten Menchen.🐣💛
+        Hey, ich wünsche euch allen alles liebe zu Ostern, frohes Festmahl und
+                      tolle Ostergeschenke mit vielen netten Menchen. Bis nächste Jahr🐣💛
       </p>
     </div>
   </div>
 
   <div id="sliding-div" class="fade-in">
-    🐇 Random Überrschung am Ende ;) 🐇
+    🐇 Oster-Überrschung am Ende ;) 🐇
   </div>
-  <button onclick="revealNext()" class="button_1" id="b_1">Click ME</button>
+  <button onclick="revealNext()" class="button_1" id="b_1">Click & Scroll</button>
   <footer>
-    <input type="search" name="test" id="test" placeholder="Osterwünsche ? "><button id="submit" onclick="submit_wish()">Wunsch absenden...</button>
+    <input type="search" name="test" id="test" placeholder="Osterwünsche für 2026 ? "><button id="submit" onclick="submit_wish()">Wunsch absenden...</button>
   </footer>
 
   <script>
@@ -277,8 +275,7 @@
         counter = 0;
       }
     }
-    
-    // Easter egg - confetti when all elements are revealed
+
     function checkAllVisible() {
       const allVisible = ids.every(id => 
         document.getElementById(id).classList.contains('visible')
@@ -317,7 +314,6 @@
       }
     }
     
-    // Check for all visible after each click
     document.getElementById('b_1').addEventListener('click', checkAllVisible);
   </script>
 </body>

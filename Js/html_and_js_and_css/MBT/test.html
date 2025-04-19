@@ -1,26 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Input Event Example</title>
+  <title>Editable Resizable Box</title>
+  <style>
+    .note-box {
+      width: 200px;
+      height: 150px;
+      background-color: #e0f7ff;
+      position: relative;
+      padding: 10px;
+      border: 2px solid #00bfff;
+      border-radius: 8px;
+      overflow: auto;
+    }
+
+    /* Make the content inside editable */
+    .resizable[contenteditable="true"] {
+      outline: none;
+    }
+
+    .resizer {
+      width: 10px;
+      height: 10px;
+      background-color: #00bfff;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      cursor: se-resize;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Input Box -->
-  <input type="text" id="inputBox" placeholder="Type something...">
-  <p id="output"></p>
+<!-- Editable and resizable box -->
+<div class="note-box" id="box" contenteditable="true">
+  Type something here...
+  <div class="resizer" id="corner"></div>
+</div>
 
-  <script>
-    // Function that runs when typing
-    function onInputChange(event) {
-      const value = event.target.value;  // Get the value from the input box
-      document.getElementById("output").innerText = "You typed: " + value;
+<script>
+  const box = document.getElementById('box');
+  const corner = document.getElementById('corner');
+
+  corner.addEventListener('mousedown', function (event) {
+    const startY = event.clientY;
+    const startHeight = box.offsetHeight;
+
+    function resize(event) {
+      box.style.height = startHeight + (event.clientY - startY) + 'px';
     }
 
-    // Add event listener to input box
-    document.getElementById("inputBox").addEventListener("input", onInputChange);
-  </script>
+    function stopResize() {
+      window.removeEventListener('mousemove', resize);
+      window.removeEventListener('mouseup', stopResize);
+    }
+
+    window.addEventListener('mousemove', resize);
+    window.addEventListener('mouseup', stopResize);
+  });
+</script>
 
 </body>
 </html>

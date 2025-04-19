@@ -31,8 +31,55 @@ el1.addEventListener('mouseenter', () => {
     el2.style.display = 'block';
 });
 function ClearAll(){
-    document.getElementById('calculator').style.display = 'none';
+    el2.style.display = 'none';
+    document.querySelectorAll('.content-container').forEach(div => {
+        div.classList.add('hidden_content');
+    });
 }
+
+const infoBox = document.querySelector('.info-box');
+const notes = document.querySelector('.note-box');
+const noteContent = document.querySelector('.note-content')
+const h1 = document.querySelector('.h1')
+const note_button = document.querySelector('.B_notes')
+
+infoBox.addEventListener('mouseenter', () => {
+  notes.style.top = '230px';
+});
+infoBox.addEventListener('mouseleave', () => {
+  notes.style.top = '80px';
+});
+notes.addEventListener("mouseenter", ()=>{
+    notes.style.width = "150px";
+    notes.style.height = "150px";
+    noteContent.style.opacity = "1";
+    h1.style.opacity = "0";
+    h1.style.transition = "opacity 0.1s ease-in";
+    note_button.style.opacity = "1";
+
+})
+const box = document.getElementById('box');
+  const corner = document.getElementById('corner');
+
+  corner.addEventListener('mousedown', function (event) {
+    const startY = event.clientY;
+    const startHeight = box.offsetHeight;
+
+    function resize(event) {
+      box.style.height = startHeight + (event.clientY - startY) + 'px';
+    }
+
+    function stopResize() {
+      window.removeEventListener('mousemove', resize);
+      window.removeEventListener('mouseup', stopResize);
+    }
+
+    window.addEventListener('mousemove', resize);
+    window.addEventListener('mouseup', stopResize);
+  });
+
+
+
 function showContentDiv(divId) {
     document.querySelectorAll('.content-container').forEach(div => {
         div.classList.add('hidden_content');
