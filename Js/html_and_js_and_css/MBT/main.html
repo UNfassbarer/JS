@@ -12,7 +12,7 @@
     <div class="sidebar_left">
         <div class="menu-icon-left"></div>
         <h2>Maschinenbau</h2>
-        <div class="category">
+        <div class="category" id="left_1">
             <a href="#">Einteilung der Stähle <span class="arrow">▼</span></a>
             <div class="submenu">
                 <div class="submenu_special_left" id="werkstoffnummern" href="#"><a href="#">Werkstoffnummern</a></div>
@@ -27,7 +27,7 @@
                 <div class="submenu_special_left" id="gusseisen" href="#"><a href="#">Gusseisen</a></div>
             </div>
         </div>
-        <div class="category">
+        <div class="category" id="left_2">
             <a href="#" class="head">Fertigkeitslehre <span class="arrow">▼</span></a>
             <div class="submenu">
                 <div class="submenu_special_left" id="zug" href="#"><a href="#">Zug</a></div>
@@ -38,14 +38,21 @@
             </div>
         </div>
     </div>
+    <Button class="Reset_B" style="top: 100px; left: 200px;">test</Button>
     <div class="sidebar_right">
         <div class="menu-icon-right"></div>
         <div class="textbox">
             <h2>Maschinenbau_2</h2>
-            <div class="category">
+            <div class="category" id="righgt_1">
                 <a href="#">Einteilung der Stähle <span class="arrow">▼</span></a>
                 <div class="submenu">
                     <div class="submenu_special_right" id="show_calculator"><a href="#">Berechnung</a></div>
+                </div>
+            </div>
+            <div class="category" id="righgt_2">
+                <a href="#">Pins <span class="arrow">▼</span> </a><button id="Reset_Button" class="Reset_B " onclick="Reset_Pin_Counter()">Reset Counter</button>
+                <div class="submenu" id="add_pins">
+                    <div class="submenu_special_right" id="Pin_1"><a href="#">Example Pin</a> <Button class="Pin_Buttons" id="Button_Pin_1">C</Button></div>
                 </div>
             </div>
         </div>
@@ -67,10 +74,10 @@
     </div>
     <div class="note-box"id="box">
         <strong class="h1">N</strong>      
-        <h4>Note-Box</h4> <button id="note" class="B_notes" onclick=""><strong>Pin</strong></button>
+        <h4>Note-Box</h4> <button id="noteButton" class="B_notes" onclick="Pin_note()"><strong>Pin</strong></button>
+        <div class="loader" id="loding_circle"></div>
         <div class="note-content" contenteditable="true">Type something here...
         </div>
-        <div class="resizer" id="corner"></div>
     </div>
 
     <div class="content-container hidden_content" id="werkstoffnummern_content"><img src="example.jpg"

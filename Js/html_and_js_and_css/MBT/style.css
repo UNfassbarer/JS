@@ -25,6 +25,10 @@ body {
     z-index: 0;
 }
 
+.hidden_content {
+    display: none;
+}
+
 .TentionCalc {
     position: fixed;
     top: 20px;
@@ -117,6 +121,10 @@ body {
 }
 
 .note-box {
+    height: auto;
+    min-height: 30px;
+    max-height: 400px;
+    width: 30px;
     position: fixed;
     right: 120px;
     top: 80px;
@@ -129,12 +137,20 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     z-index: 1;
     overflow: hidden;
-    width: 30px;
-    height: 30px;
     padding: 5px;
     display: flex;
     transition: all 0.3s ease-in;
 }
+.note-content {
+    height: auto;
+    outline: auto;
+    position: absolute;
+    top: 70px;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
 .B_notes{   
     color: white;
     width: 50px;
@@ -148,10 +164,43 @@ body {
     right: 25px;
     transition: all 0.125s ease-in;
 }
-.B_notes:hover{
+
+.loader {
+    position: fixed;
+    right: 40px;
+    bottom: 105px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border-top: 2px solid #ff009d;
+    animation: spin 0.6s linear infinite;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  @keyframes spin {
+    0%   { transform: rotate(45deg); }
+    100% { transform: rotate(405deg); }
+  }
+  
+  
+  .loader.clicked{
+    opacity: 1;
+  }
+
+
+.B_notes:hover:not(.clicked) {
     color: rgba(197, 16, 179, 0.4);
-    border: 3px solid rgba(211, 24, 192, 0.4);
+    border: 3px solid rgb(3, 3, 57);
     background: rgb(19, 197, 216);
+    font-size: 15px;
+  }
+
+
+.B_notes.clicked{
+    color: rgb(255, 174, 231);
+    border: 3px solid rgb(179, 25, 161);
+    background:  rgb(3, 3, 57);
     font-size: 16px;
 }
 
@@ -178,15 +227,6 @@ body {
     transition: opacity 0.1s ease-in;
 } */
 
-.note-content {
-    position: absolute;
-    top: 70px;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-
-}
-
 /* .note-box:hover {
     width: 150px;
     height: 150px;
@@ -194,21 +234,37 @@ body {
 
 /* .note-box:hover .note-content {
     opacity: 1;
-} */
+} */ 
 
-.resizable[contenteditable="true"] {
-    outline: none;
-  }
-
-  
-.resizer {
-    width: 10px;
-    height: 10px;
-    background-color: #00bfff;
+.Pin_Buttons{
     position: absolute;
-    left: 0;
-    bottom: 0;
-    cursor: se-resize;
+    right: 20px;
+    border-radius: 30%;
+    color:#0ff;
+    background: none;
+    z-index: 7;
+    border: none;
+    transition: all 0.125s ease-in-out;
+}
+.Pin_Buttons:hover{
+background: #820a74;
+box-shadow: 0 0 20px #ff009d;
+color:rgb(169, 217, 217);
+font-size: 15px;
+
+}
+.Reset_B{
+    position: absolute;
+    right: 20px;
+    top: 145px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.125s ease-in-out;
+
+}
+.Reset_B:hover{
+color: aliceblue;
 }
 
 .menu-icon-left {
@@ -303,7 +359,7 @@ body {
 
 .textbox {
     padding: 35px;
-    position: absofixlute;
+    position: fixed;
 }
 
 .sidebar_left:hover {
@@ -397,8 +453,4 @@ body {
 
 .category:hover .arrow {
     transform: rotate(180deg);
-}
-
-.hidden_content {
-    display: none;
 }
