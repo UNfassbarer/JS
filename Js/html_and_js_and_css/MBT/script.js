@@ -6,7 +6,8 @@ el1.addEventListener('mouseenter', () => {
 });
 function ClearAll() {
     el2.style.display = 'none';
-    Pin_note()
+    New_Pin ? Pin_note():false;
+    Clear_Calc();
     document.querySelectorAll('.content-container').forEach(div => {
         div.classList.add('hidden_content');
     });
@@ -27,7 +28,7 @@ document.querySelectorAll('.submenu_special_left').forEach(element => {
 
 const infoBox = document.querySelector('.info-box');
 const notes = document.querySelector('.note-box');
-const noteContent = document.querySelector('.note-content')
+const noteContent = document.querySelector('.note_content')
 const h1 = document.querySelector('.h1')
 const note_button = document.querySelector('.B_notes')
 
@@ -38,6 +39,16 @@ infoBox.addEventListener('mouseleave', () => {
     notes.style.top = '80px';
 });
 
+document.getElementById("right").addEventListener("mouseenter",()=>{
+    notes.style.right= "330px";
+    infoBox.style.right = "330px";
+  });
+
+  document.getElementById("right").addEventListener("mouseleave",()=>{
+    notes.style.right= "120px";
+    infoBox.style.right= "120px";
+  });
+
 noteContent.addEventListener('input', () => { AutoResize() })
 
 function AutoResize() {
@@ -47,8 +58,10 @@ function AutoResize() {
 }
 
 let zoom_after_note = false;
+let New_Pin = false;
 
 notes.addEventListener("mouseenter", () => {
+    New_Pin = true;
     if (noteContent.scrollHeight < 60) {
         notes.style.width = "150px";
         notes.style.height = "150px";
@@ -65,11 +78,10 @@ notes.addEventListener("mouseenter", () => {
 });
 let pinCounter = 0;
 function Pin_note() {
+    New_Pin = false;
     pinCounter++
     PinLogic(pinCounter)
     zoom_after_note = true;
-    // notes.style.width = "150px";
-    // notes.style.height = "150px";
     document.getElementById("loding_circle").classList.add("clicked");
     document.getElementById("noteButton").classList.add("clicked");
     setTimeout(() => {
@@ -82,17 +94,46 @@ function Pin_note() {
         document.getElementById("loding_circle").classList.remove("clicked");
     }, 750);
 }
-function PinLogic(Pins) {
+
+  function PinLogic(Pins) {
     const newDiv = document.createElement('div');
     newDiv.id = 'Pin_' + Pins;
-    newDiv.className = 'submenu_special_right';
+    newDiv.className = 'submenu_special_right Pin_div';
     newDiv.innerHTML = `<a href="#">Pin ${Pins}</a> <button class="Pin_Buttons" id="Button_Pin_${Pins}">C</button>`;
     document.getElementById('add_pins').appendChild(newDiv);
+    const newContentDiv = document.createElement('div');
+    newContentDiv.id = 'Pin_Content_' + Pins;
+    newContentDiv.style.display = "none";
+    newContentDiv.innerHTML = document.getElementById("Note_Content").innerHTML;
+    newDiv.appendChild(newContentDiv);
+    newDiv.addEventListener("mouseover", () => {
+    document.getElementById("Note_Content").innerHTML = newContentDiv.innerHTML;
+    notes.dispatchEvent(new Event("mouseenter"));
+    AutoResize();
+    });
+    document.getElementById("Note_Content").innerHTML = "type something here...";
   }
-  function Reset_Pin_Counter(){
+  function Clear_Calc(){
+    document.getElementById("tention").value = ""
+    document.getElementById("area").value = ""
+     document.getElementById("force").value = ""
+  }
+  
+  function Reset(){
+    pinCounter = 0;
+  }
+  function Clear(){
+    Reset();
+    document.getElementById("add_pins").innerHTML = "";
+  }
 
-
-
+  function Clear_Reset_Hover(input, B_id) {
+    const Button = document.getElementById(`${B_id.id}`);
+    Button.classList.add("clicked");
+    setTimeout(() => {
+      Button.classList.remove("clicked");
+      input();
+    }, 333);
   }
   
   document.getElementById('add_pins').addEventListener('click', event => {
@@ -100,7 +141,7 @@ function PinLogic(Pins) {
         event.target.parentElement.remove();
     }
   });
-
+  
 let tention, force, area;
 const calculate = (input) => {
     tention = parseFloat(document.getElementById("tention").value);
@@ -137,7 +178,6 @@ const calculate = (input) => {
 }
 
 function showCalculator() {
-    console.log("test");
     document.querySelectorAll('.TentionCalc').forEach(div => {
         div.classList.add('hidden_calc');
     });

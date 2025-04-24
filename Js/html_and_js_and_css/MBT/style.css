@@ -65,7 +65,8 @@ body {
     justify-content: center;
     transition: all 0.3s ease-in;
 }
-.B_clear{   
+
+.B_clear {
     color: white;
     width: 30px;
     height: 30px;
@@ -78,28 +79,30 @@ body {
     right: 25px;
     transition: all 0.125s ease-in;
 }
-.B_clear:hover{
+
+.B_clear:hover {
     color: rgba(197, 16, 179, 0.4);
     border: 3px solid rgba(211, 24, 192, 0.4);
     background: rgb(19, 197, 216);
     font-size: 16px;
 }
 
-.info-box h1{
+.info-box h1 {
     align-items: center;
     justify-content: center;
     position: absolute;
     font-size: 40px;
     color: #0ff;
     font-family: 'Georgia', serif;
-    opacity: 1;   
+    opacity: 1;
     transition: opacity 1.5s ease-in;
 }
-.info-box:hover .B_clear{
+
+.info-box:hover .B_clear {
     opacity: 1;
 }
 
-.info-box:hover h1{
+.info-box:hover h1 {
     opacity: 0;
     transition: opacity 0.1s ease-in;
 }
@@ -123,7 +126,7 @@ body {
 .note-box {
     height: auto;
     min-height: 30px;
-    max-height: 400px;
+    max-height: 575px;
     width: 30px;
     position: fixed;
     right: 120px;
@@ -141,9 +144,9 @@ body {
     display: flex;
     transition: all 0.3s ease-in;
 }
-.note-content {
+
+.note_content {
     height: auto;
-    outline: auto;
     position: absolute;
     top: 70px;
     opacity: 0;
@@ -151,7 +154,7 @@ body {
     transition: all 0.5s ease-in-out;
 }
 
-.B_notes{   
+.B_notes {
     color: white;
     width: 50px;
     height: 30px;
@@ -176,17 +179,22 @@ body {
     animation: spin 0.6s linear infinite;
     pointer-events: none;
     opacity: 0;
-  }
-  
-  @keyframes spin {
-    0%   { transform: rotate(45deg); }
-    100% { transform: rotate(405deg); }
-  }
-  
-  
-  .loader.clicked{
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(405deg);
+    }
+}
+
+
+.loader.clicked {
     opacity: 1;
-  }
+}
 
 
 .B_notes:hover:not(.clicked) {
@@ -194,30 +202,31 @@ body {
     border: 3px solid rgb(3, 3, 57);
     background: rgb(19, 197, 216);
     font-size: 15px;
-  }
+}
 
 
-.B_notes.clicked{
+.B_notes.clicked {
     color: rgb(255, 174, 231);
     border: 3px solid rgb(179, 25, 161);
-    background:  rgb(3, 3, 57);
+    background: rgb(3, 3, 57);
     font-size: 16px;
 }
 
-.note-box .h1{
+.note-box .h1 {
     position: absolute;
     top: 0px;
     font-size: 35px;
     color: #0ff;
     font-family: 'Georgia', serif;
-    opacity: 1;   
+    opacity: 1;
     transition: opacity 1.5s ease-in;
 }
 
-.note-box h4{
+.note-box h4 {
     position: absolute;
     top: 15px;
 }
+
 /* .note-box:hover .B_notes{
     opacity: 1;
 } */
@@ -234,37 +243,68 @@ body {
 
 /* .note-box:hover .note-content {
     opacity: 1;
-} */ 
+} */
 
-.Pin_Buttons{
+.Pin_Buttons {
     position: absolute;
     right: 20px;
     border-radius: 30%;
-    color:#0ff;
+    color: #0ff;
     background: none;
     z-index: 7;
     border: none;
     transition: all 0.125s ease-in-out;
 }
-.Pin_Buttons:hover{
-background: #820a74;
-box-shadow: 0 0 20px #ff009d;
-color:rgb(169, 217, 217);
-font-size: 15px;
 
+.Pin_Buttons:hover {
+    background: #820a74;
+    box-shadow: 0 0 20px #ff009d;
+    color: rgb(169, 217, 217);
+    font-size: 15px;
 }
-.Reset_B{
+
+#righgt_2:hover .B_clear_Reset {
+    opacity: 1;
+}
+
+#righgt_1:hover #B_Clear_Calc {
+opacity: 1;
+}
+
+#B_Clear_Calc {
+    top: 106px;
+    right: 50px;
+}
+
+.B_clear_Reset {
     position: absolute;
-    right: 20px;
-    top: 145px;
     background: none;
+    width: 40px;
     border: none;
     cursor: pointer;
     transition: all 0.125s ease-in-out;
-
+    z-index: 2;
+    color: white;
+    opacity: 0;
+    font-size: 10px;
 }
-.Reset_B:hover{
-color: aliceblue;
+
+#B_Clear {
+    left: 120px;
+    top: 141px;
+}
+#B_Reset {
+    left: 180px;
+    top: 141px;
+}
+
+#B_Clear.clicked, #B_Reset.clicked, #B_Clear_Calc.clicked {
+    color: rgb(200, 0, 255)
+}
+
+#B_Clear:hover:not(.clicked), #B_Reset:hover:not(.clicked), #B_Clear_Calc:hover:not(.clicked) {
+    color: #0ff;
+    outline: 1px dashed rgba(255, 255, 255, 0.3);
 }
 
 .menu-icon-left {
@@ -326,6 +366,9 @@ color: aliceblue;
     left: 0;
     z-index: 2;
 }
+.sidebar_right:hover .note-box{
+    z-index: 100;
+}
 
 .sidebar_left,
 .sidebar_right {
@@ -350,12 +393,10 @@ color: aliceblue;
     right: -240px;
 }
 
-/*
-.sidebar_right *,
+/* .sidebar_right *,
 .sidebar_left * {
     outline: 1px dashed rgba(255, 255, 255, 0.3);
-}
-*/
+} */
 
 .textbox {
     padding: 35px;
@@ -393,7 +434,8 @@ color: aliceblue;
     visibility: visible;
 }
 
-.submenu_special_left, .submenu_special_right{
+.submenu_special_left,
+.submenu_special_right {
     border-radius: 15px;
     overflow: hidden;
     width: 225px;
@@ -406,14 +448,16 @@ color: aliceblue;
     transition: all 0.5s ease;
 }
 
-.submenu_special_left a, .submenu_special_right a {
+.submenu_special_left a,
+.submenu_special_right a {
     color: #0ff;
     font-size: 1rem;
     position: relative;
     z-index: 2;
 }
 
-.submenu_special_left::before , .submenu_special_right::before{
+.submenu_special_left::before,
+.submenu_special_right::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -429,7 +473,8 @@ color: aliceblue;
     opacity: 0;
 }
 
-.submenu_special_left:hover ,.submenu_special_right:hover{
+.submenu_special_left:hover,
+.submenu_special_right:hover {
     background: #111;
     border: 2px solid rgb(1, 12, 71);
     border-radius: 15px;
@@ -437,7 +482,8 @@ color: aliceblue;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
 
-.submenu_special_left:hover::before , .submenu_special_right:hover::before{
+.submenu_special_left:hover::before,
+.submenu_special_right:hover::before {
     opacity: 1;
     transform: rotate(-45deg) translateY(100%);
 }
