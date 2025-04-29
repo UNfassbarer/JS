@@ -6,7 +6,7 @@ el1.addEventListener('mouseenter', () => {
 });
 function ClearAll() {
     el2.style.display = 'none';
-    New_Pin ? Pin_note():false;
+    New_Pin ? Pin_note() : false;
     Clear_Calc();
     document.querySelectorAll('.content-container').forEach(div => {
         div.classList.add('hidden_content');
@@ -39,21 +39,21 @@ infoBox.addEventListener('mouseleave', () => {
     notes.style.top = '80px';
 });
 
-document.getElementById("right").addEventListener("mouseenter",()=>{
-    notes.style.right= "330px";
+document.getElementById("right").addEventListener("mouseenter", () => {
+    notes.style.right = "330px";
     infoBox.style.right = "330px";
-  });
+});
 
-  document.getElementById("right").addEventListener("mouseleave",()=>{
-    notes.style.right= "120px";
-    infoBox.style.right= "120px";
-  });
+document.getElementById("right").addEventListener("mouseleave", () => {
+    notes.style.right = "120px";
+    infoBox.style.right = "120px";
+});
 
 noteContent.addEventListener('input', () => { AutoResize() })
 
 function AutoResize() {
     if (noteContent.scrollHeight >= 60) {
-    notes.style.height = noteContent.scrollHeight + 100 + "px";
+        notes.style.height = noteContent.scrollHeight + 100 + "px";
     }
 }
 
@@ -95,7 +95,7 @@ function Pin_note() {
     }, 750);
 }
 
-  function PinLogic(Pins) {
+function PinLogic(Pins) {
     const newDiv = document.createElement('div');
     newDiv.id = 'Pin_' + Pins;
     newDiv.className = 'submenu_special_right Pin_div';
@@ -107,75 +107,40 @@ function Pin_note() {
     newContentDiv.innerHTML = document.getElementById("Note_Content").innerHTML;
     newDiv.appendChild(newContentDiv);
     newDiv.addEventListener("mouseover", () => {
-    document.getElementById("Note_Content").innerHTML = newContentDiv.innerHTML;
-    notes.dispatchEvent(new Event("mouseenter"));
-    AutoResize();
+        document.getElementById("Note_Content").innerHTML = newContentDiv.innerHTML;
+        notes.dispatchEvent(new Event("mouseenter"));
+        AutoResize();
     });
     document.getElementById("Note_Content").innerHTML = "type something here...";
-  }
-  function Clear_Calc(){
+}
+function Clear_Calc() {
     document.getElementById("tention").value = ""
     document.getElementById("area").value = ""
-     document.getElementById("force").value = ""
-  }
-  
-  function Reset(){
+    document.getElementById("force").value = ""
+}
+
+function Reset() {
     pinCounter = 0;
-  }
-  function Clear(){
+}
+function Clear() {
     Reset();
     document.getElementById("add_pins").innerHTML = "";
-  }
+}
 
-  function Clear_Reset_Hover(input, B_id) {
+function Clear_Reset_Hover(input, B_id) {
     const Button = document.getElementById(`${B_id.id}`);
     Button.classList.add("clicked");
     setTimeout(() => {
-      Button.classList.remove("clicked");
-      input();
+        Button.classList.remove("clicked");
+        input();
     }, 333);
-  }
-  
-  document.getElementById('add_pins').addEventListener('click', event => {
+}
+
+document.getElementById('add_pins').addEventListener('click', event => {
     if (event.target.classList.contains('Pin_Buttons')) {
         event.target.parentElement.remove();
     }
-  });
-  
-let tention, force, area;
-const calculate = (input) => {
-    tention = parseFloat(document.getElementById("tention").value);
-    force = parseFloat(document.getElementById("force").value);
-    area = parseFloat(document.getElementById("area").value);
-    function error() { console.log("Error: Wrong input or empty input") }
-    function is_tention_area() { return !isNaN(tention) && !isNaN(area) }
-    function is_tention_force() { return !isNaN(tention) && !isNaN(force) }
-    function is_area_force() { return !isNaN(force) && !isNaN(area) }
-    switch (input) {
-        case "tention":
-            if (is_tention_area()) {
-                document.getElementById("area").value = force / tention;
-            } else if (is_tention_force()) {
-                document.getElementById("force").value = area * tention;
-            } else if (isNaN(tention)) { error() }
-            else { console.log("else...") }
-            break;
-        case "area":
-            if (is_tention_area()) {
-                document.getElementById("force").value = area * tention
-            } else if (is_area_force()) {
-                document.getElementById("tention").value = force / area;
-            } else if (isNaN(area)) { error() }
-            break;
-        case "force":
-            if (is_tention_force()) {
-                document.getElementById("area").value = force / tention;
-            } else if (is_area_force()) {
-                document.getElementById("tention").value = force * area;
-            } else if (isNaN(force)) { error() }
-            break;
-    }
-}
+});
 
 function showCalculator() {
     document.querySelectorAll('.TentionCalc').forEach(div => {
@@ -187,4 +152,46 @@ function showCalculator() {
 ["tention", "force", "area"].forEach(id => {
     document.getElementById(id).addEventListener("input", () => calculate(id));
     document.getElementById(id).addEventListener("change", () => calculate(id));
+});
+
+// document.querySelectorAll(".Calculation_Menu").forEach(menuItem => {
+//     menuItem.addEventListener("mouseenter", () => {
+//       document.querySelectorAll(".Calculations").forEach(item => {
+//         item.style.display = "block";
+//       });
+//     });
+//   });
+
+function calculate(id) {
+    const ids = ["tention", "force", "area"];
+
+    let Tention = parseFloat(document.getElementById("tention").value);
+    let force = parseFloat(document.getElementById("force").value);
+    let area = parseFloat(document.getElementById("area").value);
+
+    const Calc_Tention = () => { document.getElementById("tention").value = force / area; }
+    const Calc_Force = () => { document.getElementById("force").value = area * Tention; }
+    const Calc_Area = () => { document.getElementById("area").value = force / Tention; }
+
+    const IsEmpty = (id)=>{ document.getElementById(id).innerHTML === ""}
+
+    switch (true) {
+        case id === ids[0]: // Spannung
+        isNaN(Tention) && !IsEmpty(id) ? console.log("fehler!"):false
+            !isNaN(area) ? Calc_Force() : Calc_Area();
+            break;
+        case id === ids[1]: // Kraft
+        isNaN(force) && !IsEmpty(id) ? console.log("fehler!"):false
+            !isNaN(area) ? Calc_Tention() : Calc_Area();
+            break;
+        case id === ids[2]: // Fläche
+        isNaN(area) && !IsEmpty(id) ? console.log("fehler!"):false
+            !isNaN(Tention) ? Calc_Force() : Calc_Tention();
+            break;
+    }
+}
+
+["tantion", "force", "area"].forEach(id => {
+    document.getElementById(id).addEventListener("input", () => Berechnung(id));
+    document.getElementById(id).addEventListener("change", () => Berechnung(id));
 });

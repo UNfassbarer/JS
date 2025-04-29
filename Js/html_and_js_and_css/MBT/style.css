@@ -1,3 +1,11 @@
+* {
+    outline: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.content-container * {
+    outline: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
 body {
     background: linear-gradient(rgb(33, 33, 34), rgb(246, 162, 215));
     background-size: cover;
@@ -8,7 +16,6 @@ body {
 }
 
 .content-container {
-    width: 400px;
     padding: 200px;
     border-radius: 20px;
     background: rgba(200, 220, 255, 0.15);
@@ -23,6 +30,93 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.content-container h2 {
+    white-space: nowrap;
+}
+
+.dropdown_1, .dropdown_2 {
+    position: absolute;
+    bottom: 20px;
+    display: inline-block;
+    z-index: 30;
+}
+.dropdown_1{
+    right: 20px;
+}
+
+.dropdown_2{
+    left: 20px;
+}
+
+.Calculations_Wrapper {
+    border-radius: 20px;
+    background: rgba(200, 220, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 3px solid rgba(0, 191, 255, 0.2);
+    color: white;
+    position: absolute;
+    opacity: 0;
+    bottom: 20px;
+    padding: 10x;
+    width: 200px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    visibility: hidden;
+    transition: all 0.125s ease-in-out;
+}
+
+.dropdown_1 .Calculations_Wrapper {
+    padding: 15x;
+    width: 100px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Calculations {
+    font-size: 15px;
+    padding: 5px;
+    transition: all 0.2s ease-in-out
+}
+
+#B_Calculate {
+    background: linear-gradient(45deg, transparent, transparent 15%, rgba(0, 255, 255, 0.3));
+    font-size: 12px;
+    height: 20px;
+    border-radius: 8px;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+#B_Calculate:hover{
+    background: linear-gradient(-45deg, transparent, transparent 15%, rgba(0, 255, 255, 0.3));
+    font-size: 13px;
+}
+
+.Calculations:hover {
+    background: rgba(200, 220, 255, 0.15);
+    cursor: pointer;
+}
+
+.Calculation_Menu {
+    font-size: 14px;
+    font-variant: small-caps;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.Calculation_Menu:hover .arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown_1:hover .Calculations_Wrapper , .dropdown_2:hover .Calculations_Wrapper {
+    opacity: 1;
+    visibility: visible;
 }
 
 .hidden_content {
@@ -227,24 +321,6 @@ body {
     top: 15px;
 }
 
-/* .note-box:hover .B_notes{
-    opacity: 1;
-} */
-
-/* .note-box:hover h1{
-    opacity: 0;
-    transition: opacity 0.1s ease-in;
-} */
-
-/* .note-box:hover {
-    width: 150px;
-    height: 150px;
-} */
-
-/* .note-box:hover .note-content {
-    opacity: 1;
-} */
-
 .Pin_Buttons {
     position: absolute;
     right: 20px;
@@ -268,7 +344,7 @@ body {
 }
 
 #righgt_1:hover #B_Clear_Calc {
-opacity: 1;
+    opacity: 1;
 }
 
 #B_Clear_Calc {
@@ -293,16 +369,21 @@ opacity: 1;
     left: 120px;
     top: 141px;
 }
+
 #B_Reset {
     left: 180px;
     top: 141px;
 }
 
-#B_Clear.clicked, #B_Reset.clicked, #B_Clear_Calc.clicked {
+#B_Clear.clicked,
+#B_Reset.clicked,
+#B_Clear_Calc.clicked {
     color: rgb(200, 0, 255)
 }
 
-#B_Clear:hover:not(.clicked), #B_Reset:hover:not(.clicked), #B_Clear_Calc:hover:not(.clicked) {
+#B_Clear:hover:not(.clicked),
+#B_Reset:hover:not(.clicked),
+#B_Clear_Calc:hover:not(.clicked) {
     color: #0ff;
     outline: 1px dashed rgba(255, 255, 255, 0.3);
 }
@@ -366,7 +447,8 @@ opacity: 1;
     left: 0;
     z-index: 2;
 }
-.sidebar_right:hover .note-box{
+
+.sidebar_right:hover .note-box {
     z-index: 100;
 }
 
@@ -392,11 +474,6 @@ opacity: 1;
     transition: right 0.25s ease-in-out;
     right: -240px;
 }
-
-/* .sidebar_right *,
-.sidebar_left * {
-    outline: 1px dashed rgba(255, 255, 255, 0.3);
-} */
 
 .textbox {
     padding: 35px;

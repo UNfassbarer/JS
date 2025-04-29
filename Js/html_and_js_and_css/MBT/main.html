@@ -21,9 +21,11 @@
                 <div class="submenu_special_left" id="verwendung" href="#"><a href="#">Verwendung</a></div>
                 <div class="submenu_special_left" id="wärmebehandlung" href="#"><a href="#">Wärmebehandlung</a></div>
                 <div class="submenu_special_left" id="baustähle" href="#"><a href="#">Baustähle</a></div>
-                <div class="submenu_special_left" id="kohlenstoffstähle" href="#"><a href="#">Kohlenstoffstähle</a></div>
+                <div class="submenu_special_left" id="kohlenstoffstähle" href="#"><a href="#">Kohlenstoffstähle</a>
+                </div>
                 <div class="submenu_special_left" id="werkzeugstähle" href="#"><a href="#">Werkzeugstähle</a></div>
-                <div class="submenu_special_left" id="schnellarbeitsstähle" href="#"><a href="#">Schnellarbeitsstähle</a></div>
+                <div class="submenu_special_left" id="schnellarbeitsstähle" href="#"><a
+                        href="#">Schnellarbeitsstähle</a></div>
                 <div class="submenu_special_left" id="gusseisen" href="#"><a href="#">Gusseisen</a></div>
             </div>
         </div>
@@ -32,6 +34,7 @@
             <div class="submenu">
                 <div class="submenu_special_left" id="zug" href="#"><a href="#">Zug</a></div>
                 <div class="submenu_special_left" id="druck" href="#"><a href="#">Druck</a></div>
+                <div class="submenu_special_left" id="flächenpressung" href="#"><a href="#">Flächenpressung</a></div>
                 <div class="submenu_special_left" id="abscherung" href="#"><a href="#">Abscherung</a></div>
                 <div class="submenu_special_left" id="verdrehung" href="#"><a href="#">Verdrehung</a></div>
                 <div class="submenu_special_left" id="knickung" href="#"><a href="#">Knickung</a></div>
@@ -62,10 +65,11 @@
             </div>
         </div>
     </div>
+
     <div class="TentionCalc hidden_calc" id="calculator">
-        <input type="number" id="tention" placeholder="Spannung"><label for="tention"> Spannung</label><br>
-        <input type="number" id="force" placeholder="Kraft"><label for="tention"> Kraft</label><br>
-        <input type="number" id="area" placeholder="Fläche"><label for="tention"> Fläche</label><br>
+        <input type="number" id="tention" placeholder="Spannung"><br>
+        <input type="number" id="force" placeholder="Kraft"><br>
+        <input type="number" id="area" placeholder="Fläche">
         <output id="output"></output>
     </div>
 
@@ -77,8 +81,8 @@
                 der bei Hover sichtbar wird.</p>
         </div>
     </div>
-    <div class="note-box"id="box">
-        <strong class="h1">N</strong>      
+    <div class="note-box" id="box">
+        <strong class="h1">N</strong>
         <h4>Note-Box</h4>
         <button id="noteButton" class="B_notes" onclick="Pin_note()"><strong>Pin</strong></button>
         <div class="loader" id="loding_circle"></div>
@@ -135,24 +139,45 @@
         <h2>Gusseisen</h2>
         <p>Informationen zu Gusseisen.</p>
     </div>
-    <div class="content-container hidden_content" id="zug_content"><img src="example.jpg" alt="Example Image">
-        <h2>Zug</h2>
-        <p>Informationen zu Zug.</p>
+
+    <div class="content-container " id="zug_content">
+        <img src="example.jpg" alt="Example Image">
+        <h2>Beanspruchung auf Zug</h2>
+        <div class="dropdown_1">
+            <div class="Calculation_Menu">Berechnungen <span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper">
+                <input type="button" value="Calculator" id="B_Calculate">
+            </div>
+        </div>
+        <div class="dropdown_2">
+            <div class="Calculation_Menu">Berechnungen <span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper">
+                <div class="Calculations">Zugspannung</div>
+                <div class="Calculations">Erforderliche Querschnittsfläche</div>
+                <div class="Calculations">Zulässige Zugspannung</div>
+            </div>
+        </div>
     </div>
+
     <div class="content-container hidden_content" id="druck_content"><img src="example.jpg" alt="Example Image">
-        <h2>Druck</h2>
+        <h2>Beanspruchung auf Druck</h2>
+        <p>Informationen zu Druck.</p>
+    </div>
+    <div class="content-container hidden_content" id="flächenpressung_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Beanspruchung auf Flächenpressung</h2>
         <p>Informationen zu Druck.</p>
     </div>
     <div class="content-container hidden_content" id="abscherung_content"><img src="example.jpg" alt="Example Image">
-        <h2>Abscherung</h2>
+        <h2>Beanspruchung auf Abscherung</h2>
         <p>Informationen zu Abscherung.</p>
     </div>
     <div class="content-container hidden_content" id="verdrehung_content"><img src="example.jpg" alt="Example Image">
-        <h2>Verdrehung</h2>
+        <h2>Beanspruchung auf Verdrehung</h2>
         <p>Informationen zu Verdrehung.</p>
     </div>
     <div class="content-container hidden_content" id="knickung_content"><img src="example.jpg" alt="Example Image">
-        <h2>Knickung</h2>
+        <h2>Beanspruchung auf Knickung</h2>
         <p>Informationen zu Knickung.</p>
     </div>
     <script src="script.js"></script>
