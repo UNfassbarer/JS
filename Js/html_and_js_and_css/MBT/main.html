@@ -36,7 +36,7 @@
                 <div class="submenu_special_left" id="druck" href="#"><a href="#">Druck</a></div>
                 <div class="submenu_special_left" id="flächenpressung" href="#"><a href="#">Flächenpressung</a></div>
                 <div class="submenu_special_left" id="abscherung" href="#"><a href="#">Abscherung</a></div>
-                <div class="submenu_special_left" id="verdrehung" href="#"><a href="#">Verdrehung</a></div>
+                <div class="submenu_fshow_calculatorspecial_left" id="verdrehung" href="#"><a href="#">Verdrehung</a></div>
                 <div class="submenu_special_left" id="knickung" href="#"><a href="#">Knickung</a></div>
             </div>
         </div>
@@ -66,11 +66,10 @@
         </div>
     </div>
 
-    <div class="TentionCalc hidden_calc" id="calculator">
+    <div class="TentionCalc" id="calculator">
         <input type="number" id="tention" placeholder="Spannung"><br>
         <input type="number" id="force" placeholder="Kraft"><br>
         <input type="number" id="area" placeholder="Fläche">
-        <output id="output"></output>
     </div>
 
     <div class="info-box">
@@ -144,13 +143,13 @@
         <img src="example.jpg" alt="Example Image">
         <h2>Beanspruchung auf Zug</h2>
         <div class="dropdown_1">
-            <div class="Calculation_Menu">Berechnungen <span class="arrow">▼</span></div>
+            <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
             <div class="Calculations_Wrapper">
-                <input type="button" value="Calculator" id="B_Calculate">
+                <input type="button" value="Calculator" id="B_Calculate" onclick="showCalculator('Zug')">
             </div>
         </div>
         <div class="dropdown_2">
-            <div class="Calculation_Menu">Berechnungen <span class="arrow">▼</span></div>
+            <div class="Calculation_Menu">Infos Kenngrößen<span class="arrow">▼</span></div>
             <div class="Calculations_Wrapper">
                 <div class="Calculations">Zugspannung</div>
                 <div class="Calculations">Erforderliche Querschnittsfläche</div>

@@ -339,19 +339,6 @@ body {
     font-size: 15px;
 }
 
-#righgt_2:hover .B_clear_Reset {
-    opacity: 1;
-}
-
-#righgt_1:hover #B_Clear_Calc {
-    opacity: 1;
-}
-
-#B_Clear_Calc {
-    top: 106px;
-    right: 50px;
-}
-
 .B_clear_Reset {
     position: absolute;
     background: none;
@@ -359,20 +346,35 @@ body {
     border: none;
     cursor: pointer;
     transition: all 0.125s ease-in-out;
-    z-index: 2;
+    z-index: 0;
     color: white;
-    opacity: 0;
     font-size: 10px;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#B_Clear_Calc {
+    left: 165px;
+    top: 105px;
 }
 
 #B_Clear {
-    left: 120px;
+    left: 170px;
     top: 141px;
 }
 
 #B_Reset {
-    left: 180px;
+    left: 110px;
     top: 141px;
+}
+
+#righgt_2:hover #B_Clear, #righgt_2:hover #B_Reset, #righgt_1:hover #B_Clear_Calc{
+    pointer-events: visible; 
+    opacity: 1;
+}
+
+#righgt_1:hover #B_Reset, #righgt_1:hover #B_Clear{
+    top: 190px; 
 }
 
 #B_Clear.clicked,

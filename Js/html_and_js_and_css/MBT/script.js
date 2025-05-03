@@ -1,11 +1,19 @@
-const el1 = document.getElementById('show_calculator');
-const el2 = document.getElementById('calculator');
+const right_1 = document.getElementById('show_calculator');
+const Calculator = document.getElementById('calculator');
 
-el1.addEventListener('mouseenter', () => {
-    el2.style.display = 'block';
+right_1.addEventListener('mouseenter', () => {
+    Calculator.style.display = 'block';
 });
+
+function showCalculator(type) {
+    Calculator.style.display = 'block';
+     document.getElementById("tention").placeholder =`${type}-Spannung`;
+     document.getElementById("force").placeholder =`${type}-Kraft`;
+     type === "Flächenpressung" ? document.getElementById("area").placeholder ="Berührungsfläche":false;
+}
+
 function ClearAll() {
-    el2.style.display = 'none';
+    Calculator.style.display = 'none';
     New_Pin ? Pin_note() : false;
     Clear_Calc();
     document.querySelectorAll('.content-container').forEach(div => {
@@ -76,6 +84,7 @@ notes.addEventListener("mouseenter", () => {
     h1.style.transition = "opacity 0.1s ease-in";
     note_button.style.opacity = "1";
 });
+
 let pinCounter = 0;
 function Pin_note() {
     New_Pin = false;
@@ -142,13 +151,6 @@ document.getElementById('add_pins').addEventListener('click', event => {
     }
 });
 
-function showCalculator() {
-    document.querySelectorAll('.TentionCalc').forEach(div => {
-        div.classList.add('hidden_calc');
-    });
-    document.getElementById("calculator").classList.remove('hidden_calc');
-}
-
 ["tention", "force", "area"].forEach(id => {
     document.getElementById(id).addEventListener("input", () => calculate(id));
     document.getElementById(id).addEventListener("change", () => calculate(id));
@@ -163,7 +165,6 @@ function showCalculator() {
 //   });
 
 function calculate(id) {
-    const ids = ["tention", "force", "area"];
 
     let Tention = parseFloat(document.getElementById("tention").value);
     let force = parseFloat(document.getElementById("force").value);
@@ -176,15 +177,15 @@ function calculate(id) {
     const IsEmpty = (id)=>{ document.getElementById(id).innerHTML === ""}
 
     switch (true) {
-        case id === ids[0]: // Spannung
+        case id === "tention": // Spannung
         isNaN(Tention) && !IsEmpty(id) ? console.log("fehler!"):false
             !isNaN(area) ? Calc_Force() : Calc_Area();
             break;
-        case id === ids[1]: // Kraft
+        case id === "force": // Kraft
         isNaN(force) && !IsEmpty(id) ? console.log("fehler!"):false
             !isNaN(area) ? Calc_Tention() : Calc_Area();
             break;
-        case id === ids[2]: // Fläche
+        case id === "area": // Fläche
         isNaN(area) && !IsEmpty(id) ? console.log("fehler!"):false
             !isNaN(Tention) ? Calc_Force() : Calc_Tention();
             break;
