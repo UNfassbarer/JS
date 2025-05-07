@@ -7,18 +7,31 @@ right_1.addEventListener('mouseenter', () => {
 
 function showCalculator(type) {
     Calculator.style.display = 'block';
-     document.getElementById("tention").placeholder =`${type}-Spannung`;
-     document.getElementById("force").placeholder =`${type}-Kraft`;
-     type === "Flächenpressung" ? document.getElementById("area").placeholder ="Berührungsfläche":false;
+    document.getElementById("tention").placeholder = `${type}-Spannung`;
+    document.getElementById("force").placeholder = `${type}-Kraft`;
+    type === "Flächenpressung" ? document.getElementById("area").placeholder = "Berührungsfläche" : false;
+}
+
+document.querySelectorAll('.Calculations').forEach(element => {
+    element.addEventListener('mouseenter', (event) => {
+        const elementDivId = event.target.id; //Get ID of Hovered Element
+        const Head = event.target.innerHTML; //Get Caption of Hovered Element
+        showExtraContent(elementDivId, Head)
+    });
+});
+function showExtraContent(Cnategory_ID, Head) {
+    document.getElementById("extra_content").style.visibility = "visible" // Make Vissible
+    document.getElementById("extra_content_head").innerHTML = Head; // Update Head
+    const ExtraContent = document.getElementById(`E_${Cnategory_ID}`).innerHTML;
+    document.getElementById("main_extra_content").innerHTML = ExtraContent; //Update Content
 }
 
 function ClearAll() {
-    Calculator.style.display = 'none';
-    New_Pin ? Pin_note() : false;
-    Clear_Calc();
-    document.querySelectorAll('.content-container').forEach(div => {
-        div.classList.add('hidden_content');
-    });
+    document.getElementById("extra_content").style.visibility = "hidden";//Hide extra_Content
+    Calculator.style.display = 'none';//Hide calculator
+    Clear_Calc();//Clear calculator values
+    New_Pin ? Pin_note() : false;//Pin last note
+    document.querySelectorAll('.content-container').forEach(div => { div.classList.add('hidden_content'); });//Hide all content divs
 }
 
 function showContentDiv(divId) {
@@ -174,25 +187,28 @@ function calculate(id) {
     const Calc_Force = () => { document.getElementById("force").value = area * Tention; }
     const Calc_Area = () => { document.getElementById("area").value = force / Tention; }
 
-    const IsEmpty = (id)=>{ document.getElementById(id).innerHTML === ""}
+    const IsEmpty = (id) => { document.getElementById(id).innerHTML === "" }
 
     switch (true) {
         case id === "tention": // Spannung
-        isNaN(Tention) && !IsEmpty(id) ? console.log("fehler!"):false
+            isNaN(Tention) && !IsEmpty(id) ? console.log("fehler!") : false
             !isNaN(area) ? Calc_Force() : Calc_Area();
             break;
         case id === "force": // Kraft
-        isNaN(force) && !IsEmpty(id) ? console.log("fehler!"):false
+            isNaN(force) && !IsEmpty(id) ? console.log("fehler!") : false
             !isNaN(area) ? Calc_Tention() : Calc_Area();
             break;
         case id === "area": // Fläche
-        isNaN(area) && !IsEmpty(id) ? console.log("fehler!"):false
+            isNaN(area) && !IsEmpty(id) ? console.log("fehler!") : false
             !isNaN(Tention) ? Calc_Force() : Calc_Tention();
             break;
     }
 }
 
-["tantion", "force", "area"].forEach(id => {
-    document.getElementById(id).addEventListener("input", () => Berechnung(id));
-    document.getElementById(id).addEventListener("change", () => Berechnung(id));
+["tention", "force", "area"].forEach(id => {
+    const el = document.getElementById(id);
+
+    el.addEventListener("input", () => Berechnung(id));
+    el.addEventListener("change", () => Berechnung(id));
 });
+

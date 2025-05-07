@@ -36,7 +36,7 @@
                 <div class="submenu_special_left" id="druck" href="#"><a href="#">Druck</a></div>
                 <div class="submenu_special_left" id="flächenpressung" href="#"><a href="#">Flächenpressung</a></div>
                 <div class="submenu_special_left" id="abscherung" href="#"><a href="#">Abscherung</a></div>
-                <div class="submenu_fshow_calculatorspecial_left" id="verdrehung" href="#"><a href="#">Verdrehung</a></div>
+                <div class="submenu_special_left" id="verdrehung" href="#"><a href="#">Verdrehung</a></div>
                 <div class="submenu_special_left" id="knickung" href="#"><a href="#">Knickung</a></div>
             </div>
         </div>
@@ -88,8 +88,21 @@
         <div class="note_content" contenteditable="true" id="Note_Content">type something here...
         </div>
     </div>
-
-    <div class="content-container hidden_content" id="werkstoffnummern_content"><img src="example.jpg"
+<!-- Extras -->
+    <div id="extra_content">
+        <h4 id="extra_content_head">Extras</h4>
+        <p id="main_extra_content">test</p>
+        <img src="" alt="example img">
+    </div>
+    <div class="hidden_content">
+    <p id="E_Sigma_zug">Zugspannung (Extras)</p>
+    <p id="E_S_erf">Erforderliche Querschnitsfläche (Extras)</p>
+    <p id="E_Sigma_zug_zul">Zulässige Zugspannung (Extras)</p>
+    </div>
+    
+<!-- /Extras -->
+    <div class="content-container hidden_content" id="werkstoffnummern_content">
+        <img src="example.jpg"
             alt="Example Image">
         <h2>Werkstoffnummern</h2>
         <p>Informationen zu Werkstoffnummern.</p>
@@ -139,7 +152,7 @@
         <p>Informationen zu Gusseisen.</p>
     </div>
 
-    <div class="content-container " id="zug_content">
+    <div class="content-container" id="zug_content">
         <img src="example.jpg" alt="Example Image">
         <h2>Beanspruchung auf Zug</h2>
         <div class="dropdown_1">
@@ -150,10 +163,10 @@
         </div>
         <div class="dropdown_2">
             <div class="Calculation_Menu">Infos Kenngrößen<span class="arrow">▼</span></div>
-            <div class="Calculations_Wrapper">
-                <div class="Calculations">Zugspannung</div>
-                <div class="Calculations">Erforderliche Querschnittsfläche</div>
-                <div class="Calculations">Zulässige Zugspannung</div>
+            <div class="Calculations_Wrapper" id="zug">
+                <div class="Calculations" id="Sigma_zug">Zugspannung</div>
+                <div class="Calculations" id="S_erf">Erforderliche Querschnittsfläche</div>
+                <div class="Calculations" id="Sigma_zug_zul">Zulässige Zugspannung</div>
             </div>
         </div>
     </div>
