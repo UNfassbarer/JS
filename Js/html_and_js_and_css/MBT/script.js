@@ -5,11 +5,11 @@ right_1.addEventListener('mouseenter', () => {
     Calculator.style.display = 'block';
 });
 
-function showCalculator(type) {
+function showCalculator(tention,required,admitted) {
     Calculator.style.display = 'block';
-    document.getElementById("tention").placeholder = `${type}-Spannung`;
-    document.getElementById("force").placeholder = `${type}-Kraft`;
-    type === "Flächenpressung" ? document.getElementById("area").placeholder = "Berührungsfläche" : false;
+    document.getElementById("tention").placeholder = tention;
+    document.getElementById("force").placeholder = required;
+    document.getElementById("area").placeholder = admitted;
 }
 
 document.querySelectorAll('.Calculations').forEach(element => {
@@ -26,7 +26,7 @@ function showExtraContent(Cnategory_ID, Head) {
     document.getElementById("main_extra_content").innerHTML = ExtraContent; //Update Content
 }
 
-function ClearAll() {
+function ClearAll() {     
     document.getElementById("extra_content").style.visibility = "hidden";//Hide extra_Content
     Calculator.style.display = 'none';//Hide calculator
     Clear_Calc();//Clear calculator values
@@ -135,10 +135,33 @@ function PinLogic(Pins) {
     });
     document.getElementById("Note_Content").innerHTML = "type something here...";
 }
+
+//delete selected pin
+document.getElementById('add_pins').addEventListener('click', event => {
+    if (event.target.classList.contains('Pin_Buttons')) {
+        event.target.parentElement.remove();
+        
+            notes.style.width = "30px";
+            notes.style.height = "30px";
+            noteContent.style.opacity = "0";
+            h1.style.opacity = "1";
+            note_button.style.opacity = "0";
+            document.getElementById("noteButton").classList.remove("clicked");
+            document.getElementById("loding_circle").classList.remove("clicked");
+    }
+});
+
 function Clear_Calc() {
-    document.getElementById("tention").value = ""
-    document.getElementById("area").value = ""
-    document.getElementById("force").value = ""
+    const Tention = document.getElementById("tention");
+    const Area = document.getElementById("area");
+    const Force = document.getElementById("force");
+    Tention.value = "";
+    Area.value = "";
+    Force.value = "";
+    Tention.placeholder = "Spannung";
+    Area.placeholder = "Fläche";
+    Force.placeholder = "Kraft";
+
 }
 
 function Reset() {
@@ -157,12 +180,6 @@ function Clear_Reset_Hover(input, B_id) {
         input();
     }, 333);
 }
-
-document.getElementById('add_pins').addEventListener('click', event => {
-    if (event.target.classList.contains('Pin_Buttons')) {
-        event.target.parentElement.remove();
-    }
-});
 
 ["tention", "force", "area"].forEach(id => {
     document.getElementById(id).addEventListener("input", () => calculate(id));
