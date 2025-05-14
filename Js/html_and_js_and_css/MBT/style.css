@@ -544,6 +544,7 @@ body {
     display: block;
     color: white;
     padding: 8px;
+    width: 180px;
     text-decoration: none;
 }
 

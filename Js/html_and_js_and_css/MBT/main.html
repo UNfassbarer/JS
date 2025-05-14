@@ -21,9 +21,11 @@
                 <div class="submenu_special_left" id="verwendung" href="#"><a href="#">Verwendung</a></div>
                 <div class="submenu_special_left" id="wärmebehandlung" href="#"><a href="#">Wärmebehandlung</a></div>
                 <div class="submenu_special_left" id="baustähle" href="#"><a href="#">Baustähle</a></div>
-                <div class="submenu_special_left" id="kohlenstoffstähle" href="#"><a href="#">Kohlenstoffstähle</a></div>
+                <div class="submenu_special_left" id="kohlenstoffstähle" href="#"><a href="#">Kohlenstoffstähle</a>
+                </div>
                 <div class="submenu_special_left" id="werkzeugstähle" href="#"><a href="#">Werkzeugstähle</a></div>
-                <div class="submenu_special_left" id="schnellarbeitsstähle" href="#"><a href="#">Schnellarbeitsstähle</a></div>
+                <div class="submenu_special_left" id="schnellarbeitsstähle" href="#"><a
+                        href="#">Schnellarbeitsstähle</a></div>
                 <div class="submenu_special_left" id="gusseisen" href="#"><a href="#">Gusseisen</a></div>
             </div>
         </div>
@@ -38,6 +40,15 @@
                 <div class="submenu_special_left" id="biegung" href="#"><a href="#">Biegung</a></div>
             </div>
         </div>
+
+        <div class="category" id="left_3">
+            <a href="#" class="head">Granzmaße & Passungen<span class="arrow">▼</span></a>
+            <div class="submenu">
+                <div class="submenu_special_left" id="welle_bohrung" href="#"><a href="#">Wellen und Bohrungen</a></div> 
+                <div class="submenu_special_left" id="toleranz" href="#"><a href="#">Toleranz</a></div>
+                <div class="submenu_special_left" id="passung" href="#"><a href="#">Passung</a></div>
+            </div>
+        </div>
     </div>
     <div class="sidebar_right" id="right">
         <div class="menu-icon-right"></div>
@@ -45,19 +56,22 @@
             <h2>Maschinenbau_2</h2>
             <div class="category" id="righgt_1">
                 <a href="#">Berechnungen<span class="arrow">▼</span></a>
-                <button id="B_Clear_Calc" class="B_clear_Reset" onclick="Clear_Reset_Hover(Clear_Calc,this)">Clear Values</button>
+                <button id="B_Clear_Calc" class="B_clear_Reset" onclick="Clear_Reset_Hover(Clear_Calc,this)">Clear
+                    Values</button>
                 <div class="submenu">
                     <div class="submenu_special_right" id="show_calculator"><a href="#">Berechnung</a></div>
                 </div>
 
                 <div class="submenu">
-                    <div class="submenu_special_right" id="central_force_system"><a href="MBT_Calc_new_selfmade.html" target="_blank">Zentrales Kräftesystem</a></div>
+                    <div class="submenu_special_right" id="central_force_system"><a href="MBT_Calc_new_selfmade.html"
+                            target="_blank">Zentrales Kräftesystem</a></div>
                 </div>
             </div>
             <div class="category" id="righgt_2">
                 <a href="#" id="category_pins">Pins <span class="arrow">▼</span> </a>
                 <button id="B_Clear" class="B_clear_Reset " onclick="Clear_Reset_Hover(Clear,this)">Clear Pins</button>
-                <button id="B_Reset" class="B_clear_Reset " onclick="Clear_Reset_Hover(Reset,this)">Reset Counter</button>
+                <button id="B_Reset" class="B_clear_Reset " onclick="Clear_Reset_Hover(Reset,this)">Reset
+                    Counter</button>
                 <div class="submenu Pins" id="add_pins">
                     <!-- 
                     <div class="submenu_special_right Pin_div" id="Pin_Counter"><a href="#">Example Pin</a>
@@ -92,8 +106,7 @@
         </div>
     </div>
     <div class="content-container hidden_content" id="werkstoffnummern_content">
-        <img src="example.jpg"
-            alt="Example Image">
+        <img src="example.jpg" alt="Example Image">
         <h2>Werkstoffnummern</h2>
         <p>Informationen zu Werkstoffnummern.</p>
     </div>
@@ -148,7 +161,8 @@
         <div class="dropdown_1">
             <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
             <div class="Calculations_Wrapper">
-                <input type="button" value="Calculator"  class="B_Calculate" id="B_Calculate" onclick="showCalculator('Zugspannung','Erford. Querschnitt','Zuläs. Zugspannung')" >
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Zugspannung','Erford. Querschnitt','Zuläs. Zugspannung')">
             </div>
         </div>
         <div class="dropdown_2">
@@ -167,7 +181,8 @@
         <div class="dropdown_1">
             <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
             <div class="Calculations_Wrapper">
-                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate" onclick="showCalculator('Druckspannung','Erford. Querschnitt','Zuläs. Druckspannung')" >
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Druckspannung','Erford. Querschnitt','Zuläs. Druckspannung')">
             </div>
         </div>
         <div class="dropdown_2">
@@ -186,7 +201,8 @@
         <div class="dropdown_1">
             <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
             <div class="Calculations_Wrapper">
-                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate" onclick="showCalculator('Flächenpressung','Erford. Berührfläche','Zuläs. Flächenpressung')" >
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Flächenpressung','Erford. Berührfläche','Zuläs. Flächenpressung')">
             </div>
         </div>
         <div class="dropdown_2">
@@ -205,7 +221,8 @@
         <div class="dropdown_1">
             <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
             <div class="Calculations_Wrapper">
-                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate" onclick="showCalculator('Scherspannung','Erford. Querschnit','Zuläs. Scherspannung')" >
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Scherspannung','Erford. Querschnit','Zuläs. Scherspannung')">
             </div>
         </div>
         <div class="dropdown_2">
@@ -224,7 +241,8 @@
         <div class="dropdown_1">
             <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
             <div class="Calculations_Wrapper">
-                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate" onclick="showCalculator('Torsionsspannung','erford. pol. Wied.','zuläs. Torsionsspannung')" >
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Torsionsspannung','erford. pol. Wied.','zuläs. Torsionsspannung')">
             </div>
         </div>
         <div class="dropdown_2">
@@ -243,7 +261,8 @@
         <div class="dropdown_1">
             <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
             <div class="Calculations_Wrapper">
-                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate" onclick="showCalculator('Biegespannung','Erford. axial. Wied.','Zuläs. Biegespannung')" >
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Biegespannung','Erford. axial. Wied.','Zuläs. Biegespannung')">
             </div>
         </div>
         <div class="dropdown_2">
@@ -256,6 +275,22 @@
         </div>
     </div>
 
+    <div class="content-container hidden_content" id="welle_bohrung_content">
+        <h2>Wellen & Bohrungen</h2>
+        <p>Informationen zu Wellen & Bohrungen.</p>
+    </div>
+
+    <div class="content-container hidden_content" id="toleranz_content">
+        <h2>Tolarenzen</h2>
+        <p>Informationen zu Tolarenzen.</p>
+    </div>
+
+    
+    <div class="content-container hidden_content" id="passung_content">
+        <h2>Passungen</h2>
+        <p>Informationen zu Passungen.</p>
+    </div>
+
     <!-- Extras -->
     <div id="extra_content">
         <h4 id="extra_content_head">Extras</h4>
@@ -263,35 +298,35 @@
         <img src="" alt="example img">
     </div>
     <div class="hidden_content">
-<!-- Zug -->
-<p id="E_σ_z">Zugspannung</p>
-<p id="E_S_erf_zug">Erforderliche Querschnittsfläche bei Zug</p>
-<p id="E_σ_zzul">Zulässige Zugspannung</p>
-<!-- Druck -->
-<p id="E_σ_d">Druckspannung</p>
-<p id="E_S_erf_druck">Erforderliche Querschnittsfläche bei Druck</p>
-<p id="E_σ_dzul">Zulässige Druckspannung</p>
-<!-- Pressung -->
-<p id="E_p">Pressung</p>
-<p id="E_A_erf_press">Erforderliche Pressfläche</p>
-<p id="E_p_zul">Zulässige Pressung</p>
-<!-- Schub (Abscherung) -->
-<p id="E_τ_a">Schubspannung (Abscherung)</p>
-<p id="E_S_erf_scher">Erforderliche Querschnittsfläche bei Abscherung</p>
-<p id="E_τ_azul">Zulässige Schubspannung (Abscherung)</p>
-<!-- Schub (Torsion) -->
-<p id="E_τ_t">Schubspannung (Torsion)</p>
-<p id="E_Wp_erf">Erforderliches polares Widerstandsmoment</p>
-<p id="E_τ_tzul">Zulässige Schubspannung (Torsion)</p>
-<!-- Biegung -->
-<p id="E_σ_b">Biegespannung</p>
-<p id="E_W_erf">Erforderliches Widerstandsmoment</p>
-<p id="E_σ_bzul">Zulässige Biegespannung</p>
-/p>
+        <!-- Zug -->
+        <p id="E_σ_z">Zugspannung</p>
+        <p id="E_S_erf_zug">Erforderliche Querschnittsfläche bei Zug</p>
+        <p id="E_σ_zzul">Zulässige Zugspannung</p>
+        <!-- Druck -->
+        <p id="E_σ_d">Druckspannung</p>
+        <p id="E_S_erf_druck">Erforderliche Querschnittsfläche bei Druck</p>
+        <p id="E_σ_dzul">Zulässige Druckspannung</p>
+        <!-- Pressung -->
+        <p id="E_p">Pressung</p>
+        <p id="E_A_erf_press">Erforderliche Pressfläche</p>
+        <p id="E_p_zul">Zulässige Pressung</p>
+        <!-- Schub (Abscherung) -->
+        <p id="E_τ_a">Schubspannung (Abscherung)</p>
+        <p id="E_S_erf_scher">Erforderliche Querschnittsfläche bei Abscherung</p>
+        <p id="E_τ_azul">Zulässige Schubspannung (Abscherung)</p>
+        <!-- Schub (Torsion) -->
+        <p id="E_τ_t">Schubspannung (Torsion)</p>
+        <p id="E_Wp_erf">Erforderliches polares Widerstandsmoment</p>
+        <p id="E_τ_tzul">Zulässige Schubspannung (Torsion)</p>
+        <!-- Biegung -->
+        <p id="E_σ_b">Biegespannung</p>
+        <p id="E_W_erf">Erforderliches Widerstandsmoment</p>
+        <p id="E_σ_bzul">Zulässige Biegespannung</p>
+        /p>
 
     </div>
-    
-<!-- /Extras -->
+
+    <!-- /Extras -->
     <script src="script.js"></script>
 </body>
 
