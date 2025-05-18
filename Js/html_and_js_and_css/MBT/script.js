@@ -46,6 +46,32 @@ document.querySelectorAll('.submenu_special_left').forEach(element => {
         showContentDiv(`${event.target.id}` + "_content")
     });
 });
+//show subcategory of chategory inside content div's
+
+document.querySelectorAll('.definition').forEach(element => {
+    element.addEventListener('mouseenter', (event) => {
+        event.target.style.width = "250px";
+        event.target.style.height = "100px";
+        event.target.children[0].classList.remove("hidden_content");
+        event.target.children[1].classList.remove("hidden_content");
+    });
+});
+
+function close_definition_sub(buttonID) {
+  const parentDiv = buttonID.parentElement;
+  parentDiv.style.width = "135px";
+  parentDiv.style.height = "20px";
+  buttonID.classList.add("hidden_content");
+  parentDiv.querySelector(".definition_sub").classList.add("hidden_content");
+}
+
+
+//     element.addEventListener('mouseleave', (event) => {
+//     event.target.children[0].classList.add("hidden_content");
+//     event.target.style.width = "135px";
+//     event.target.style.height = "20px";
+//     });
+// }
 
 const infoBox = document.querySelector('.info-box');
 const notes = document.querySelector('.note-box');
@@ -140,7 +166,6 @@ function PinLogic(Pins) {
 document.getElementById('add_pins').addEventListener('click', event => {
     if (event.target.classList.contains('Pin_Buttons')) {
         event.target.parentElement.remove();
-        
             notes.style.width = "30px";
             notes.style.height = "30px";
             noteContent.style.opacity = "0";
@@ -161,7 +186,6 @@ function Clear_Calc() {
     Tention.placeholder = "Spannung";
     Area.placeholder = "Fläche";
     Force.placeholder = "Kraft";
-
 }
 
 function Reset() {

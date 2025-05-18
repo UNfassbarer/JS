@@ -32,6 +32,7 @@
         <div class="category" id="left_2">
             <a href="#" class="head">Fertigkeitslehre <span class="arrow">▼</span></a>
             <div class="submenu">
+                <div class="submenu_special_left" id="festigkeit" href="#"><a href="#">Übersicht</a></div>
                 <div class="submenu_special_left" id="zug" href="#"><a href="#">Zug</a></div>
                 <div class="submenu_special_left" id="druck" href="#"><a href="#">Druck</a></div>
                 <div class="submenu_special_left" id="flächenpressung" href="#"><a href="#">Flächenpressung</a></div>
@@ -44,9 +45,16 @@
         <div class="category" id="left_3">
             <a href="#" class="head">Granzmaße & Passungen<span class="arrow">▼</span></a>
             <div class="submenu">
-                <div class="submenu_special_left" id="welle_bohrung" href="#"><a href="#">Wellen und Bohrungen</a></div> 
+                <div class="submenu_special_left" id="welle_bohrung" href="#"><a href="#">Wellen und Bohrungen</a></div>
                 <div class="submenu_special_left" id="toleranz" href="#"><a href="#">Toleranz</a></div>
                 <div class="submenu_special_left" id="passung" href="#"><a href="#">Passung</a></div>
+            </div>
+        </div>
+        <div class="category" id="left4">
+            <a href="#" class="head">Übersichten<span class="arrow">▼</span></a>
+            <div class="submenu">
+                <div class="submenu_special_left" id="beanspruchungsarten" href="#"><a href="#">Beansprungungsarten</a>
+                </div>
             </div>
         </div>
     </div>
@@ -105,6 +113,9 @@
         <div class="note_content" contenteditable="true" id="Note_Content">type something here...
         </div>
     </div>
+
+    <!-- Stahleinteilungen -->
+
     <div class="content-container hidden_content" id="werkstoffnummern_content">
         <img src="example.jpg" alt="Example Image">
         <h2>Werkstoffnummern</h2>
@@ -153,6 +164,28 @@
     <div class="content-container hidden_content" id="gusseisen_content"><img src="example.jpg" alt="Example Image">
         <h2>Gusseisen</h2>
         <p>Informationen zu Gusseisen.</p>
+    </div>
+
+<!--Content container for Festigkeitslehre (1 + 6)  -->   
+
+    <div class="content-container " id="festigkeit_content">
+        <h2>Übersicht über die Festigkeitslehre</h2>
+        <div class="conetnt_definition">
+            <div class="definition">Was ist Festigkeit?
+                <div class="definition_sub hidden_content">test1</div>
+                <button class="Pin_Buttons defi_cub_B hidden_content" onclick="close_definition_sub(this)">C</button>
+            </div>
+            <br>
+            <div class="definition">Festigkeitsarten
+                <div class="definition_sub hidden_content">test2</div>
+                <button class="Pin_Buttons defi_cub_B hidden_content" onclick="close_definition_sub(this)">C</button>
+            </div>
+            <br>
+            <div class="definition">Grundlagen Zugversuch
+                <div class="definition_sub hidden_content">test3</div>
+                <button class="Pin_Buttons defi_cub_B hidden_content" onclick="close_definition_sub(this)">C</button>
+            </div>
+        </div>
     </div>
 
     <div class="content-container hidden_content" id="zug_content">
@@ -275,6 +308,8 @@
         </div>
     </div>
 
+    <!-- Passungen -->
+
     <div class="content-container hidden_content" id="welle_bohrung_content">
         <h2>Wellen & Bohrungen</h2>
         <p>Informationen zu Wellen & Bohrungen.</p>
@@ -285,11 +320,58 @@
         <p>Informationen zu Tolarenzen.</p>
     </div>
 
-    
     <div class="content-container hidden_content" id="passung_content">
         <h2>Passungen</h2>
         <p>Informationen zu Passungen.</p>
     </div>
+
+    <!-- Übersichten -->
+
+    <div class="content-container hidden_content" id="beanspruchungsarten_content" style="padding: 50px;">
+        <h3>Beansprungungsarten & Grenzspannungen</h3>
+        <table border id="table_stress">
+            <thead>
+                <tr>
+                    <th>Belastungsart</th>
+                    <th>Spannung</th>
+                    <th>Verformung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Zug</td>
+                    <td>Zugspannung σ<sub>zug</sub></td>
+                    <td>Dehnung, Bruchdehnung A</td>
+                </tr>
+                <tr>
+                    <td>Druck</td>
+                    <td>Druckspannung σ<sub>druck</sub></td>
+                    <td>Stauchung</td>
+                </tr>
+                <tr>
+                    <td>Biegung</td>
+                    <td>Biegungsspannung σ<sub>b</sub></td>
+                    <td>Durchbiegung</td>
+                </tr>
+                <tr>
+                    <td>Abscheren</td>
+                    <td>Schubspannung τ</td>
+                    <td>Verschiebung / Schubverzerrung γ</td>
+                </tr>
+                <tr>
+                    <td>Torsion</td>
+                    <td>Schubspannung τ<sub>t</sub></td>
+                    <td>Verdrehwinkel φ</td>
+                </tr>
+                <tr>
+                    <td>Knickung</td>
+                    <td>Druckspannung σ<sub>krit</sub></td>
+                    <td>Knicklänge / Knickauslenkung</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 
     <!-- Extras -->
     <div id="extra_content">

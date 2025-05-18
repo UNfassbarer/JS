@@ -1,10 +1,10 @@
-* {
+/* * {
     outline: 1px dashed rgba(255, 255, 255, 0.3);
 }
 
 .content-container * {
     outline: 1px dashed rgba(255, 255, 255, 0.3);
-}
+} */
 
 body {
     background: linear-gradient(rgb(33, 33, 34), rgb(246, 162, 215));
@@ -39,8 +39,20 @@ body {
     word-wrap: break-word;
     white-space: normal;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 35px;
     text-align: center;
+}
+
+#table_stress{
+     background: rgba(200, 220, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 3px solid rgb(0, 0, 0);
+    font-size: large;
+}
+
+#table_stress *{
+    padding: 5px;
+    font-size: 20px;
 }
 
 .dropdown_1,
@@ -74,6 +86,40 @@ body {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
     visibility: hidden;
     transition: all 0.125s ease-in-out;
+}
+
+.conetnt_definition{
+    width: auto;
+    height: auto;
+    border: 2px solid rgb(128, 0, 255);
+}
+
+.definition {
+    position: relative;
+    background: rgba(200, 220, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 5px;
+    border: 2px solid #0ff;
+    width: 135px;
+    height: 20px;
+    padding: 10px;
+    overflow: hidden;
+    display: inline-block;
+    transition: all 0.3s ease-in;
+}
+
+.definition:hover {
+    width: 250px;
+    height: 100px;
+    background: rgba(100, 100, 100, 0.3);
+    border: 2px solid rgb(128, 0, 255);
+}
+
+.definition_sub{
+    color: black;
+    position: absolute;
+    border-radius: 5px;
 }
 
 .dropdown_1 .Calculations_Wrapper {
