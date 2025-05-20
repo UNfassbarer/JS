@@ -5,7 +5,7 @@ right_1.addEventListener('mouseenter', () => {
     Calculator.style.display = 'block';
 });
 
-function showCalculator(tention,required,admitted) {
+function showCalculator(tention, required, admitted) {
     Calculator.style.display = 'block';
     document.getElementById("tention").placeholder = tention;
     document.getElementById("force").placeholder = required;
@@ -26,7 +26,7 @@ function showExtraContent(Cnategory_ID, Head) {
     document.getElementById("main_extra_content").innerHTML = ExtraContent; //Update Content
 }
 
-function ClearAll() {     
+function ClearAll() {
     document.getElementById("extra_content").style.visibility = "hidden";//Hide extra_Content
     Calculator.style.display = 'none';//Hide calculator
     Clear_Calc();//Clear calculator values
@@ -46,25 +46,25 @@ document.querySelectorAll('.submenu_special_left').forEach(element => {
         showContentDiv(`${event.target.id}` + "_content")
     });
 });
-//show subcategory of chategory inside content div's
 
+//show subcategory of chategory inside content div's
 document.querySelectorAll('.definition').forEach(element => {
     element.addEventListener('mouseenter', (event) => {
+        const Content = event.target.children[0];
+        event.target.style.height = `${parseInt(Content.id)}px`;
+        Content.classList.remove("hidden_content");
         event.target.style.width = "250px";
-        event.target.style.height = "100px";
-        event.target.children[0].classList.remove("hidden_content");
         event.target.children[1].classList.remove("hidden_content");
     });
 });
-
+//hide subcategory of chategory when button is clicked
 function close_definition_sub(buttonID) {
-  const parentDiv = buttonID.parentElement;
-  parentDiv.style.width = "135px";
-  parentDiv.style.height = "20px";
-  buttonID.classList.add("hidden_content");
-  parentDiv.querySelector(".definition_sub").classList.add("hidden_content");
+    const parentDiv = buttonID.parentElement;
+    parentDiv.style.width = "170px";
+    parentDiv.style.height = "20px";
+    buttonID.classList.add("hidden_content");
+    parentDiv.querySelector(".definition_sub").classList.add("hidden_content");
 }
-
 
 //     element.addEventListener('mouseleave', (event) => {
 //     event.target.children[0].classList.add("hidden_content");
@@ -166,13 +166,13 @@ function PinLogic(Pins) {
 document.getElementById('add_pins').addEventListener('click', event => {
     if (event.target.classList.contains('Pin_Buttons')) {
         event.target.parentElement.remove();
-            notes.style.width = "30px";
-            notes.style.height = "30px";
-            noteContent.style.opacity = "0";
-            h1.style.opacity = "1";
-            note_button.style.opacity = "0";
-            document.getElementById("noteButton").classList.remove("clicked");
-            document.getElementById("loding_circle").classList.remove("clicked");
+        notes.style.width = "30px";
+        notes.style.height = "30px";
+        noteContent.style.opacity = "0";
+        h1.style.opacity = "1";
+        note_button.style.opacity = "0";
+        document.getElementById("noteButton").classList.remove("clicked");
+        document.getElementById("loding_circle").classList.remove("clicked");
     }
 });
 
