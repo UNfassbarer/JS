@@ -1,0 +1,68 @@
+/* menu book */
+.book-menu-icon {
+    position: absolute;
+    right: 10px;
+    width: 36px;
+    height: 40px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.lines{
+    position: absolute;
+    background-color: rgb(88, 204, 2);
+    height: 3px;
+    left: 10px;
+    border-radius: 2px;    
+}
+
+.line1,
+.line2 {
+    width: 22px;
+}
+
+.line3 {
+    width: 17px;
+}
+
+.line1 {
+    top: 6px;
+}
+
+.line2 {
+    top: 14px;
+}
+
+.line3 {
+    top: 22px;
+}
+.holes{
+    position: absolute;
+    background-color: rgb(88, 204, 2);
+    width: 12px;
+    height: 10px;
+    left: -6px;
+    border-radius: 50%;    
+}
+
+.hole1 {
+    top: 3px;
+}
+
+.hole2 {
+    top: 15px;
+}
+
+.hole3 {
+    top: 27px;
+}
+
+.dots {
+    position: absolute;
+    background-color: white;
+    width: 8px;
+    height: 4px;
+    top: 3px;
+    left: 1px;
+    border-radius: 25%;
+}
