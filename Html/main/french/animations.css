@@ -9,12 +9,34 @@
       animation: grow-fade 0.3s ease-out forwards;
       z-index: 1000;
     }
+    
     @keyframes grow-fade {
       to {
         transform: scale(5);
         opacity: 0;
       }
     }
-    /*sliding transition*/
 
-  
+    @keyframes moveLeft {
+    from {
+        transform: translateX(1800px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-1800px);
+        opacity: 1;
+    }
+}
+
+@keyframes tuft_l-animation {
+  0%   { transform: rotate(0deg); }
+  50% { transform: rotate(-35deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes tuft_r-animation {
+  0%   { transform: rotate(0deg); }
+  50% { transform: rotate(35deg); }
+  100% { transform: rotate(0deg); }
+}

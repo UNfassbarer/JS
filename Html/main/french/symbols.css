@@ -8,12 +8,12 @@
     border-radius: 5px;
 }
 
-.lines{
+.lines {
     position: absolute;
     background-color: rgb(88, 204, 2);
     height: 3px;
     left: 10px;
-    border-radius: 2px;    
+    border-radius: 2px;
 }
 
 .line1,
@@ -36,13 +36,14 @@
 .line3 {
     top: 22px;
 }
-.holes{
+
+.holes {
     position: absolute;
     background-color: rgb(88, 204, 2);
     width: 12px;
     height: 10px;
     left: -6px;
-    border-radius: 50%;    
+    border-radius: 50%;
 }
 
 .hole1 {
@@ -65,4 +66,133 @@
     top: 3px;
     left: 1px;
     border-radius: 25%;
+}
+
+/* owl */
+.owl {
+    position: absolute;
+    bottom: 25px;
+    right: 0px;
+    rotate: -20deg;
+    transition: all 0.25s ease-in-out;
+}
+
+.head {
+    z-index: 2;
+    width: 30px;
+    height: 25px;
+    bottom: 12px;
+    position: absolute;
+    background-color: #F8BBD0;
+    border-radius: 50%;
+    rotate: 15deg;
+    transition: all 0.25s ease-in-out;
+}
+
+.tufts {
+    z-index: 2;
+    width: 8px;
+    height: 15px;
+    bottom: 18px;
+    position: absolute;
+    background-color: #D81B60;
+    clip-path: ellipse(50% 45%);
+    transition: all 0.25s ease-in-out;
+}
+
+.tuft_l {
+    right: 0px;
+    rotate: 35deg;
+}
+
+.tuft_r {
+    left: 0px;
+    rotate: -35deg;
+}
+
+.eye {
+     transition: all 0.75s ease-in-out;
+    z-index: 3;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    bottom: 6px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.eye_r {
+    left: -4px;
+}
+
+.eye_l {
+    right: -4px;
+}
+
+.iris {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: #AD1457;
+    border-radius: 10px;
+}
+
+.pupil {
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    background-color: #3E2723;
+    border-radius: 3px;
+}
+
+.body {
+    width: 35px;
+    height: 60px;
+    position: absolute;
+    background-color: #F8BBD0;
+    clip-path: ellipse(50% 45%);
+    z-index: 1;
+}
+
+.body .belly {
+    width: 25px;
+    height: 50px;
+    position: absolute;
+    background-color: #FCE4EC;
+    clip-path: ellipse(50% 45%);
+}
+
+.wings {
+    z-index: 1;
+    width: 18px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #F06292;
+    clip-path: ellipse(50% 40%);
+    rotate: -55deg;
+}
+.owl:hover {
+      rotate: -45deg;
+      bottom: 30px;
+    right: 5px;
+}
+.owl:hover .eye {
+  scale: 1.2;
+}
+
+.owl:hover .head {
+  rotate: 40deg;
+}
+
+.owl:hover .tufts {
+    scale: 1.2;
+}
+
+.owl:hover .tuft_l {
+    animation: tuft_l-animation 0.75s linear infinite;
+}
+.owl:hover .tuft_r {
+    animation: tuft_r-animation 0.75s linear infinite;
 }

@@ -1,17 +1,25 @@
-/* start button */
-body{
+body {
     background: linear-gradient(rgb(255, 255, 255), rgb(160, 226, 109), rgb(88, 204, 2));
     background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
- .animation_box {
-      width: 80px;
-      height: 20px;
-      background-color: rgb(255, 255, 255);
-      z-index: 50;
-      border-radius: 5px;
-      position: absolute;
-      right: -25px;
+
+.centerContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.animation_box {
+    background-color: rgb(255, 255, 255);
+    z-index: 50;
+    border-radius: 25px;
+    position: absolute;
+    animation: moveLeft 1.25s linear forwards;
+}
+
 .button {
     left: 25px;
     top: 25px;
@@ -61,20 +69,22 @@ body{
 
 /* selections menu */
 .selection_menu {
-    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
     width: 250px;
     height: 250px;
+    position: absolute;
     border-radius: 20px;
     background: rgba(200, 220, 255, 0.15);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 3px solid rgba(0, 191, 255, 0.2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    transition: opacity 1.5s ease-in-out;
 }
 
 .exercise {
@@ -149,4 +159,29 @@ body{
 
 .E_3 {
     top: 180px;
+}
+
+body footer {
+    position: absolute;
+    width: 100%;
+    padding: 16px 0;
+    background: rgba(0, 0, 0, 0.04);
+    font-size: 0.95em;
+    color: white;
+    margin-top: 32px;
+    bottom: 0px;
+}
+
+.source {
+    position: absolute;
+    right: 10px;
+    font-size: 0.8em;
+    color: white;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.source:hover {
+    color: rgb(0, 0, 0);
+    scale: 1.1;
 }
