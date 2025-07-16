@@ -12,11 +12,12 @@
 <script src="script.js" defer></script>
 
 <body>
+  <!-- Button -->
   <div class="button" id="start_button">
     <h1 class="pointer">&NonBreakingSpace;Übung starten</h1>
     <div id="shadow"></div>
     <div id="line"></div>
-
+    <!-- Book -->
     <div class="book-menu-icon pointer">
       <div class="lines line1"></div>
       <div class="lines line2"></div>
@@ -34,7 +35,7 @@
   </div>
 
   <!-- <div class="wings"></div>  ERROR?-->
-  <div class="selection_menu" id="book_menu">
+  <div class="selection_menu noInteraction" id="book_menu">
     <h1 style="color: rgb(255, 0, 174);">Übungen</h1>
     <div class="exercise pointer E_1">Übung 1<div class="bars_b"></div>
       <div class="bars_t"></div>
@@ -47,10 +48,10 @@
     <div class="exercise pointer E_3">Übung 3<div class="bars_b"></div>
       <div class="bars_t"></div>
       <div id="shadow"></div>
-
     </div>
-    <div class="owl centerContent">
-      <div class="head">
+    <!-- Owl 1 -->
+    <div class="owl centerContent owl_1">
+      <div class="head head_1">
         <div class="eye eye_r centerContent">
           <div class="iris centerContent">
             <div class="pupil"></div>
@@ -69,13 +70,60 @@
         </div>
       </div>
     </div>
-
   </div>
 
- <footer class="centerContent" id="footer">
-  &copy; 2025 Französisch Übung &mdash; Created by Jonas Dickert. All rights reserved.
-  <a class="source" href="https://github.com/UNfassbarer" target="_blank" rel="noopener">Source code</a>
-</footer>
+  <!-- passe compose -->
+
+  <header class="header" role="banner">
+    <h1 class="logo">
+      <a href="#">Passé composé</a>
+    </h1>
+    <div class="nav-wrap">
+      <nav class="main-nav" role="navigation">
+        <ul class="unstyled list-hover-slide">
+          <li><a href="#">Übung 1</a></li>
+          <li><a href="#">Übung 2</a></li>
+          <li><a href="#">Übung 3</a></li>
+          <li><a href="#">Übung 4</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <footer class="centerContent" id="footer">
+    &copy; 2025 Französisch Übung &mdash; Created by Jonas Dickert. All rights reserved.
+    <a class="source" href="https://github.com/UNfassbarer" target="_blank" rel="noopener">Source code</a>
+
+  </footer>
+  <!-- Owl 2 -->
+  <div class="owl centerContent owl_2">
+    <div class='speech-bubble centerContent noInteraction'><a>Bonjour!</a></div>
+    <div class="head head_2">
+      <div class="eye eye_r centerContent">
+        <div class="iris centerContent" id="iris_l_id">
+          <div class="pupil"></div>
+        </div>
+      </div>
+      <div class="eye eye_l centerContent">
+        <div class="iris centerContent" id="iris_r_id">
+          <div class="pupil"></div>
+        </div>
+      </div>
+      <div class="tufts tuft_l" id="tuft_l_id"></div>
+      <div class="tufts tuft_r" id ="tuft_r_id"></div>
+    </div>
+    <div class="body centerContent">
+      <div class="belly centerContent">
+      </div>
+    </div>
+    <div class="wing_case wing_case_l">
+      <div class="wings wing_l"></div>
+    </div>
+    <div class="wing_case wing_case_r">
+      <div class="wings wing_r"></div>
+    </div>
+  </div>
+
 </body>
 
 </html>

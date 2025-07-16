@@ -70,11 +70,21 @@
 
 /* owl */
 .owl {
+    z-index: 0;
     position: absolute;
+    transition: all 0.25s ease-in-out;
+}
+
+.owl_1 {
     bottom: 25px;
     right: 0px;
     rotate: -20deg;
-    transition: all 0.25s ease-in-out;
+}
+
+.owl_2 {
+    visibility: hidden;
+    bottom: 25px;
+    right: 140px;
 }
 
 .head {
@@ -85,8 +95,11 @@
     position: absolute;
     background-color: #F8BBD0;
     border-radius: 50%;
-    rotate: 15deg;
     transition: all 0.25s ease-in-out;
+}
+
+.head_1 {
+    rotate: 15deg;
 }
 
 .tufts {
@@ -100,18 +113,27 @@
     transition: all 0.25s ease-in-out;
 }
 
-.tuft_l {
+.tuft_r {
     right: 0px;
-    rotate: 35deg;
+    transform: rotate(35deg);
 }
 
-.tuft_r {
+.tuft_l {
     left: 0px;
-    rotate: -35deg;
+    transform: rotate(-35deg);
+}
+
+.tuft_l-animate {
+    animation: tuft_l-animation 1s 1;
+}
+
+
+.tuft_r-animate {
+    animation: tuft_r-animation 1s 1;
 }
 
 .eye {
-     transition: all 0.75s ease-in-out;
+    transition: all 0.75s ease-in-out;
     z-index: 3;
     position: absolute;
     height: 20px;
@@ -134,7 +156,11 @@
     height: 15px;
     width: 15px;
     background-color: #AD1457;
-    border-radius: 10px;
+    border-radius: 50% / 50%;
+}
+
+.iris-animate {
+    animation: iris-animation 1s linear 1;
 }
 
 .pupil {
@@ -167,32 +193,140 @@
     width: 18px;
     height: 40px;
     position: absolute;
-    top: 50%;
-    left: 50%;
     background-color: #F06292;
     clip-path: ellipse(50% 40%);
-    rotate: -55deg;
-}
-.owl:hover {
-      rotate: -45deg;
-      bottom: 30px;
-    right: 5px;
-}
-.owl:hover .eye {
-  scale: 1.2;
+    /* rotate: -55deg; left wing for owl 1*/
 }
 
-.owl:hover .head {
-  rotate: 40deg;
+.wing_l {
+    position: absolute;
+    bottom: 1px;
+}
+
+.wing_r {
+    position: absolute;
+    bottom: 1px;
+}
+
+.owl_1:hover {
+    rotate: -45deg;
+    bottom: 30px;
+    right: 5px;
+}
+
+
+.owl_2:hover {
+    bottom: 50px;
+}
+
+.owl:hover .eye {
+    scale: 1.2;
+}
+
+.owl_1:hover .head_1 {
+    rotate: 45deg;
 }
 
 .owl:hover .tufts {
     scale: 1.2;
 }
 
-.owl:hover .tuft_l {
+/* .owl:hover .tuft_l {
     animation: tuft_l-animation 0.75s linear infinite;
 }
+
 .owl:hover .tuft_r {
     animation: tuft_r-animation 0.75s linear infinite;
+} */
+
+.owl:hover .head_2 {
+    animation: head-animation 6.00s linear infinite;
+}
+
+.owl:hover .wing_case_l {
+    animation: wing_l-animation 2.00s linear infinite;
+}
+
+.owl:hover .wing_case_r {
+    animation: wing_r-animation 2.00s linear infinite;
+}
+
+.wing_case {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: -45px;
+    height: 70px;
+    top: -48px;
+}
+
+.wing_case_l {
+    left: -10px;
+}
+
+.wing_case_r {
+    right: -10px;
+}
+
+/* Speech bubble */
+.speech-bubble a {
+    position: absolute;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    /* Adjusted for better readability */
+
+}
+
+.speech-bubble {
+    position: absolute;
+    margin: 6.8px auto;
+    padding: 13.6px;
+    width: 136px;
+    height: 54.4px;
+    border-radius: 4px;
+    transform: rotate(-4deg) rotateY(15deg);
+    background: rgb(64, 134, 10);
+    font: 27.2px/54.4px "Century Gothic", Verdana, sans-serif;
+    /* 1.7em = 27.2px; 3.4em = 54.4px */
+    text-align: center;
+    color: white;
+    bottom: 65px;
+    right: -35px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.speech-bubble:before,
+.speech-bubble:after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+}
+
+.speech-bubble:after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    transform: rotate(2deg) translate(4.8px, -2.08px) scale(1.02);
+    /* 0.3em = 4.8px, 0.13em = 2.08px */
+    background: rgb(88, 204, 2);
+}
+
+.speech-bubble:before {
+    border: solid 0 transparent;
+    border-right: solid 48px rgb(88, 204, 2);
+    border-bottom: solid 3.36px rgb(64, 134, 10);
+    bottom: 3.36px;
+    left: 17.6px;
+    width: 0;
+    height: 13.6px;
+    transform: rotate(45deg) skewX(75deg);
+}
+
+.owl_2:hover .speech-bubble {
+    opacity: 1;
 }
