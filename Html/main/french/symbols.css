@@ -71,7 +71,7 @@
 /* owl */
 .owl {
     z-index: 0;
-    position: absolute;
+    position: fixed;
     transition: all 0.25s ease-in-out;
 }
 
