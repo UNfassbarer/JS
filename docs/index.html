@@ -8,47 +8,51 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="symbols.css" />
   <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="exercises.css" />
 </head>
 <script src="script.js" defer></script>
 
 <body>
-  <!-- Button -->
-  <div class="button" id="start_button">
-    <h1 class="pointer">&NonBreakingSpace;Übung starten</h1>
-    <div id="shadow"></div>
-    <div id="line"></div>
-    <!-- Book -->
-    <div class="book-menu-icon pointer">
-      <div class="lines line1"></div>
-      <div class="lines line2"></div>
-      <div class="lines line3"></div>
-      <div class="holes hole1">
-        <div class="dots dot1"></div>
+
+  <!-- start button -->
+  <div class="shadow_box" id="StartButton">
+    <button class="button pointer" onclick="StartExercise()">Übung starten
+      <canvas class="button_line"></canvas>
+      <!-- Book -->
+      <div class="book-menu-icon pointer">
+        <div class="lines line1"></div>
+        <div class="lines line2"></div>
+        <div class="lines line3"></div>
+        <div class="holes hole1">
+          <div class="dots dot1"></div>
+        </div>
+        <div class="holes hole2">
+          <div class="dots dot2"></div>
+        </div>
+        <div class="holes hole3">
+          <div class="dots dot3"></div>
+        </div>
       </div>
-      <div class="holes hole2">
-        <div class="dots dot2"></div>
-      </div>
-      <div class="holes hole3">
-        <div class="dots dot3"></div>
-      </div>
-    </div>
+    </button>
   </div>
 
   <!-- <div class="wings"></div>  ERROR?-->
+
   <div class="selection_menu noInteraction" id="book_menu">
     <h1 style="color: rgb(255, 0, 174);">Übungen</h1>
     <div class="exercise pointer E_1">Übung 1<div class="bars_b"></div>
       <div class="bars_t"></div>
-      <div id="shadow"></div>
+      <div id="shadow_b"></div>
     </div>
     <div class="exercise pointer E_2">Übung 2<div class="bars_b"></div>
       <div class="bars_t"></div>
-      <div id="shadow"></div>
+      <div id="shadow_b"></div>
     </div>
     <div class="exercise pointer E_3">Übung 3<div class="bars_b"></div>
       <div class="bars_t"></div>
-      <div id="shadow"></div>
+      <div id="shadow_b"></div>
     </div>
+
     <!-- Owl 1 -->
     <div class="owl centerContent owl_1">
       <div class="head head_1">
@@ -73,30 +77,24 @@
   </div>
 
   <!-- passe compose -->
-
-  <header class="header" role="banner">
+  <header class="header hiddenContent" role="banner">
     <h1 class="logo">
       <a href="#">Passé composé</a>
     </h1>
     <div class="nav-wrap">
       <nav class="main-nav" role="navigation">
         <ul class="unstyled list-hover-slide">
-          <li><a href="#">Übung 1</a></li>
-          <li><a href="#">Übung 2</a></li>
-          <li><a href="#">Übung 3</a></li>
-          <li><a href="#">Übung 4</a></li>
+          <li onclick="startExercise(`1`)"><a href="#">Übung 1</a></li>
+          <li onclick="startExercise(`2`)"><a href="#">Übung 2</a></li>
+          <li onclick="startExercise(`3`)"><a href="#">Übung 3</a></li>
+          <li onclick="startExercise(`4`)"><a href="#">Übung 4</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <footer class="centerContent" id="footer">
-    &copy; 2025 Französisch Übung &mdash; Created by Jonas Dickert. All rights reserved.
-    <a class="source" href="https://github.com/UNfassbarer" target="_blank" rel="noopener">Source code</a>
-
-  </footer>
   <!-- Owl 2 -->
-  <div class="owl centerContent owl_2">
+  <div class="owl centerContent owl_2 hiddenContent">
     <div class='speech-bubble centerContent noInteraction'><a>Bonjour!</a></div>
     <div class="head head_2">
       <div class="eye eye_r centerContent">
@@ -110,7 +108,7 @@
         </div>
       </div>
       <div class="tufts tuft_l" id="tuft_l_id"></div>
-      <div class="tufts tuft_r" id ="tuft_r_id"></div>
+      <div class="tufts tuft_r" id="tuft_r_id"></div>
     </div>
     <div class="body centerContent">
       <div class="belly centerContent">
@@ -124,6 +122,53 @@
     </div>
   </div>
 
+
+  <!-- Exercise 1 -->
+  <div class="exercise_box hiddenContent">
+    <h1>headline</h1>
+    <div class="note">
+      <p>There are multible quetsions. Choos the right awnser. (only one awnser is correct)</p>
+    </div>
+
+    <div class="question">
+      <p> Elle …………………… (acheter) un cadeau pour sa maman.</p>
+    </div>
+
+    <div class="answer">
+      <div class="option">
+        <input type="checkbox" id="checkbox_1" class="checkbox">
+        <label for="checkbox_1">I. as acheté</label><br>
+        <input type="checkbox" id="checkbox_2" class="checkbox">
+        <label for="checkbox_2">II. a acheté</label><br>
+        <input type="checkbox" id="checkbox_3" class="checkbox">
+        <label for="checkbox_3">III. ai acheti</label>
+      </div>
+    </div>
+
+    <div class="controll_check">
+      <div class="shadow_box" id="NextButton" style="top: 15px; ">
+        <button class="button pointer" onclick="StartExercise()">Übung starten
+          <canvas class="button_line"></canvas>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="centerContent" id="footer">
+    &copy; 2025 Französisch Übung &mdash; Created by Jonas Dickert. All rights reserved.
+    <a class="source" href="https://github.com/UNfassbarer" target="_blank" rel="noopener">Source code</a>
+  </footer>
+
 </body>
 
 </html>
+
+
+<!-- <div class="checkbox-wrapper-5">
+  <div class="check">
+    <input id="check-5" type="checkbox">
+    <label for="check-5">
+    </label>
+  </div>
+</div> -->
