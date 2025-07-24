@@ -14,15 +14,18 @@
 //   setTimeout(() => circle.remove(), 600);
 // });
 
+
+
+
 // click start button
 document.addEventListener("DOMContentLoaded", () => {
-  const start_button = document.getElementById("start_button");
-  start_button.addEventListener('click', StartExercise);
+   document.querySelectorAll('.checkbox').forEach(cb => cb.checked = false);
 });
 const Exercise_box = document.querySelector(".selection_menu");
 
 function StartExercise() {
   Exercise_box.style.opacity = "1";
+  Exercise_box.style.visibility = "visible";
   Exercise_box.style.pointerEvents = "all";
 }
 // random number
@@ -60,17 +63,17 @@ function LoadAnimation() {
       LoadAnimation()
       animationInterval -= 0.125
     }, animationInterval)
-  } else if (counter = 165) { Forwarding() }
+  } else if (counter = 140) { Forwarding() }
 }
 let allowAnimation = false;
 function Forwarding() {
   document.querySelector('.selection_menu').style.display = 'none';
-  document.querySelector('.button').style.display = 'none';
+  document.getElementById("StartButton").classList.toggle("hiddenContent");
   document.getElementById('footer').style.color = 'black';
   document.getElementById("footer").style.backgroundColor = "rgba(238, 232, 232, 0.9)";
   document.body.style.background = "white";
-  document.getElementsByClassName("header")[0].style.visibility = "visible";
-  document.getElementsByClassName("owl_2")[0].style.visibility = "visible";
+  document.getElementsByClassName("header")[0].classList.toggle("hiddenContent");
+  document.getElementsByClassName("owl_2")[0].classList.toggle("hiddenContent");
   counter = 0;
   modifier = 1.00;
   allowAnimation = true;
@@ -103,4 +106,12 @@ function toggleIris(b) {
   b === 1
     ? document.getElementById("iris_l_id").classList.toggle("iris-animate")
     : document.getElementById("iris_r_id").classList.toggle("iris-animate");
+}
+
+//start exercise
+
+function startExercise(exerciseNumber) {
+  const exerciseBox = document.querySelector(".exercise_box");
+  exerciseBox.classList.toggle("hiddenContent");
+  exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
 }

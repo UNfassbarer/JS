@@ -4,8 +4,8 @@
     right: 10px;
     width: 36px;
     height: 40px;
-    background-color: white;
     border-radius: 5px;
+    background-color: white;
 }
 
 .lines {
@@ -82,7 +82,6 @@
 }
 
 .owl_2 {
-    visibility: hidden;
     bottom: 25px;
     right: 140px;
 }
