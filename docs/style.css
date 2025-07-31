@@ -17,7 +17,11 @@ body {
 
 .hiddenContent {
   opacity: 0;
-  display: none;
+  visibility: hidden;
+}
+
+.transition {
+  transition: all 1.25s ease-in-out;
 }
 
 .animation_box {
@@ -37,7 +41,7 @@ body {
   width: 279px;
 }
 
-#StartButton{
+#StartButton {
   left: 20px;
   top: 20px;
 }
@@ -181,7 +185,7 @@ body {
   width: 100%;
   padding: 16px 0;
   background: rgba(0, 0, 0, 0.04);
-  font-size: 0.95em;
+  font-size: clamp(0.8rem, 1vw + 0.5rem, 1.2rem);
   color: white;
   margin-top: 32px;
   bottom: 0px;
@@ -191,7 +195,7 @@ body {
 
 .source {
   position: absolute;
-  right: 10px;
+  bottom: 2px;
   font-size: 0.8em;
   color: white;
   cursor: pointer;

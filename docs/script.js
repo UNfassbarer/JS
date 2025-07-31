@@ -19,7 +19,7 @@
 
 // click start button
 document.addEventListener("DOMContentLoaded", () => {
-   document.querySelectorAll('.checkbox').forEach(cb => cb.checked = false);
+  document.querySelectorAll('.checkbox').forEach(cb => cb.checked = false);
 });
 const Exercise_box = document.querySelector(".selection_menu");
 
@@ -53,17 +53,17 @@ function createElement() {
   modifier += 0.06;
 }
 //Manage sliding animation
-let counter = 0;
+let AniCounter = 0;
 let animationInterval = 25.000;
 function LoadAnimation() {
-  if (counter < 180) {
+  if (AniCounter < 180) {
     createElement()
-    counter++
+    AniCounter++
     setTimeout(() => {
       LoadAnimation()
       animationInterval -= 0.125
     }, animationInterval)
-  } else if (counter = 140) { Forwarding() }
+  } else if (AniCounter = 140) { Forwarding() }
 }
 let allowAnimation = false;
 function Forwarding() {
@@ -74,7 +74,7 @@ function Forwarding() {
   document.body.style.background = "white";
   document.getElementsByClassName("header")[0].classList.toggle("hiddenContent");
   document.getElementsByClassName("owl_2")[0].classList.toggle("hiddenContent");
-  counter = 0;
+  AniCounter = 0;
   modifier = 1.00;
   allowAnimation = true;
   startNewTimeout();
@@ -87,7 +87,7 @@ function startNewTimeout() {
   let b = getRandomInt(1, 2);
   allowAnimation ? toggleDesition(a, b) : null;
   setTimeout(() => { toggleDesition(a, b) }, 1000);
-  setTimeout(() => { startNewTimeout() }, getRandomInt(3, 6)*1000);
+  setTimeout(() => { startNewTimeout() }, getRandomInt(3, 6) * 1000);
 }
 
 function toggleDesition(a, b) {
@@ -114,4 +114,37 @@ function startExercise(exerciseNumber) {
   const exerciseBox = document.querySelector(".exercise_box");
   exerciseBox.classList.toggle("hiddenContent");
   exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
+}
+
+// Check and Next buttons
+let QuestCounter = 0;
+function NextQuestion() {
+  const exerciseBox = document.querySelector(".exercise_box");
+
+  const QuestionBox = document.getElementById("E1_Questions");
+
+  const ButtonText =  document.getElementById("B_next").querySelector("p");
+
+  const E1_Q1 = document.getElementById("E1_Q1");
+  const E1_Q2 = document.getElementById("E1_Q2");
+  const E1_Q3 = document.getElementById("E1_Q3");
+  const E1_Q4 = document.getElementById("E1_Q4");
+  const E1_Q5 = document.getElementById("E1_Q5");
+
+  QuestCounter++;
+  if (QuestCounter === 1) {
+    ButtonText.innerHTML = "Next Question";
+    exerciseBox.style.height = "400px";
+    QuestionBox.classList.toggle("hiddenContent");
+  } else if (QuestCounter === 2) {
+    QuestionBox.style.left = "-125%";
+  } else if (QuestCounter === 3) {
+    QuestionBox.style.left = "-225%";
+  } else if (QuestCounter === 4) {
+    QuestionBox.style.left = "-325%";
+  } else if (QuestCounter === 5) {
+    QuestionBox.style.left = "-425%";
+    ButtonText.innerHTML = "Controll ;)";
+    QuestCounter = 0;
+  }
 }
