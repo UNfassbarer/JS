@@ -111,40 +111,58 @@ function toggleIris(b) {
 //start exercise
 
 function startExercise(exerciseNumber) {
+  // Load JSON file
   const exerciseBox = document.querySelector(".exercise_box");
+  fetch('exercise.json')
+    .then(response => response.json())
+    .then(data => {
+      // Update title and description
+      exerciseBox.querySelector('p').innerText = data.instructions;
+    })
+    .catch(error => console.error('Error loading JSON:', error));
   exerciseBox.classList.toggle("hiddenContent");
   exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
 }
 
 // Check and Next buttons
-let QuestCounter = 0;
-function NextQuestion() {
-  const exerciseBox = document.querySelector(".exercise_box");
+function changeCssValue(cssValue, amount) {
+  const match = cssValue.match(/^([-+]?[0-9]*\.?[0-9]+)([a-z%]+)$/);
+  if (!match) return cssValue;
+  let number = parseFloat(match[1]);
+  const unit = match[2];
+  number -= amount;
+  return `${number}${unit}`;
+}
 
+let Quest_Counter = 0;
+
+let first_question = true;
+function NextQuestion(direction) {
+  const exerciseBox = document.querySelector(".exercise_box");
+  const ButtonText = document.getElementById("B_next").querySelector("p");
   const QuestionBox = document.getElementById("E1_Questions");
 
-  const ButtonText =  document.getElementById("B_next").querySelector("p");
-
-  const E1_Q1 = document.getElementById("E1_Q1");
-  const E1_Q2 = document.getElementById("E1_Q2");
-  const E1_Q3 = document.getElementById("E1_Q3");
-  const E1_Q4 = document.getElementById("E1_Q4");
-  const E1_Q5 = document.getElementById("E1_Q5");
-
-  QuestCounter++;
-  if (QuestCounter === 1) {
+  if (first_question) {
+    first_question = false;
     ButtonText.innerHTML = "Next Question";
     exerciseBox.style.height = "400px";
     QuestionBox.classList.toggle("hiddenContent");
-  } else if (QuestCounter === 2) {
-    QuestionBox.style.left = "-125%";
-  } else if (QuestCounter === 3) {
-    QuestionBox.style.left = "-225%";
-  } else if (QuestCounter === 4) {
-    QuestionBox.style.left = "-325%";
-  } else if (QuestCounter === 5) {
-    QuestionBox.style.left = "-425%";
-    ButtonText.innerHTML = "Controll ;)";
-    QuestCounter = 0;
+    QuestionBox.style.left = "71%";
   }
-}
+  let currentLeft = QuestionBox.style.left || "0%";
+  if (direction === 'next') {
+    Quest_Counter++;
+    QuestionBox.style.left = changeCssValue(currentLeft, 96);
+    if (currentLeft === "-313%") {
+      ButtonText.innerHTML = "Controll ;)";
+    }
+    Quest_Counter > 5 ? console.log("Controll...") : false;
+  }
+  
+  else {
+      if (direction === 'back' && Quest_Counter != 1) {
+        Quest_Counter--;
+        QuestionBox.style.left = changeCssValue(currentLeft, -96);
+      }
+    }
+  }

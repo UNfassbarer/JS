@@ -288,7 +288,6 @@
     transform: rotate(-4deg) rotateY(15deg);
     background: rgb(64, 134, 10);
     font: 27.2px/54.4px "Century Gothic", Verdana, sans-serif;
-    /* 1.7em = 27.2px; 3.4em = 54.4px */
     text-align: center;
     color: white;
     bottom: 65px;

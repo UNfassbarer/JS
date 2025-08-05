@@ -128,19 +128,13 @@
     </div>
 
     <!-- Exercise 1 -->
-    <div class="exercise_box hiddenContent">
+    <div class="exercise_box ">
       <h1>headline</h1>
-      <p>
-        There are multible quetsions. Choos the right awnser. (only one awnser
-        is correct)
-      </p>
-
-      <div id="E1_Questions" class="centerContent hiddenContent transition">
+      <p></p>
+      <div id="E1_Questions" class="Questions centerContent hiddenContent transition">
         <!-- Exercise 1 Question 1  -->
         <div class="transition E1_Q1-5" id="E1_Q1">
-          <div class="question">
             <p>Elle …………1………… (acheter) un cadeau pour sa maman.</p>
-          </div>
 
           <div class="answer">
             <div class="option">
@@ -303,8 +297,14 @@
       </div>
 
       <div class="controll_check">
-        <div class="shadow_box" id="NextButton" style="top: 15px">
-          <button class="button pointer" id="B_next" onclick="NextQuestion()">
+        <div class="shadow_box" id="BackButton" style=" width: 179px;" >
+          <button class="button pointer" id="B_back" style=" width: 180px; padding-left: 85px;" onclick="NextQuestion('back')">
+              <p>Back</p>
+            <canvas class="button_line" style="left: 55px"></canvas>
+          </button>
+        </div>
+        <div class="shadow_box" id="NextButton">
+          <button class="button pointer" id="B_next" onclick="NextQuestion('next')">
             <p>Start Exercise</p>
             <canvas class="button_line"></canvas>
           </button>

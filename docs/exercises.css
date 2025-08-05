@@ -11,7 +11,7 @@
     border: 3px solid rgb(88, 204, 2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     top: 50%;
-    left: 80%;
+    left: 60%;
     transform: translate(-50%, -50%);
     transition: all 1.5s ease-in-out;
 }
@@ -22,20 +22,16 @@
     margin-top: 20px;
 }
 
-.controll_check {
-    bottom: 5%;
-    position: absolute;
-}
-
-#E1_Questions {
+.Questions {
+    color:rgb(0, 21, 255);
+    width: 1425px;
+    height: 200px;
     position: absolute;
     left: -25%;
     top: 40%;
-    width: 1425px;
-    height: 200px;
     display: flex;
     overflow-x: auto;
-    gap: 60px;
+    gap: 50px;
 }
 
 .E1_Q1-5 {
@@ -171,7 +167,17 @@
 
 /* Check and Next buttons */
 
+#NextButton,
+#BackButton {
+    position: absolute;
+    transform: scale(0.4);
+    bottom: -5px;
+}
+
 #NextButton {
-    left: 1px;
-    scale: 0.4;
+    left: 55px;
+}
+
+#BackButton {
+    left: -40px;
 }
