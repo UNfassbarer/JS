@@ -113,7 +113,7 @@ function toggleIris(b) {
 function startExercise(exerciseNumber) {
   // Load JSON file
   const exerciseBox = document.querySelector(".exercise_box");
-  fetch('exercise.json')
+  fetch('exercises.json')
     .then(response => response.json())
     .then(data => {
       // Update title and description
@@ -122,6 +122,13 @@ function startExercise(exerciseNumber) {
     .catch(error => console.error('Error loading JSON:', error));
   exerciseBox.classList.toggle("hiddenContent");
   exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
+
+
+
+  // const lable = document.createElement("locationbar")
+  // lable.id=
+
+
 }
 
 // Check and Next buttons
@@ -156,13 +163,46 @@ function NextQuestion(direction) {
     if (currentLeft === "-313%") {
       ButtonText.innerHTML = "Controll ;)";
     }
-    Quest_Counter > 5 ? console.log("Controll...") : false;
-  }
-  
-  else {
-      if (direction === 'back' && Quest_Counter != 1) {
-        Quest_Counter--;
-        QuestionBox.style.left = changeCssValue(currentLeft, -96);
-      }
+    if (Quest_Counter > 5) {
+      changeCssValue(currentLeft, -96);
+      checkAnswers();
     }
   }
+
+  else {
+    if (direction === 'back' && Quest_Counter != 1) {
+      Quest_Counter--;
+      QuestionBox.style.left = changeCssValue(currentLeft, -96);
+    }
+  }
+}
+
+//Chat GPT integration
+function checkAnswers() {
+  fetch('exercises.json')
+    .then(response => response.json())
+    .then(data => {
+      const questionBlocks = document.getElementById("E1_Questions").querySelectorAll('.E1_Q1-5'); // Select each question div
+      const correctAnswers = data.E1_Answers;
+      let correctCount = 0;
+      questionBlocks.forEach((questionBlock, qIndex) => {
+        const checkboxes = questionBlock.querySelectorAll('input[type="checkbox"]');
+        const userAnswers = Array.from(checkboxes).map(cb => cb.checked ? 1 : 0);
+        const correctAnswer = correctAnswers[qIndex];
+
+        // Compare userAnswers with correctAnswer for this question
+        const isCorrect = userAnswers.every((val, index) => val === correctAnswer[index]);
+
+        if (isCorrect) {
+          correctCount++;
+          // questionBlock.style.backgroundColor = "#d4edda";
+        } else {
+          // questionBlock.style.backgroundColor = "#f8d7da";
+        }
+        console.log(`Question ${qIndex + 1}:`, { userAnswers, correctAnswer, isCorrect });
+      });
+
+      alert(`You got ${correctCount} out of ${correctAnswers.length} questions correct.`);
+    })
+    .catch(error => { console.error('Error loading JSON:', error); });
+}

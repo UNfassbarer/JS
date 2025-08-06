@@ -328,3 +328,42 @@
 .owl_2:hover .speech-bubble {
     opacity: 1;
 }
+
+/* Button arrow */
+
+.arrow {
+    position: absolute;
+    outline: orangered solid 1px;
+    height: 45px;
+    width: 45px;
+}
+
+.base {
+    position: absolute;
+    background-color: rgb(64, 134, 10);
+}
+
+.line_h {
+    width: 40px;
+}
+
+.line_h, .line_a, .line_b {
+    height: 6px;
+    border-radius: 30%;
+
+}
+
+.line_a , .line_b {
+    width: 30px;
+    right: 0px;
+}
+
+.line_a {
+    rotate: 35deg;
+    bottom: 28px;
+
+}
+.line_b {
+    rotate: -35deg;
+    top: 28px;
+}
