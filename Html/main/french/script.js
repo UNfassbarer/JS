@@ -1,28 +1,15 @@
-// click start button
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.checkbox').forEach(cb => cb.checked = false);
-});
-const Exercise_box = document.querySelector(".selection_menu");
 
+// Make Exercise Box visible
 function StartExercise() {
-  Exercise_box.style.opacity = "1";
-  Exercise_box.style.visibility = "visible";
-  Exercise_box.style.pointerEvents = "all";
-}
-// random number
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  const Exercise_box = document.querySelector(".selection_menu");
+  Exercise_box.classList.toggle("hiddenContent");
 }
 
-// Attach click event to all elements with class 'exercise'
-document.querySelectorAll('.exercise').forEach(element => {
-  element.addEventListener('click', () => {
-    LoadAnimation()
-  });
-});
+// Random number
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 //Create elements for sliding animation
-let modifier = 0.500;
+let modifier = 0.5;
 function createElement() {
   const box = document.createElement("div");
   box.style.bottom = `${getRandomInt(-100, 650)}px`
@@ -33,19 +20,22 @@ function createElement() {
   setTimeout(() => { box.remove() }, 1000);
   modifier += 0.06;
 }
+
 //Manage sliding animation
 let AniCounter = 0;
 let animationInterval = 25.000;
-function LoadAnimation() {
+function LoadAnimation(type) {
   if (AniCounter < 130) {
     createElement()
     AniCounter++
     setTimeout(() => {
-      LoadAnimation()
+      LoadAnimation(null)
       animationInterval -= 0.25
     }, animationInterval)
   } else if (AniCounter = 120) { Forwarding() }
 }
+
+// Simulate loading of new page
 let allowAnimation = false;
 function Forwarding() {
   document.querySelector('.selection_menu').style.display = 'none';
@@ -53,7 +43,7 @@ function Forwarding() {
   document.getElementById('footer').style.color = 'black';
   document.getElementById("footer").style.backgroundColor = "rgba(238, 232, 232, 0.9)";
   document.body.style.background = "white";
-  document.getElementsByClassName("header")[0].classList.toggle("hiddenContent");
+  document.getElementsByClassName("sidebar")[0].classList.toggle("hiddenContent");
   document.getElementsByClassName("owl_2")[0].classList.toggle("hiddenContent");
   AniCounter = 0;
   modifier = 1.00;
@@ -62,7 +52,6 @@ function Forwarding() {
 }
 
 // Manage owls moving tufts
-
 function startNewTimeout() {
   let a = getRandomInt(1, 2);
   let b = getRandomInt(1, 2);
@@ -90,9 +79,7 @@ function toggleIris(b) {
 }
 
 //start exercise
-
 function startExercise(exerciseNumber) {
-  // Load JSON file
   const exerciseBox = document.getElementById("exercise_box");
   const QuestionBox = document.getElementById("E1_Questions");
   const Questions = QuestionBox.querySelectorAll(".question");
@@ -111,7 +98,7 @@ function startExercise(exerciseNumber) {
   exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
 }
 
-// Check and Next buttons
+// Chat GPT integration to change CSS values
 function changeCssValue(cssValue, amount) {
   const match = cssValue.match(/^([-+]?[0-9]*\.?[0-9]+)([a-z%]+)$/);
   if (!match) return cssValue;
@@ -121,9 +108,10 @@ function changeCssValue(cssValue, amount) {
   return `${number}${unit}`;
 }
 
+
+// Controll question movement
 let Quest_Counter = 0;
 let first_question = true;
-
 function NextQuestion(direction) {
   const exerciseBox = document.getElementById("exercise_box");
   const ButtonText = document.getElementById("B_next").querySelector("p");
@@ -140,9 +128,8 @@ function NextQuestion(direction) {
   if (direction === 'next') {
     Quest_Counter++;
     QuestionBox.style.left = changeCssValue(currentLeft, 96);
-    if (currentLeft === "-313%") {
-      ButtonText.innerHTML = "Controll ;)";
-    }
+    currentLeft === "-313%" ? ButtonText.innerHTML = "Controll ;)" : null;
+
     if (Quest_Counter > 5) {
       changeCssValue(currentLeft, -96);
       checkAnswers();
@@ -157,7 +144,7 @@ function NextQuestion(direction) {
   }
 }
 
-//Chat GPT integration
+//Chat GPT integration to check answers
 function checkAnswers() {
   let correct = 0;
   const exerciseBox = document.getElementById("exercise_box");
@@ -171,6 +158,7 @@ function checkAnswers() {
   setTimeout(() => { ShowResult(correct) }, 1250);
 }
 
+// Show result function
 function ShowResult(correct) {
   const ResultBox = document.getElementById("Result_Box");
   const result_Num = document.getElementById("result");

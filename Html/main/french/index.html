@@ -4,16 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Französisch Übung</title>
+  <title>Exercise French</title>
+  <meta name="description" content="French language exercises to improve your skills" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="symbols.css" />
   <link rel="stylesheet" href="animations.css" />
   <link rel="stylesheet" href="exercises.css" />
+  <script src="script.js" defer></script>
 </head>
-<script src="script.js" defer></script>
 
 <body class="centerContent">
-  <!-- start button -->
+
+    <!-- start button -->
   <div class="shadow_box" id="StartButton">
     <button class="button pointer" onclick="StartExercise()">
       Übung starten
@@ -38,21 +41,21 @@
 
   <!-- <div class="wings"></div>  ERROR?-->
 
-  <div class="selection_menu noInteraction centerObject" id="book_menu">
+  <div id="book_menu" class="selection_menu centerObject hiddenContent">
     <h1 style="color: rgb(255, 0, 174)">Übungen</h1>
-    <div class="exercise pointer E_1">
+    <div class="exercise pointer E_1" onclick="LoadAnimation(`passe compose`)">
       Übung 1
       <div class="bars_b"></div>
       <div class="bars_t"></div>
       <div id="shadow_b"></div>
     </div>
-    <div class="exercise pointer E_2">
+    <div class="exercise pointer E_2" onclick="LoadAnimation(`an other exercise`)">
       Übung 2
       <div class="bars_b"></div>
       <div class="bars_t"></div>
       <div id="shadow_b"></div>
     </div>
-    <div class="exercise pointer E_3">
+    <div class="exercise pointer E_3" onclick="LoadAnimation(`an other exercise`)">
       Übung 3
       <div class="bars_b"></div>
       <div class="bars_t"></div>
@@ -62,27 +65,30 @@
     <!-- Owl 1 -->
     <div class="owl centerContent owl_1">
       <div class="head head_1">
-        <div class="eye eye_r centerContent">
-          <div class="iris centerContent">
-            <div class="pupil"></div>
+        <div class="eye eye_r">
+          <div class="iris centerObject">
+            <canvas class="pupil centerObject"></canvas>
           </div>
         </div>
         <div class="eye eye_l centerContent">
-          <div class="iris centerContent">
-            <div class="pupil"></div>
+          <div class="iris centerObject">
+            <canvas class="pupil centerObject"></canvas>
           </div>
         </div>
         <div class="tufts tuft_l"></div>
         <div class="tufts tuft_r"></div>
       </div>
-      <div class="body centerContent">
-        <div class="belly centerContent"></div>
+      <div class="body">
+        <div class="belly centerObject"></div>
       </div>
     </div>
   </div>
 
   <!-- passe compose -->
-  <header class="header hiddenContent" role="banner">
+  <div class="sidebar hiddenContent" role="banner">
+    <div class="menu_icon">
+      <canvas></canvas><canvas></canvas><canvas></canvas>
+    </div>
     <h1 class="logo">
       <a href="#">Passé composé</a>
     </h1>
@@ -96,7 +102,8 @@
         </ul>
       </nav>
     </div>
-  </header>
+  </div>
+
 
   <!-- Owl 2 -->
   <div class="owl centerContent owl_2 hiddenContent">
@@ -140,7 +147,7 @@
       <div class="transition E1_Q1-5" id="E1_Q1">
         <h4 class="question">1</h4>
         <label>
-          <input type="radio" name="q1" value="Merci" data-correct="true"/>
+          <input type="radio" name="q1" value="Merci" data-correct="true" />
           Merci </label><br />
         <label>
           <input type="radio" name="q1" value="Pardon" />
@@ -251,8 +258,7 @@
   </div>
 
   <footer class="centerContent" id="footer">
-    &copy; 2025 Französisch Übung &mdash; Created by Jonas Dickert. All rights
-    reserved.
+    &copy; 2025 Französisch Übung &mdash; Created by Jonas Dickert. All rights reserved.
     <br />
     <a class="source" href="https://github.com/UNfassbarer" target="_blank" rel="noopener">Source code</a>
   </footer>

@@ -97,9 +97,6 @@ body {
 /* selections menu */
 .selection_menu {
   overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
   width: 250px;
   height: 250px;
   position: absolute;
@@ -134,13 +131,13 @@ body {
 
 .bars_b,
 .bars_t {
-  z-index: 1;
   border-radius: 25px;
   height: 4px;
   width: 0px;
   background-color: rgb(0, 0, 0);
   position: absolute;
   transition: all 0.25s ease-in-out;
+  z-index: 1;
 }
 
 .bars_t {
@@ -206,6 +203,7 @@ body {
   color: white;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
+  font-size: clamp(0.6rem, 0.75vw + 0.375rem, 0.9rem);
 }
 
 .source:hover {
@@ -242,7 +240,7 @@ body {
 }
 
 /* HEADER STYLES */
-.header {
+.sidebar {
   position: fixed;
   left: -230px;
   top: 0;
@@ -254,11 +252,11 @@ body {
   z-index: 1;
 }
 
-.header:hover {
+.sidebar:hover {
   left: 0px;
 }
 
-.header:hover .logo {
+.sidebar:hover .logo {
   opacity: 1;
 }
 
