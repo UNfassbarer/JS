@@ -3,6 +3,10 @@ body {
   background-attachment: fixed;
 }
 
+  /* body * {
+    outline: 1px solid red;
+  } */
+
 .centerContent {
   display: flex;
   align-items: center;
@@ -39,7 +43,7 @@ body {
   z-index: 50;
   border-radius: 25px;
   position: fixed;
-  animation: moveLeft 1.25s linear forwards;
+  animation: moveLeft 1s linear forwards;
 }
 
 /* button */
