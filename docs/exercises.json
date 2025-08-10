@@ -1,31 +1,11 @@
 {
   "headline": "Exercice de conjugaison",
-  "instructions": "There are multible quetsions. Choos the right awnser. (only one awnser is correct)",
-  "E1_Answers": [
-    [
-      1,
-      0,
-      0
-    ],
-    [
-      1,
-      0,
-      0
-    ],
-    [
-      1,
-      0,
-      0
-    ],
-    [
-      1,
-      0,
-      0
-    ],
-    [
-      1,
-      0,
-      0
-    ]
+  "instructions": "There are multiple questions. Choose the right answer. (only one answer is correct)",
+  "questions": [
+    { "id": "E1_Q1", "text": "1. Frage" },
+    { "id": "E1_Q2", "text": "2. Frage" },
+    { "id": "E1_Q3", "text": "3. Frage" },
+    { "id": "E1_Q4", "text": "4. Frage" },
+    { "id": "E1_Q5", "text": "5. Frage" }
   ]
 }

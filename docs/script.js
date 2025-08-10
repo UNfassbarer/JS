@@ -1,47 +1,15 @@
-// click animation
-// document.addEventListener("click", function (e) {
-//   // Limit to 20 circles at a time
-//   if (document.querySelectorAll('.click-circle').length > 20) return;
 
-//   const circle = document.createElement("div");
-//   circle.className = "click-circle";
-//   document.body.appendChild(circle);
-
-//   const size = 12;
-//   circle.style.left = `${e.clientX - size / 2}px`;
-//   circle.style.top = `${e.clientY - size / 2}px`;
-
-//   setTimeout(() => circle.remove(), 600);
-// });
-
-
-
-
-// click start button
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.checkbox').forEach(cb => cb.checked = false);
-});
-const Exercise_box = document.querySelector(".selection_menu");
-
+// Make Exercise Box visible
 function StartExercise() {
-  Exercise_box.style.opacity = "1";
-  Exercise_box.style.visibility = "visible";
-  Exercise_box.style.pointerEvents = "all";
-}
-// random number
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  const Exercise_box = document.querySelector(".selection_menu");
+  Exercise_box.classList.toggle("hiddenContent");
 }
 
-// Attach click event to all elements with class 'exercise'
-document.querySelectorAll('.exercise').forEach(element => {
-  element.addEventListener('click', () => {
-    LoadAnimation()
-  });
-});
+// Random number
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 //Create elements for sliding animation
-let modifier = 0.500;
+let modifier = 0.5;
 function createElement() {
   const box = document.createElement("div");
   box.style.bottom = `${getRandomInt(-100, 650)}px`
@@ -49,22 +17,25 @@ function createElement() {
   box.style.width = `${getRandomInt(30 * modifier, 400 * modifier)}px`
   box.className = "animation_box";
   document.body.appendChild(box);
-  setTimeout(() => { box.remove() }, 1500);
+  setTimeout(() => { box.remove() }, 1000);
   modifier += 0.06;
 }
+
 //Manage sliding animation
 let AniCounter = 0;
 let animationInterval = 25.000;
-function LoadAnimation() {
-  if (AniCounter < 180) {
+function LoadAnimation(type) {
+  if (AniCounter < 130) {
     createElement()
     AniCounter++
     setTimeout(() => {
-      LoadAnimation()
-      animationInterval -= 0.125
+      LoadAnimation(null)
+      animationInterval -= 0.25
     }, animationInterval)
-  } else if (AniCounter = 140) { Forwarding() }
+  } else if (AniCounter = 120) { Forwarding() }
 }
+
+// Simulate loading of new page
 let allowAnimation = false;
 function Forwarding() {
   document.querySelector('.selection_menu').style.display = 'none';
@@ -72,7 +43,7 @@ function Forwarding() {
   document.getElementById('footer').style.color = 'black';
   document.getElementById("footer").style.backgroundColor = "rgba(238, 232, 232, 0.9)";
   document.body.style.background = "white";
-  document.getElementsByClassName("header")[0].classList.toggle("hiddenContent");
+  document.getElementsByClassName("sidebar")[0].classList.toggle("hiddenContent");
   document.getElementsByClassName("owl_2")[0].classList.toggle("hiddenContent");
   AniCounter = 0;
   modifier = 1.00;
@@ -81,7 +52,6 @@ function Forwarding() {
 }
 
 // Manage owls moving tufts
-
 function startNewTimeout() {
   let a = getRandomInt(1, 2);
   let b = getRandomInt(1, 2);
@@ -109,29 +79,26 @@ function toggleIris(b) {
 }
 
 //start exercise
-
 function startExercise(exerciseNumber) {
-  // Load JSON file
-  const exerciseBox = document.querySelector(".exercise_box");
+  const exerciseBox = document.getElementById("exercise_box");
+  const QuestionBox = document.getElementById("E1_Questions");
+  const Questions = QuestionBox.querySelectorAll(".question");
+  // const ToggleBoxes = Questions.querySelectorAll("label");
   fetch('exercises.json')
     .then(response => response.json())
     .then(data => {
-      // Update title and description
-      exerciseBox.querySelector('p').innerText = data.instructions;
+      // Load Questions and Instructions
+      Questions.forEach((h4, index) => { h4.textContent = data.questions[index].text; });
+      // ToggleBoxes.forEach((label, index) => {label.textContent = data.questions[index].label; });
+      exerciseBox.querySelector('h4').innerText = data.instructions;
+
     })
     .catch(error => console.error('Error loading JSON:', error));
   exerciseBox.classList.toggle("hiddenContent");
   exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
-
-
-
-  // const lable = document.createElement("locationbar")
-  // lable.id=
-
-
 }
 
-// Check and Next buttons
+// Chat GPT integration to change CSS values
 function changeCssValue(cssValue, amount) {
   const match = cssValue.match(/^([-+]?[0-9]*\.?[0-9]+)([a-z%]+)$/);
   if (!match) return cssValue;
@@ -141,11 +108,12 @@ function changeCssValue(cssValue, amount) {
   return `${number}${unit}`;
 }
 
-let Quest_Counter = 0;
 
+// Controll question movement
+let Quest_Counter = 0;
 let first_question = true;
 function NextQuestion(direction) {
-  const exerciseBox = document.querySelector(".exercise_box");
+  const exerciseBox = document.getElementById("exercise_box");
   const ButtonText = document.getElementById("B_next").querySelector("p");
   const QuestionBox = document.getElementById("E1_Questions");
 
@@ -160,9 +128,8 @@ function NextQuestion(direction) {
   if (direction === 'next') {
     Quest_Counter++;
     QuestionBox.style.left = changeCssValue(currentLeft, 96);
-    if (currentLeft === "-313%") {
-      ButtonText.innerHTML = "Controll ;)";
-    }
+    currentLeft === "-313%" ? ButtonText.innerHTML = "Controll ;)" : null;
+
     if (Quest_Counter > 5) {
       changeCssValue(currentLeft, -96);
       checkAnswers();
@@ -177,32 +144,27 @@ function NextQuestion(direction) {
   }
 }
 
-//Chat GPT integration
+//Chat GPT integration to check answers
 function checkAnswers() {
-  fetch('exercises.json')
-    .then(response => response.json())
-    .then(data => {
-      const questionBlocks = document.getElementById("E1_Questions").querySelectorAll('.E1_Q1-5'); // Select each question div
-      const correctAnswers = data.E1_Answers;
-      let correctCount = 0;
-      questionBlocks.forEach((questionBlock, qIndex) => {
-        const checkboxes = questionBlock.querySelectorAll('input[type="checkbox"]');
-        const userAnswers = Array.from(checkboxes).map(cb => cb.checked ? 1 : 0);
-        const correctAnswer = correctAnswers[qIndex];
+  let correct = 0;
+  const exerciseBox = document.getElementById("exercise_box");
+  exerciseBox.classList.toggle("hiddenContent");
+  document.querySelectorAll("#E1_Questions > div").forEach((questionDiv) => {
+    const selected = questionDiv.querySelector("input[type='radio']:checked");
+    if (selected && selected.dataset.correct === "true") {
+      correct++;
+    }
+  });
+  setTimeout(() => { ShowResult(correct) }, 1250);
+}
 
-        // Compare userAnswers with correctAnswer for this question
-        const isCorrect = userAnswers.every((val, index) => val === correctAnswer[index]);
-
-        if (isCorrect) {
-          correctCount++;
-          // questionBlock.style.backgroundColor = "#d4edda";
-        } else {
-          // questionBlock.style.backgroundColor = "#f8d7da";
-        }
-        console.log(`Question ${qIndex + 1}:`, { userAnswers, correctAnswer, isCorrect });
-      });
-
-      alert(`You got ${correctCount} out of ${correctAnswers.length} questions correct.`);
-    })
-    .catch(error => { console.error('Error loading JSON:', error); });
+// Show result function
+function ShowResult(correct) {
+  const ResultBox = document.getElementById("Result_Box");
+  const result_Num = document.getElementById("result");
+  const Cover = document.getElementById("cover");
+  ResultBox.classList.toggle("hiddenContent");
+  result_Num.textContent = `${correct}/5`;
+  result_Num.classList.toggle("hiddenContent");
+  Cover.style.width = `${100 - (correct * 20)}%`;
 }
