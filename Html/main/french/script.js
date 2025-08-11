@@ -83,19 +83,22 @@ function startExercise(exerciseNumber) {
   const exerciseBox = document.getElementById("exercise_box");
   const QuestionBox = document.getElementById("E1_Questions");
   const Questions = QuestionBox.querySelectorAll(".question");
-  // const ToggleBoxes = Questions.querySelectorAll("label");
+LoadJsonContent(data => {
+  Questions.forEach((h4, index) => {h4.textContent = data.questions[index].text;});
+  exerciseBox.querySelector('h4').innerText = data.instructions;
+});
+  exerciseBox.classList.toggle("hiddenContent");
+  exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
+}
+
+// Load JSON content
+function LoadJsonContent(callback) {
   fetch('exercises.json')
     .then(response => response.json())
     .then(data => {
-      // Load Questions and Instructions
-      Questions.forEach((h4, index) => { h4.textContent = data.questions[index].text; });
-      // ToggleBoxes.forEach((label, index) => {label.textContent = data.questions[index].label; });
-      exerciseBox.querySelector('h4').innerText = data.instructions;
-
+      callback(data);
     })
     .catch(error => console.error('Error loading JSON:', error));
-  exerciseBox.classList.toggle("hiddenContent");
-  exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
 }
 
 // Chat GPT integration to change CSS values
@@ -107,7 +110,6 @@ function changeCssValue(cssValue, amount) {
   number -= amount;
   return `${number}${unit}`;
 }
-
 
 // Controll question movement
 let Quest_Counter = 0;
@@ -160,6 +162,7 @@ function checkAnswers() {
 
 // Show result function
 function ShowResult(correct) {
+  document.body.style.background = "linear-gradient(90deg, rgba(0, 0, 0, 0.48) 0%, rgba(80, 59, 80, 0.48) 50%)";
   const ResultBox = document.getElementById("Result_Box");
   const result_Num = document.getElementById("result");
   const Cover = document.getElementById("cover");
@@ -167,4 +170,5 @@ function ShowResult(correct) {
   result_Num.textContent = `${correct}/5`;
   result_Num.classList.toggle("hiddenContent");
   Cover.style.width = `${100 - (correct * 20)}%`;
+LoadJsonContent(data => {document.getElementById("message").textContent = data.messages[correct].text;});
 }

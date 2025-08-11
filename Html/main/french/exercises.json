@@ -2,10 +2,51 @@
   "headline": "Exercice de conjugaison",
   "instructions": "There are multiple questions. Choose the right answer. (only one answer is correct)",
   "questions": [
-    { "id": "E1_Q1", "text": "1. Frage" },
-    { "id": "E1_Q2", "text": "2. Frage" },
-    { "id": "E1_Q3", "text": "3. Frage" },
-    { "id": "E1_Q4", "text": "4. Frage" },
-    { "id": "E1_Q5", "text": "5. Frage" }
+    {
+      "id": "E1_Q1",
+      "text": "1. Frage"
+    },
+    {
+      "id": "E1_Q2",
+      "text": "2. Frage"
+    },
+    {
+      "id": "E1_Q3",
+      "text": "3. Frage"
+    },
+    {
+      "id": "E1_Q4",
+      "text": "4. Frage"
+    },
+    {
+      "id": "E1_Q5",
+      "text": "5. Frage"
+    }
+  ],
+  "messages": [
+    {
+      "id": "0",
+      "text": "Maybe you should try again. You did not answer any question correctly!"
+    },
+    {
+      "id": "1",
+      "text": "Well. better than nothing. But you can do better."
+    },
+    {
+      "id": "2",
+      "text": "Good job. but less than a half sounds a little bit like you are still in holiday."
+    },
+    {
+      "id": "3",
+      "text": "Excellent! But can you become a master of conjugation?"
+    },
+    {
+      "id": "4",
+      "text": "Almost genius who did this!"
+    },
+    {
+      "id": "5",
+      "text": "You are a legend! You did it all correctly."
+    }
   ]
 }
