@@ -40,7 +40,7 @@ body {
 
 .animation_box {
   background-color: rgb(255, 255, 255);
-  z-index: 50;
+  z-index: 10;
   border-radius: 25px;
   position: fixed;
   animation: moveLeft 1s linear forwards;
@@ -261,28 +261,15 @@ body {
 }
 
 .logo {
+  outline: orangered solid 3px;
   opacity: 0;
-  text-transform: lowercase;
   font: 300 2em var(--sans);
   text-align: center;
-  padding: 0;
-  margin: 0;
+  color: var(--white-off);
   transition: all 0.25s ease-in-out;
 }
 
-.logo a {
-  display: block;
-  padding: 1em 0;
-  color: var(--white-off);
-  text-decoration: none;
-  transition: 0.15s linear color;
-}
-
-.logo a:hover {
-  color: #fff;
-}
-
-.logo a:hover {
+.logo:hover {
   color: var(--green);
 }
 

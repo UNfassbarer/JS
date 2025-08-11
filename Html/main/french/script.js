@@ -1,10 +1,4 @@
 
-// Make Exercise Box visible
-function StartExercise() {
-  const Exercise_box = document.querySelector(".selection_menu");
-  Exercise_box.classList.toggle("hiddenContent");
-}
-
 // Random number
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -15,7 +9,7 @@ function createElement() {
   box.style.bottom = `${getRandomInt(-100, 650)}px`
   box.style.height = `${getRandomInt(15 * modifier, 125 * modifier)}px`
   box.style.width = `${getRandomInt(30 * modifier, 400 * modifier)}px`
-  box.className = "animation_box";
+  box.className = "animation_box noInteraction";
   document.body.appendChild(box);
   setTimeout(() => { box.remove() }, 1000);
   modifier += 0.06;
@@ -29,7 +23,7 @@ function LoadAnimation(type) {
     createElement()
     AniCounter++
     setTimeout(() => {
-      LoadAnimation(null)
+      LoadAnimation(type)
       animationInterval -= 0.25
     }, animationInterval)
   } else if (AniCounter = 120) { Forwarding() }
@@ -83,10 +77,13 @@ function startExercise(exerciseNumber) {
   const exerciseBox = document.getElementById("exercise_box");
   const QuestionBox = document.getElementById("E1_Questions");
   const Questions = QuestionBox.querySelectorAll(".question");
-LoadJsonContent(data => {
-  Questions.forEach((h4, index) => {h4.textContent = data.questions[index].text;});
-  exerciseBox.querySelector('h4').innerText = data.instructions;
+  LoadJsonContent(data => {
+    Questions.forEach((h4, index) => {
+  h4.innerText = data[`E_${exerciseNumber}_questions`][index].text;
 });
+
+    exerciseBox.querySelector('h4').innerText = data.instructions;
+  });
   exerciseBox.classList.toggle("hiddenContent");
   exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
 }
@@ -95,10 +92,7 @@ LoadJsonContent(data => {
 function LoadJsonContent(callback) {
   fetch('exercises.json')
     .then(response => response.json())
-    .then(data => {
-      callback(data);
-    })
-    .catch(error => console.error('Error loading JSON:', error));
+    .then(data => { callback(data) }).catch(error => console.error('Error loading JSON:', error));
 }
 
 // Chat GPT integration to change CSS values
@@ -170,5 +164,5 @@ function ShowResult(correct) {
   result_Num.textContent = `${correct}/5`;
   result_Num.classList.toggle("hiddenContent");
   Cover.style.width = `${100 - (correct * 20)}%`;
-LoadJsonContent(data => {document.getElementById("message").textContent = data.messages[correct].text;});
+  LoadJsonContent(data => { document.getElementById("message").textContent = data.messages[correct].text; });
 }
