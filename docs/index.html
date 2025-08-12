@@ -16,11 +16,12 @@
 
 <body class="centerContent">
 
-    <!-- start button -->
+  <!-- start button -->
   <div class="shadow_box" id="StartButton">
-    <button class="button pointer" onclick="StartExercise()">
-      Übung starten
+    <button class="button pointer" onclick="book_menu.classList.toggle('hiddenContent')">
+      Start exercise
       <canvas class="button_line"></canvas>
+
       <!-- Book -->
       <div class="book-menu-icon pointer">
         <div class="lines line1"></div>
@@ -42,21 +43,18 @@
   <!-- <div class="wings"></div>  ERROR?-->
 
   <div id="book_menu" class="selection_menu centerObject hiddenContent">
-    <h1 style="color: rgb(255, 0, 174)">Übungen</h1>
-    <div class="exercise pointer E_1" onclick="LoadAnimation(`passe compose`)">
-      Übung 1
+    <h1 style="color: rgb(255, 0, 174)">Exercises</h1>
+    <div class="exercise pointer E_1" onclick="LoadAnimation()">Passe compose
       <div class="bars_b"></div>
       <div class="bars_t"></div>
       <div id="shadow_b"></div>
     </div>
-    <div class="exercise pointer E_2" onclick="LoadAnimation(`an other exercise`)">
-      Übung 2
+    <div class="exercise pointer E_2" onclick="LoadAnimation()">Exercise 2
       <div class="bars_b"></div>
       <div class="bars_t"></div>
       <div id="shadow_b"></div>
     </div>
-    <div class="exercise pointer E_3" onclick="LoadAnimation(`an other exercise`)">
-      Übung 3
+    <div class="exercise pointer E_3" onclick="LoadAnimation()">Exercise 3
       <div class="bars_b"></div>
       <div class="bars_t"></div>
       <div id="shadow_b"></div>
@@ -89,10 +87,9 @@
     <div class="menu_icon">
       <canvas></canvas><canvas></canvas><canvas></canvas>
     </div>
-    <h1 class="logo">
-      <a href="#">Passé composé</a>
-    </h1>
-    <div class="nav-wrap">
+    <div class="sidebar_content">
+
+      <h1 class="logo">Passé composé</h1>
       <nav class="main-nav" role="navigation">
         <ul class="unstyled list-hover-slide">
           <li onclick="startExercise(`1`)"><a href="#">Übung 1</a></li>
@@ -246,15 +243,16 @@
     </div>
   </div>
 
-  <div id="Result_Box" class="centerObject noInteraction hiddenContent transition">
-    <h4">Result</h4>
-      <div id="ChartBox" class="centerContent">
-        <div id="Chart">
-          <canvas id="success" class="transition"></canvas>
-          <canvas id="cover" class="transition"></canvas>
-          <div id="result" class="centerContent hiddenContent transition"></div>
-        </div>
+  <div id="Result_Box" class="centerObject noInteraction transition hiddenContent">
+    <h4 class="centerContent">Result</h4>
+    <div id="ChartBox" class="centerContent">
+      <div id="message" class="centerContent">impressive</div>
+      <div id="Chart">
+        <canvas id="success" class="transition"></canvas>
+        <canvas id="cover" class="transition"></canvas>
+        <div id="result" class="centerContent hiddenContent transition"></div>
       </div>
+    </div>
   </div>
 
   <footer class="centerContent" id="footer">
