@@ -111,6 +111,91 @@
       "text": "5. Frage Exercice 5"
     }
   ],
+  "E_1_answers": [
+    {
+      "id": "E1_A1",
+      "text": "Answer 1 E1",
+      "right": true
+    },
+    {
+      "id": "E1_A2",
+      "text": "Answer 1 E1",
+      "right": false
+    },
+    {
+      "id": "E1_A3",
+      "text": "Answer 1 E1",
+      "right": false
+    }
+  ],
+  "E_2_answers": [
+    {
+      "id": "E1_A2",
+      "text": "Answer 2 E1",
+      "right": true
+    },
+    {
+      "id": "E1_A2",
+      "text": "Answer 2 E1",
+      "right": false
+    },
+    {
+      "id": "E1_A3",
+      "text": "Answer 2 E1",
+      "right": false
+    }
+  ],
+  "E_3_answers": [
+    {
+      "id": "E1_A3",
+      "text": "Answer 2 E1",
+      "right": true
+    },
+    {
+      "id": "E1_A2",
+      "text": "Answer 3 E1",
+      "right": false
+    },
+    {
+      "id": "E1_A3",
+      "text": "Answer 3 E1",
+      "right": false
+    }
+  ],
+  "E_4_answers": [
+    {
+      "id": "E1_A4",
+      "text": "Answer 4 E1",
+      "right": true
+    },
+    {
+      "id": "E1_A2",
+      "text": "Answer 4 E1",
+      "right": false
+    },
+    {
+      "id": "E1_A3",
+      "text": "Answer 4 E1",
+      "right": false
+    }
+  ],
+  "E_5_answers": [
+    {
+      "id": "E1_A5",
+      "text": "Answer 5 E1",
+      "right": true
+    },
+    {
+      "id": "E1_A2",
+      "text": "Answer 5 E1",
+      "right": false
+    },
+    {
+      "id": "E1_A3",
+      "text": "Answer 5 E1",
+      "right": false
+    }
+  ],
   "messages": [
     {
       "id": "0",
@@ -136,5 +221,5 @@
       "id": "5",
       "text": "Super, bien fait! You did it all correctly."
     }
-  ]  
+  ]
 }

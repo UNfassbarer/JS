@@ -23,10 +23,21 @@ function changeCssValue(cssValue, amount) {
 // Selfmade functions to toggle page logic
 
 // Global variables
-const exerciseBox = document.getElementById("exercise_box");
+const ExerciseBox = document.getElementById("exercise_box");
+const Sidebar = document.querySelector(".sidebar");
+let exerciseNumber = null;
 
 // Open or close the exercise box
-const exerciseBoxVissible = (open) => { exerciseBox.classList.toggle("hiddenContent", !open) };
+const ExerciseBoxVisible = (open) => { ExerciseBox.classList.toggle("hiddenContent", !open) };
+
+// Exercise eventListener (for Exercise 1-4)
+
+Sidebar.querySelectorAll("li").forEach((L, index) => {
+  L.addEventListener("click", () => {
+    exerciseNumber = index + 1;
+    startExercise(exerciseNumber)
+  });
+});
 
 //Manage sliding animation
 let Animation_C = 0;
@@ -98,17 +109,22 @@ function toggleIris(b) {
 
 //start exercise
 function startExercise(exerciseNumber) {
-  resultVisible ? ClearResult() : null;
-  const QuestionBox = document.getElementById("E1_Questions");
+  if (resultVisible) ClearResult();
+  const QuestionBox = document.getElementById("E_Questions");
   const Questions = QuestionBox.querySelectorAll(".question");
+  // Chst GPT support to load questions and answers
   LoadJsonContent(data => {
-    Questions.forEach((h4, index) => {
-      h4.innerText = data[`E_${exerciseNumber}_questions`][index].text;
+    Questions.forEach((Q, index) => {
+      Q.textContent = data[`E_${exerciseNumber}_questions`][index].text;
+      const answers = data[`E_${exerciseNumber}_answers`];
+      Q.querySelectorAll(".answer-text").forEach((span, aIndex) => {
+        answers[aIndex] ? span.textContent = answers[aIndex].text : null;
+      });
     });
-    exerciseBox.querySelector('h4').innerText = data.instructions;
+    document.getElementById('instructions').innerText = data.instructions;
   });
-  exerciseBoxVissible(true);
-  exerciseBox.querySelector('h1').textContent = `Übung ${exerciseNumber}`;
+  ExerciseBoxVisible(true);
+  document.getElementById("headline").textContent = `Übung ${exerciseNumber}`;
 }
 
 // Controll question movement
@@ -116,11 +132,11 @@ let Quest_C = 0;
 let first_question = true;
 function NextQuestion(direction) {
   const ButtonText = document.getElementById("B_next").querySelector("p");
-  const QuestionBox = document.getElementById("E1_Questions");
+  const QuestionBox = document.getElementById("E_Questions");
 
   if (first_question) {
     ButtonText.innerHTML = "Next Question";
-    exerciseBox.style.height = "400px";
+    ExerciseBox.style.height = "400px";
     QuestionBox.classList.toggle("hiddenContent");
     QuestionBox.style.left = "71%";
     first_question = false;
@@ -133,7 +149,7 @@ function NextQuestion(direction) {
 
     if (Quest_C > 5) {
       changeCssValue(currentLeft, -96);
-      checkAnswers();
+      checkAnswers(exerciseNumber);
     }
   } else if (direction === 'back' && Quest_C != 1) {
     Quest_C--;
@@ -142,17 +158,35 @@ function NextQuestion(direction) {
 }
 
 //Chat GPT integration to check answers
-function checkAnswers() {
+function checkAnswers(exerciseNumber) {
   let correct = 0;
-  exerciseBoxVissible(false);
-  document.querySelectorAll("#E1_Questions > div").forEach((questionDiv) => {
-    const selected = questionDiv.querySelector("input[type='radio']:checked");
-    if (selected && selected.dataset.correct === "true") {
-      correct++;
-    }
+  ExerciseBoxVisible(false);
+
+  LoadJsonContent(data => {
+    const questionDivs = document.querySelectorAll("#E_Questions > div");
+    const answers = data[`E_${exerciseNumber}_answers`]; // answers for this exercise
+
+    questionDivs.forEach((questionDiv) => {
+      const selected = questionDiv.querySelector("input[type='radio']:checked");
+      if (!selected) return; // skip if nothing is selected
+
+      // Find all answer labels for this question
+      const labels = questionDiv.querySelectorAll("label");
+
+      labels.forEach((label, aIndex) => {
+        const input = label.querySelector("input");
+        if (input.checked && answers[aIndex]?.right) {
+          correct++;
+        }
+      });
+    });
+
+    document.getElementById("instructions").innerText = data.instructions;
+    setTimeout(() => { ShowResult(correct); }, 1250);
   });
-  setTimeout(() => { ShowResult(correct) }, 1250);
 }
+
+
 
 // Show result box
 let resultVisible = false;
@@ -179,7 +213,7 @@ function ClearResult() {
   // result_Num.textContent = ``;
   result_Num.classList.toggle("hiddenContent");
   Cover.style.width = `100%`;
-  const QuestionBox = document.getElementById("E1_Questions");
+  const QuestionBox = document.getElementById("E_Questions");
 
-      QuestionBox.style.left = "-25%";
+  QuestionBox.style.left = "-25%";
 }

@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="symbols.css" />
   <link rel="stylesheet" href="animations.css" />
   <link rel="stylesheet" href="exercises.css" />
-  <script src="script.js" defer></script>
 </head>
 
 <body class="centerContent">
@@ -92,10 +91,10 @@
       <h1 class="logo">Passé composé</h1>
       <nav class="main-nav" role="navigation">
         <ul class="unstyled list-hover-slide">
-          <li onclick="startExercise(`1`)"><a href="#">Übung 1</a></li>
-          <li onclick="startExercise(`2`)"><a href="#">Übung 2</a></li>
-          <li onclick="startExercise(`3`)"><a href="#">Übung 3</a></li>
-          <li onclick="startExercise(`4`)"><a href="#">Übung 4</a></li>
+          <li data-exercise="1"><a href="#">Übung 1</a></li>
+          <li data-exercise="2"><a href="#">Übung 2</a></li>
+          <li data-exercise="3"><a href="#">Übung 3</a></li>
+          <li data-exercise="4"><a href="#">Übung 4</a></li>
         </ul>
       </nav>
     </div>
@@ -132,86 +131,87 @@
     </div>
   </div>
 
-  <!-- Exercise 1 -->
+  <!-- Exercise -->
   <div id="exercise_box" class="centerObject hiddenContent">
-    <h1>headline...</h1>
-    <h4>instructions...</h4>
+    <h1 id="headline"></h1>
+    <h4 id="instructions"></h4>
 
-    <!-- Exercise 1 Question 1-5 -->
-    <div id="E1_Questions" class="Questions centerContent hiddenContent transition">
+    <!-- Exercise Question 1-5 -->
+    <div id="E_Questions" class="Questions centerContent hiddenContent transition">
 
-      <!-- Exercise 1 Question 1  -->
+      <!-- Exercise Question 1  -->
       <div class="transition E1_Q1-5" id="E1_Q1">
         <h4 class="question">1</h4>
         <label>
-          <input type="radio" name="q1" value="Merci" data-correct="true" />
-          Merci </label><br />
+          <input type="radio" name="q1" value="Merci" />
+          <span class=".answer-text">Merci1</span></label><br />
         <label>
           <input type="radio" name="q1" value="Pardon" />
-          Pardon </label><br />
+          <span class=".answer-text">Merci2</span> </label><br />
         <label>
           <input type="radio" name="q1" value="Bonjour" />
-          Bonjour
+          <span class=".answer-text">Merci3</span>
         </label>
       </div>
 
-      <!-- Exercise 1 Question 2  -->
+      <!-- Exercise Question 2  -->
       <div class="transition E1_Q1-5" id="E1_Q2">
         <h4 class="question">2</h4>
         <label>
-          <input type="radio" name="q2" value="Merci" data-correct="true" />
-          Merci </label><br />
+          <input type="radio" name="q2" value="Merci" />
+          <span class=".answer-text">Merci1</span> </label><br />
         <label>
           <input type="radio" name="q2" value="Pardon" />
-          Pardon </label><br />
+          <span class=".answer-text">Merci2</span></label><br />
         <label>
           <input type="radio" name="q2" value="Bonjour" />
-          Bonjour
+          <span class=".answer-text">Merci3</span>
         </label>
       </div>
 
-      <!-- Exercise 1 Question 3  -->
+      <!-- Exercise Question 3  -->
       <div class="transition E1_Q1-5" id="E1_Q3">
         <h4 class="question">3</h4>
         <label>
-          <input type="radio" name="q3" value="Merci" data-correct="true" />
-          Merci </label><br />
+          <input type="radio" name="q3" value="Merci" />
+          <span class=".answer-text">Merci1</span> </label><br />
         <label>
           <input type="radio" name="q3" value="Pardon" />
-          Pardon </label><br />
+          <span class=".answer-text">Merci2</span> </label><br />
         <label>
           <input type="radio" name="q3" value="Bonjour" />
-          Bonjour
+          <span class=".answer-text">Merci3</span>
         </label>
       </div>
 
-      <!-- Exercise 1 Question 4  -->
+      <!-- Exercise Question 4  -->
       <div class="transition E1_Q1-5" id="E1_Q4">
         <h4 class="question">4</h4>
         <label>
-          <input type="radio" name="q4" value="Merci" data-correct="true" />
-          Merci </label><br />
+          <input type="radio" name="q4" value="Merci" />
+          <span class=".answer-text">Merci1</span> </label><br />
         <label>
           <input type="radio" name="q4" value="Pardon" />
-          Pardon </label><br />
+          <span class=".answer-text">Merci2</span></label><br />
         <label>
           <input type="radio" name="q4" value="Bonjour" />
-          Bonjour
+          <span class=".answer-text">Merci3</span>
         </label>
       </div>
 
-      <!-- Exercise 1 Question 5  -->
-      <div class="transition E1_Q1-5" id="E1_Q5">
+      <!-- Exercise Question 5  -->
+      <div class="E1_Q1-5 transition" id="E1_Q5">
         <h4 class="question">5</h4>
         <label>
-          <input type="radio" name="q5" value="Merci" data-correct="true" />
-          Merci </label><br />
+          <input type="radio" name="q5" value="Merci" />
+          <span class=".answer-text">Merci1</span>
+        </label><br />
         <label>
           <input type="radio" name="q5" value="Pardon" />
-          Pardon </label><br />
+          <span class=".answer-text">Merci2</span></label><br />
         <label>
           <input type="radio" name="q5" value="Bonjour" />
-          Bonjour
+          <span class=".answer-text">Merci3</span>
         </label>
       </div>
     </div>
@@ -260,6 +260,7 @@
     <br />
     <a class="source" href="https://github.com/UNfassbarer" target="_blank" rel="noopener">Source code</a>
   </footer>
+  <script src="script.js" defer></script>
 </body>
 
 </html>
