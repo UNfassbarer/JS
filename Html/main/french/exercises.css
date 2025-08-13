@@ -18,6 +18,8 @@
     margin-top: 20px;
 }
 
+/* ...existing code... */
+
 .Questions {
     color: rgb(0, 162, 255);
     width: 1425px;
@@ -30,11 +32,35 @@
     gap: 50px;
 }
 
-.E1_Q1-5 {
-    display: block;
-    width: 200px;
-    height: 200px;
+.question-block {
+    background: rgba(255,255,255,0.7);
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 16px 12px;
+    width: 180px;
+    width: 210px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    transition: all 1.25s ease-in-out;
 }
+
+.question-block h4 {
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.answer-text {
+    margin-left: 8px;
+    color: #222;
+}
+
+label {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+/* ...keep your other styles for buttons, result box, etc... */
 
 
 /* special checkbox */

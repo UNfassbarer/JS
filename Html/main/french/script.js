@@ -10,16 +10,6 @@ function LoadJsonContent(callback) {
     .then(data => { callback(data) }).catch(error => console.error('Error loading JSON:', error));
 }
 
-// Change a universal CSS values
-function changeCssValue(cssValue, amount) {
-  const match = cssValue.match(/^([-+]?[0-9]*\.?[0-9]+)([a-z%]+)$/);
-  if (!match) return cssValue;
-  let number = parseFloat(match[1]);
-  const unit = match[2];
-  number -= amount;
-  return `${number}${unit}`;
-}
-
 // Selfmade functions to toggle page logic
 
 // Global variables
@@ -109,53 +99,58 @@ function toggleIris(b) {
 
 //start exercise
 function startExercise(exerciseNumber) {
-  if (resultVisible) ClearResult();
-  const QuestionBox = document.getElementById("E_Questions");
-  const Questions = QuestionBox.querySelectorAll(".question");
-  // Chst GPT support to load questions and answers
   LoadJsonContent(data => {
-    Questions.forEach((Q, index) => {
-      Q.textContent = data[`E_${exerciseNumber}_questions`][index].text;
-      const answers = data[`E_${exerciseNumber}_answers`];
-      Q.querySelectorAll(".answer-text").forEach((span, aIndex) => {
-        answers[aIndex] ? span.textContent = answers[aIndex].text : null;
-      });
+    const questions = data[`E_${exerciseNumber}`];
+    const container = document.getElementById("E_Questions");
+    container.innerHTML = ""; // Clear previous
+    questions.forEach((q, i) => {
+      const div = document.createElement("div");
+      div.className = "question-block transition";
+      div.innerHTML = `
+        <h4 class="question"><span class="question-text">${q.question}</span></h4>
+        ${q.answers.map((a, idx) => `
+          <label>
+            <input type="radio" name="q${i+1}" value="${a.text}" />
+            <span class="answer-text">${a.text}</span>
+          </label><br />
+        `).join("")}
+      `;
+      container.appendChild(div);
     });
-    document.getElementById('instructions').innerText = data.instructions;
+    document.getElementById("instructions").innerText = data.instructions; // <-- Add this line
+    ExerciseBoxVisible(true);
   });
-  ExerciseBoxVisible(true);
-  document.getElementById("headline").textContent = `Übung ${exerciseNumber}`;
 }
 
 // Controll question movement
-let Quest_C = 0;
+let Quest_C = 1;
 let first_question = true;
+let currentLeft = -25;
+
 function NextQuestion(direction) {
   const ButtonText = document.getElementById("B_next").querySelector("p");
   const QuestionBox = document.getElementById("E_Questions");
 
-  if (first_question) {
+  if (direction === 'next' && !first_question) {
+    currentLeft -= 100;
+    Quest_C++;
+    QuestionBox.style.left = `${currentLeft}%`;
+    Quest_C === 5 ? document.getElementById("NextButton").querySelector("p").textContent = "Controll": null;
+    Quest_C > 5 ? checkAnswers(exerciseNumber):null;
+  } else if (direction === 'back' && Quest_C != 1) {
+    Quest_C--;
+    currentLeft += 100;
+ QuestionBox.style.left = `${currentLeft}%`;
+  }
+
+    if (first_question) {
     ButtonText.innerHTML = "Next Question";
     ExerciseBox.style.height = "400px";
     QuestionBox.classList.toggle("hiddenContent");
-    QuestionBox.style.left = "71%";
     first_question = false;
   }
-  let currentLeft = QuestionBox.style.left || "0%";
-  if (direction === 'next') {
-    Quest_C++;
-    QuestionBox.style.left = changeCssValue(currentLeft, 96);
-    currentLeft === "-313%" ? ButtonText.innerHTML = "Controll ;)" : null;
-
-    if (Quest_C > 5) {
-      changeCssValue(currentLeft, -96);
-      checkAnswers(exerciseNumber);
-    }
-  } else if (direction === 'back' && Quest_C != 1) {
-    Quest_C--;
-    QuestionBox.style.left = changeCssValue(currentLeft, -96);
-  }
 }
+
 
 //Chat GPT integration to check answers
 function checkAnswers(exerciseNumber) {
@@ -163,30 +158,21 @@ function checkAnswers(exerciseNumber) {
   ExerciseBoxVisible(false);
 
   LoadJsonContent(data => {
+    const questions = data[`E_${exerciseNumber}`];
     const questionDivs = document.querySelectorAll("#E_Questions > div");
-    const answers = data[`E_${exerciseNumber}_answers`]; // answers for this exercise
 
-    questionDivs.forEach((questionDiv) => {
+    questionDivs.forEach((questionDiv, qIndex) => {
       const selected = questionDiv.querySelector("input[type='radio']:checked");
-      if (!selected) return; // skip if nothing is selected
-
-      // Find all answer labels for this question
-      const labels = questionDiv.querySelectorAll("label");
-
-      labels.forEach((label, aIndex) => {
-        const input = label.querySelector("input");
-        if (input.checked && answers[aIndex]?.right) {
-          correct++;
-        }
-      });
+      if (!selected) return;
+      const answerText = selected.value;
+      const answerObj = questions[qIndex].answers.find(a => a.text === answerText);
+      if (answerObj && answerObj.right) correct++;
     });
 
     document.getElementById("instructions").innerText = data.instructions;
     setTimeout(() => { ShowResult(correct); }, 1250);
   });
 }
-
-
 
 // Show result box
 let resultVisible = false;

@@ -1,199 +1,180 @@
 {
   "headline": "Exercice de conjugaison",
   "instructions": "There are multiple questions. Choose the right answer. (only one answer is correct)",
-  "E_1_questions": [
+  "E_1": [
     {
-      "id": "E1_Q1",
-      "text": "1. Frage Exercice 1"
+      "question": "J’ai.....au lycée BSZWGT.",
+      "answers": [
+        {
+          "text": "été",
+          "right": true
+        },
+        {
+          "text": "être",
+          "right": false
+        },
+        {
+          "text": "suis",
+          "right": false
+        }
+      ]
     },
     {
-      "id": "E1_Q2",
-      "text": "2. Frage Exercice 1"
+      "question": "Tu as......sur ton portable.",
+      "answers": [
+        {
+          "text": "faire",
+          "right": false
+        },
+        {
+          "text": "joue",
+          "right": false
+        },
+        {
+          "text": "joué",
+          "right": true
+        }
+      ]
     },
     {
-      "id": "E1_Q3",
-      "text": "3. Frage Exercice 1"
+      "question": "La prof .................. : « Zut alors ! »",
+      "answers": [
+        {
+          "text": "a douter et a dites ",
+          "right": false
+        },
+        {
+          "text": "a doutê et a dites ",
+          "right": false
+        },
+        {
+          "text": "a douté et a dit ",
+          "right": true
+        }
+      ]
     },
     {
-      "id": "E1_Q4",
-      "text": "4. Frage Exercice 1"
+      "question": "Nous ............. et fait les exercices.",
+      "answers": [
+        {
+          "text": "avons compris",
+          "right": true
+        },
+        {
+          "text": "avez compris",
+          "right": false
+        },
+        {
+          "text": "avons comprit",
+          "right": false
+        }
+      ]
     },
     {
-      "id": "E1_Q5",
-      "text": "5. Frage Exercice 1"
+      "question": "Est-ce que tu as lu les quatre premières questions ?",
+      "answers": [
+        {
+          "text": "Est-ce --- lol",
+          "right": false
+        },
+        {
+          "text": "Est-ce que --- lu",
+          "right": true
+        },
+        {
+          "text": "Est-ce oui --- luis",
+          "right": false
+        }
+      ]
     }
   ],
-  "E_2_questions": [
+
+
+      "E_2": [
     {
-      "id": "E2_Q1",
-      "text": "1. Frage Exercice 2"
+      "question": "Elles n’ont pas pris le livre pour la corriger.",
+      "answers": [
+        {
+          "text": "été",
+          "right": true
+        },
+        {
+          "text": "être",
+          "right": false
+        },
+        {
+          "text": "suis",
+          "right": false
+        }
+      ]
     },
     {
-      "id": "E2_Q2",
-      "text": "2. Frage Exercice 2"
+      "question": "La prof n’a  surpris  nous.",
+      "answers": [
+        {
+          "text": "été",
+          "right": true
+        },
+        {
+          "text": "être",
+          "right": false
+        },
+        {
+          "text": "suis",
+          "right": false
+        }
+      ]
     },
     {
-      "id": "E2_Q3",
-      "text": "3. Frage Exercice 2"
+      "question": "Nous n’avons pas appris à apprendre.",
+      "answers": [
+        {
+          "text": "été",
+          "right": true
+        },
+        {
+          "text": "être",
+          "right": false
+        },
+        {
+          "text": "suis",
+          "right": false
+        }
+      ]
     },
     {
-      "id": "E2_Q4",
-      "text": "4. Frage Exercice 2"
+      "question": "Nous avons regardé, mais vous n’avez rien fait.",
+      "answers": [
+        {
+          "text": "été",
+          "right": true
+        },
+        {
+          "text": "être",
+          "right": false
+        },
+        {
+          "text": "suis",
+          "right": false
+        }
+      ]
     },
     {
-      "id": "E2_Q5",
-      "text": "5. Frage Exercice 2"
-    }
-  ],
-  "E_3_questions": [
-    {
-      "id": "E3_Q1",
-      "text": "1. Frage Exercice 3"
-    },
-    {
-      "id": "E3_Q2",
-      "text": "2. Frage Exercice 3"
-    },
-    {
-      "id": "E3_Q3",
-      "text": "3. Frage Exercice 3"
-    },
-    {
-      "id": "E3_Q4",
-      "text": "4. Frage Exercice 3"
-    },
-    {
-      "id": "E3_Q5",
-      "text": "5. Frage Exercice 3"
-    }
-  ],
-  "E_4_questions": [
-    {
-      "id": "E4_Q1",
-      "text": "1. Frage Exercice 4"
-    },
-    {
-      "id": "E4_Q2",
-      "text": "2. Frage Exercice 4"
-    },
-    {
-      "id": "E4_Q3",
-      "text": "3. Frage Exercice 4"
-    },
-    {
-      "id": "E4_Q4",
-      "text": "4. Frage Exercice 4"
-    },
-    {
-      "id": "E4_Q5",
-      "text": "5. Frage Exercice 4"
-    }
-  ],
-  "E_5_questions": [
-    {
-      "id": "E5_Q1",
-      "text": "1. Frage Exercice 5"
-    },
-    {
-      "id": "E5_Q2",
-      "text": "2. Frage Exercice 5"
-    },
-    {
-      "id": "E5_Q3",
-      "text": "3. Frage Exercice 5"
-    },
-    {
-      "id": "E5_Q4",
-      "text": "4. Frage Exercice 5"
-    },
-    {
-      "id": "E5_Q5",
-      "text": "5. Frage Exercice 5"
-    }
-  ],
-  "E_1_answers": [
-    {
-      "id": "E1_A1",
-      "text": "Answer 1 E1",
-      "right": true
-    },
-    {
-      "id": "E1_A2",
-      "text": "Answer 1 E1",
-      "right": false
-    },
-    {
-      "id": "E1_A3",
-      "text": "Answer 1 E1",
-      "right": false
-    }
-  ],
-  "E_2_answers": [
-    {
-      "id": "E1_A2",
-      "text": "Answer 2 E1",
-      "right": true
-    },
-    {
-      "id": "E1_A2",
-      "text": "Answer 2 E1",
-      "right": false
-    },
-    {
-      "id": "E1_A3",
-      "text": "Answer 2 E1",
-      "right": false
-    }
-  ],
-  "E_3_answers": [
-    {
-      "id": "E1_A3",
-      "text": "Answer 2 E1",
-      "right": true
-    },
-    {
-      "id": "E1_A2",
-      "text": "Answer 3 E1",
-      "right": false
-    },
-    {
-      "id": "E1_A3",
-      "text": "Answer 3 E1",
-      "right": false
-    }
-  ],
-  "E_4_answers": [
-    {
-      "id": "E1_A4",
-      "text": "Answer 4 E1",
-      "right": true
-    },
-    {
-      "id": "E1_A2",
-      "text": "Answer 4 E1",
-      "right": false
-    },
-    {
-      "id": "E1_A3",
-      "text": "Answer 4 E1",
-      "right": false
-    }
-  ],
-  "E_5_answers": [
-    {
-      "id": "E1_A5",
-      "text": "Answer 5 E1",
-      "right": true
-    },
-    {
-      "id": "E1_A2",
-      "text": "Answer 5 E1",
-      "right": false
-    },
-    {
-      "id": "E1_A3",
-      "text": "Answer 5 E1",
-      "right": false
+      "question": "Tu n’as pas pensé à la cinquième question ?",
+      "answers": [
+        {
+          "text": "été",
+          "right": true
+        },
+        {
+          "text": "être",
+          "right": false
+        },
+        {
+          "text": "suis",
+          "right": false
+        }
+      ]
     }
   ],
   "messages": [
