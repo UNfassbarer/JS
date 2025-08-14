@@ -1,6 +1,7 @@
 body {
   background-image: linear-gradient(rgb(255, 255, 255), rgb(160, 226, 109), rgb(88, 204, 2));
   background-attachment: fixed;
+  font-family: 'Arial', 'Segoe UI', 'Helvetica', sans-serif;
 }
 
   /* body * {
@@ -69,7 +70,6 @@ body {
   border-radius: 10px;
   color: white;
   font-size: 27px;
-  font-family: cursive;
   text-align: left;
   padding-right: 45px;
   font-weight: bold;
@@ -118,7 +118,7 @@ body {
   padding: 10px;
   color: white;
   display: flex;
-  font-size: 18px;
+  font-size: 17px;
   justify-content: right;
   transition: all 0.25s ease-in-out;
   left: 10px;
@@ -126,7 +126,7 @@ body {
 
 .exercise:hover {
   padding: 11px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .bars_b,
