@@ -3,7 +3,7 @@
   "instructions": "There are multiple questions. Choose the right answer. (only one answer is correct)",
   "E_1": [
     {
-      "question": "J’ai.....au lycée BSZWGT.",
+      "question": "J’ai ..... au lycée BSZWGT.",
       "answers": [
         {
           "text": "été",
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "question": "Tu as......sur ton portable.",
+      "question": "Tu as ...... sur ton portable.",
       "answers": [
         {
           "text": "faire",
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "question": "Est-ce que tu as lu les quatre premières questions ?",
+      "question": " .........., tu as ..... les quatre premières questions ?",
       "answers": [
         {
           "text": "Est-ce --- lol",
@@ -88,90 +88,175 @@
       ]
     }
   ],
-
-
-      "E_2": [
+  "E_2": [
     {
-      "question": "Elles n’ont pas pris le livre pour la corriger.",
+      "question": "Elles ....... pas pris le livre pour la corriger.",
       "answers": [
         {
-          "text": "été",
-          "right": true
-        },
-        {
-          "text": "être",
+          "text": "ne ont",
           "right": false
         },
         {
-          "text": "suis",
+          "text": "ne pas",
+          "right": false
+        },
+        {
+          "text": "n'ont",
+          "right": true
+        }
+      ]
+    },
+    {
+      "question": "La prof .....  surpris  nous.",
+      "answers": [
+        {
+          "text": "ne a",
+          "right": false
+        },
+        {
+          "text": "n'as",
+          "right": false
+        },
+        {
+          "text": "n’a",
+          "right": true
+        }
+      ]
+    },
+    {
+      "question": "Nous ....... pas appris à apprendre.",
+      "answers": [
+        {
+          "text": "n’avons",
+          "right": true
+        },
+        {
+          "text": "n’avez",
+          "right": false
+        },
+        {
+          "text": "n’ont",
           "right": false
         }
       ]
     },
     {
-      "question": "La prof n’a  surpris  nous.",
+      "question": "Nous avons ...... , mais vous ...... rien fait.",
       "answers": [
         {
-          "text": "été",
+          "text": "regardé---n’avez",
           "right": true
         },
         {
-          "text": "être",
+          "text": "regarder---n’avont",
           "right": false
         },
         {
-          "text": "suis",
+          "text": "regarde---ne avez",
           "right": false
         }
       ]
     },
     {
-      "question": "Nous n’avons pas appris à apprendre.",
+      "question": " .......... pensé à la cinquième question ?",
       "answers": [
         {
-          "text": "été",
-          "right": true
-        },
-        {
-          "text": "être",
+          "text": "Illes n’as pas",
           "right": false
         },
         {
-          "text": "suis",
+          "text": "Tu n’as pas",
+          "right": true
+        },
+        {
+          "text": "Ils n’as pas",
+          "right": false
+        }
+      ]
+    }
+  ],
+  "E_3": [
+    {
+      "question": "Je ........... à Paris pour noél. (mâle)",
+      "answers": [
+        {
+          "text": "suis allé",
+          "right": true
+        },
+        {
+          "text": "ai allé",
+          "right": false
+        },
+        {
+          "text": "suis alléé",
           "right": false
         }
       ]
     },
     {
-      "question": "Nous avons regardé, mais vous n’avez rien fait.",
+      "question": "Ils ........... tard au cinéma hier.(femelle et mâle)",
       "answers": [
         {
-          "text": "été",
-          "right": true
-        },
-        {
-          "text": "être",
+          "text": "ont arrivés",
           "right": false
         },
         {
-          "text": "suis",
+          "text": "sont arrivés",
+          "right": true
+        },
+        {
+          "text": "sont arrivé",
           "right": false
         }
       ]
     },
     {
-      "question": "Tu n’as pas pensé à la cinquième question ?",
+      "question": "Elle ........... dans la cour de place Bellcour.",
       "answers": [
         {
-          "text": "été",
-          "right": true
-        },
-        {
-          "text": "être",
+          "text": "a rester",
           "right": false
         },
         {
-          "text": "suis",
+          "text": "est reste",
+          "right": false
+        },
+        {
+          "text": "est restée",
+          "right": true
+        }
+      ]
+    },
+    {
+      "question": "Nous ........... Lyon pour faire du shopping.(femelle)",
+      "answers": [
+        {
+          "text": "sommes allées",
+          "right": true
+        },
+        {
+          "text": "avons allées",
+          "right": false
+        },
+        {
+          "text": "sommes allé",
+          "right": false
+        }
+      ]
+    },
+    {
+      "question": "Tu ........... chez maison après l’école ?(mâle)",
+      "answers": [
+        {
+          "text": "ist rentré",
+          "right": false
+        },
+        {
+          "text": "es rentré",
+          "right": true
+        },
+        {
+          "text": "es rentrés",
           "right": false
         }
       ]
