@@ -245,7 +245,7 @@
       ]
     },
     {
-      "question": "Tu ........... chez maison après l’école ?(mâle)",
+      "question": "Tu ........... á la maison après l’école ?(mâle)",
       "answers": [
         {
           "text": "ist rentré",
@@ -273,7 +273,7 @@
     },
     {
       "id": "2",
-      "text": "Good job. but less than a half sounds a little bit like you are still in holiday mode."
+      "text": "Good job. But less than a half sounds a little bit like you are still in holiday mode."
     },
     {
       "id": "3",

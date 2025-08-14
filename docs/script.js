@@ -106,6 +106,7 @@ function toggleIris(b) {
 
 //start exercise
 function startExercise(exerciseNumber) {
+  correct = 0;
   VissibleResult ? ResultVissible(false, null) : null;
   LoadJsonContent(data => {
     const questions = data[`E_${exerciseNumber}`];
