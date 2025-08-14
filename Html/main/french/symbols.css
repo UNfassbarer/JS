@@ -328,7 +328,6 @@
 /* Button arrow */
 .arrow {
     position: absolute;
-    outline: orangered solid 1px;
     height: 45px;
     width: 45px;
 }
