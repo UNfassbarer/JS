@@ -1,7 +1,8 @@
 body {
   background-image: linear-gradient(rgb(255, 255, 255), rgb(160, 226, 109), rgb(88, 204, 2));
   background-attachment: fixed;
-  font-family: 'Arial', 'Segoe UI', 'Helvetica', sans-serif;
+  font-family: 'Nunito', 'Arial Rounded MT Bold', sans-serif;
+  font-weight: bold;
 }
 
   /* body * {
