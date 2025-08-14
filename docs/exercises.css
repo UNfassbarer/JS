@@ -1,0 +1,152 @@
+#exercise_box {
+    overflow: hidden;
+    width: 265px;
+    height: 250px;
+    padding: 20px;
+    position: absolute;
+    border-radius: 20px;
+    background: rgba(200, 220, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 3px solid rgb(88, 204, 2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 1.5s ease-in-out;
+}
+#exercise_box h1 {
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.Questions {
+    color: rgb(0, 162, 255);
+    width: 1425px;
+    position: absolute;
+    left: -25%;
+    top: 35%;
+    display: flex;
+    gap: 50px;
+}
+
+.question-block {
+    background: rgba(255,255,255,0.7);
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 14px;
+    width: 180px;
+    width: 210px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    transition: all 1.25s ease-in-out;
+}
+
+.question-block h4 {
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.answer-text {
+    margin-left: 8px;
+    color: #222;
+}
+
+label {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+/* special checkbox */
+.checkbox-wrapper-5 {
+    width: 10px;
+    outline: rgb(119, 238, 246) 2px solid;
+}
+
+.checkbox-wrapper-5 .check {
+    --size: 24px;
+    position: relative;
+    background: linear-gradient(90deg, #9aeff3, rgb(88, 204, 2));
+    line-height: 0;
+    perspective: 400px;
+    font-size: var(--size);
+}
+
+/* Check and Next buttons */
+
+#NextButton,
+#BackButton {
+    position: absolute;
+    transform: scale(0.4);
+    bottom: -5px;
+}
+
+#NextButton {
+    left: 55px;
+}
+
+#BackButton {
+    left: -40px;
+}
+
+#Result_Box {
+    border-radius: 10px;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 229, 255, 0.3);
+    animation: rainbowRing 2s infinite linear;
+}
+
+#message {
+  position: absolute;
+  font-size: 15px;
+  text-align: center;
+  width: 95%;
+}
+
+
+#ChartBox {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    bottom: 0px;
+}
+
+#Chart {
+    position: absolute;
+    width: 95%;
+    height: 15%;
+    bottom: 15%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#result_cover{
+    background-color: rgb(157, 157, 157);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0px;
+    z-index: 1;
+}
+
+#success {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,#ff1500,#ff7a00,#ffcc00,#a4d600,rgb(88, 204, 2));
+    z-index: 0;
+}
+
+#result {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+    z-index: 2;
+}

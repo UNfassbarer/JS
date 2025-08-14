@@ -1,0 +1,291 @@
+{
+  "headline": "Exercice de conjugaison",
+  "instructions": "There are multiple questions. Choose the right answer. (only one answer is correct)",
+  "E_1": [
+    {
+      "question": "J’ai ..... au lycée BSZWGT.",
+      "answers": [
+        {
+          "text": "été",
+          "right": true
+        },
+        {
+          "text": "être",
+          "right": false
+        },
+        {
+          "text": "suis",
+          "right": false
+        }
+      ]
+    },
+    {
+      "question": "Tu as ...... sur ton portable.",
+      "answers": [
+        {
+          "text": "faire",
+          "right": false
+        },
+        {
+          "text": "joue",
+          "right": false
+        },
+        {
+          "text": "joué",
+          "right": true
+        }
+      ]
+    },
+    {
+      "question": "La prof .................. : « Zut alors ! »",
+      "answers": [
+        {
+          "text": "a douter et a dites ",
+          "right": false
+        },
+        {
+          "text": "a doutê et a dites ",
+          "right": false
+        },
+        {
+          "text": "a douté et a dit ",
+          "right": true
+        }
+      ]
+    },
+    {
+      "question": "Nous ............. et fait les exercices.",
+      "answers": [
+        {
+          "text": "avons compris",
+          "right": true
+        },
+        {
+          "text": "avez compris",
+          "right": false
+        },
+        {
+          "text": "avons comprit",
+          "right": false
+        }
+      ]
+    },
+    {
+      "question": " .........., tu as ..... les quatre premières questions ?",
+      "answers": [
+        {
+          "text": "Est-ce --- lol",
+          "right": false
+        },
+        {
+          "text": "Est-ce que --- lu",
+          "right": true
+        },
+        {
+          "text": "Est-ce oui --- luis",
+          "right": false
+        }
+      ]
+    }
+  ],
+  "E_2": [
+    {
+      "question": "Elles ....... pas pris le livre pour la corriger.",
+      "answers": [
+        {
+          "text": "ne ont",
+          "right": false
+        },
+        {
+          "text": "ne pas",
+          "right": false
+        },
+        {
+          "text": "n'ont",
+          "right": true
+        }
+      ]
+    },
+    {
+      "question": "La prof .....  surpris  nous.",
+      "answers": [
+        {
+          "text": "ne a",
+          "right": false
+        },
+        {
+          "text": "n'as",
+          "right": false
+        },
+        {
+          "text": "n’a",
+          "right": true
+        }
+      ]
+    },
+    {
+      "question": "Nous ....... pas appris à apprendre.",
+      "answers": [
+        {
+          "text": "n’avons",
+          "right": true
+        },
+        {
+          "text": "n’avez",
+          "right": false
+        },
+        {
+          "text": "n’ont",
+          "right": false
+        }
+      ]
+    },
+    {
+      "question": "Nous avons ...... , mais vous ...... rien fait.",
+      "answers": [
+        {
+          "text": "regardé---n’avez",
+          "right": true
+        },
+        {
+          "text": "regarder---n’avont",
+          "right": false
+        },
+        {
+          "text": "regarde---ne avez",
+          "right": false
+        }
+      ]
+    },
+    {
+      "question": " .......... pensé à la cinquième question ?",
+      "answers": [
+        {
+          "text": "Illes n’as pas",
+          "right": false
+        },
+        {
+          "text": "Tu n’as pas",
+          "right": true
+        },
+        {
+          "text": "Ils n’as pas",
+          "right": false
+        }
+      ]
+    }
+  ],
+  "E_3": [
+    {
+      "question": "Je ........... à Paris pour noél. (mâle)",
+      "answers": [
+        {
+          "text": "suis allé",
+          "right": true
+        },
+        {
+          "text": "ai allé",
+          "right": false
+        },
+        {
+          "text": "suis alléé",
+          "right": false
+        }
+      ]
+    },
+    {
+      "question": "Ils ........... tard au cinéma hier.(femelle et mâle)",
+      "answers": [
+        {
+          "text": "ont arrivés",
+          "right": false
+        },
+        {
+          "text": "sont arrivés",
+          "right": true
+        },
+        {
+          "text": "sont arrivé",
+          "right": false
+        }
+      ]
+    },
+    {
+      "question": "Elle ........... dans la cour de place Bellcour.",
+      "answers": [
+        {
+          "text": "a rester",
+          "right": false
+        },
+        {
+          "text": "est reste",
+          "right": false
+        },
+        {
+          "text": "est restée",
+          "right": true
+        }
+      ]
+    },
+    {
+      "question": "Nous ........... Lyon pour faire du shopping.(femelle)",
+      "answers": [
+        {
+          "text": "sommes allées",
+          "right": true
+        },
+        {
+          "text": "avons allées",
+          "right": false
+        },
+        {
+          "text": "sommes allé",
+          "right": false
+        }
+      ]
+    },
+    {
+      "question": "Tu ........... chez maison après l’école ?(mâle)",
+      "answers": [
+        {
+          "text": "ist rentré",
+          "right": false
+        },
+        {
+          "text": "es rentré",
+          "right": true
+        },
+        {
+          "text": "es rentrés",
+          "right": false
+        }
+      ]
+    }
+  ],
+  "messages": [
+    {
+      "id": "0",
+      "text": "Maybe you should try again. You did not answer any question correctly!"
+    },
+    {
+      "id": "1",
+      "text": "Well. better than nothing. But YOU can do better."
+    },
+    {
+      "id": "2",
+      "text": "Good job. but less than a half sounds a little bit like you are still in holiday mode."
+    },
+    {
+      "id": "3",
+      "text": "Excellent! But can you become a master of the french past?"
+    },
+    {
+      "id": "4",
+      "text": "Almost a genius who did this!"
+    },
+    {
+      "id": "5",
+      "text": "Super, bien fait! You did it all correctly."
+    }
+  ]
+}

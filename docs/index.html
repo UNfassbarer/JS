@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise French</title>
+  <meta name="description" content="French language exercises to improve your skills" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="symbols.css" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="exercises.css" />
+</head>
+
+<body class="centerContent">
+
+  <!-- start button -->
+  <div class="shadow_box" id="StartButton">
+    <button class="button pointer" onclick="book_menu.classList.toggle('hiddenContent')">
+      Start exercise
+      <canvas class="button_line"></canvas>
+
+      <!-- Book -->
+      <div class="book-menu-icon pointer">
+        <div class="lines line1"></div>
+        <div class="lines line2"></div>
+        <div class="lines line3"></div>
+        <div class="holes hole1">
+          <div class="dots dot1"></div>
+        </div>
+        <div class="holes hole2">
+          <div class="dots dot2"></div>
+        </div>
+        <div class="holes hole3">
+          <div class="dots dot3"></div>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <!-- <div class="wings"></div>  ERROR?-->
+
+  <div id="book_menu" class="selection_menu centerObject hiddenContent">
+    <h1 style="color: rgb(255, 0, 174)">Exercises</h1>
+    <div class="exercise pointer E_1" onclick="LoadAnimation()">Passe compose
+      <div class="bars_b"></div>
+      <div class="bars_t"></div>
+      <div id="shadow_b"></div>
+    </div>
+    <div class="exercise pointer E_2" onclick="LoadAnimation()">Exercise 2
+      <div class="bars_b"></div>
+      <div class="bars_t"></div>
+      <div id="shadow_b"></div>
+    </div>
+    <div class="exercise pointer E_3" onclick="LoadAnimation()">Exercise 3
+      <div class="bars_b"></div>
+      <div class="bars_t"></div>
+      <div id="shadow_b"></div>
+    </div>
+
+    <!-- Owl 1 -->
+    <div class="owl centerContent owl_1">
+      <div class="head head_1">
+        <div class="eye eye_r">
+          <div class="iris centerObject">
+            <canvas class="pupil centerObject"></canvas>
+          </div>
+        </div>
+        <div class="eye eye_l centerContent">
+          <div class="iris centerObject">
+            <canvas class="pupil centerObject"></canvas>
+          </div>
+        </div>
+        <div class="tufts tuft_l"></div>
+        <div class="tufts tuft_r"></div>
+      </div>
+      <div class="body">
+        <div class="belly centerObject"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- passe compose -->
+  <div class="sidebar hiddenContent" role="banner">
+    <div class="menu_icon">
+      <canvas></canvas><canvas></canvas><canvas></canvas>
+    </div>
+    <div class="sidebar_content">
+
+      <h1 class="logo">Passé composé</h1>
+      <nav class="main-nav" role="navigation">
+        <ul class="unstyled list-hover-slide">
+          <li data-exercise="1"><a href="#">Übung 1</a></li>
+          <li data-exercise="2"><a href="#">Übung 2</a></li>
+          <li data-exercise="3"><a href="#">Übung 3</a></li>
+          <li data-exercise="4"><a href="#">Übung 4</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+
+  <!-- Owl 2 -->
+  <div class="owl centerContent owl_2 hiddenContent">
+    <div class="speech-bubble centerContent noInteraction">
+      <a>Bonjour!</a>
+    </div>
+    <div class="head head_2">
+      <div class="eye eye_r centerContent">
+        <div class="iris centerContent" id="iris_l_id">
+          <div class="pupil"></div>
+        </div>
+      </div>
+      <div class="eye eye_l centerContent">
+        <div class="iris centerContent" id="iris_r_id">
+          <div class="pupil"></div>
+        </div>
+      </div>
+      <div class="tufts tuft_l" id="tuft_l_id"></div>
+      <div class="tufts tuft_r" id="tuft_r_id"></div>
+    </div>
+    <div class="body centerContent">
+      <div class="belly centerContent"></div>
+    </div>
+    <div class="wing_case wing_case_l">
+      <div class="wings wing_l"></div>
+    </div>
+    <div class="wing_case wing_case_r">
+      <div class="wings wing_r"></div>
+    </div>
+  </div>
+
+  <!-- Exercise -->
+  <div id="exercise_box" class="centerObject hiddenContent">
+    <h1 id="headline"></h1>
+    <h4 id="instructions"></h4>
+
+    <!-- Exercise Question 1-5 -->
+    <div id="E_Questions" class="Questions centerContent hiddenContent transition">
+      <!-- Questions will be injected here by JS -->
+    </div>
+
+    <div class="controll_check">
+      <div class="shadow_box" id="BackButton" style="width: 179px">
+        <button class="button pointer" id="B_back" style="width: 180px; padding-left: 85px"
+          onclick="NextQuestion('back')">
+          <p>Back</p>
+          <canvas class="button_line" style="left: 55px"></canvas>
+          <div class="arrow centerContent" style="rotate: 180deg; left: 5px">
+            <canvas class="line_h base"></canvas>
+            <canvas class="line_a base"></canvas>
+            <canvas class="line_b base"></canvas>
+          </div>
+        </button>
+      </div>
+      <div class="shadow_box" id="NextButton">
+        <button class="button pointer" id="B_next" onclick="NextQuestion('next')">
+          <p>Start Exercise</p>
+          <canvas class="button_line"></canvas>
+          <div class="arrow centerContent" style="right: 5px">
+            <canvas class="line_h base"></canvas>
+            <canvas class="line_a base"></canvas>
+            <canvas class="line_b base"></canvas>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="Result_Box" class="centerObject noInteraction transition hiddenContent">
+    <h4 class="centerContent">Result</h4>
+    <div id="ChartBox" class="centerContent">
+      <div id="message" class="centerContent">impressive</div>
+      <div id="Chart">
+        <canvas id="success" class="transition"></canvas>
+        <canvas id="result_cover" class="transition"></canvas>
+        <div id="result" class="centerContent hiddenContent transition"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="centerContent" id="footer">
+    &copy; 2025 Französisch Übung &mdash; Created by Jonas Dickert. All rights reserved.
+    <br />
+    <a class="source" href="https://github.com/UNfassbarer" target="_blank" rel="noopener">Source code</a>
+  </footer>
+  <script src="script.js" defer></script>
+</body>
+
+</html>

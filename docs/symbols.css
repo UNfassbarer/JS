@@ -1,0 +1,391 @@
+/* menu book */
+.book-menu-icon {
+    position: absolute;
+    right: 10px;
+    width: 36px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.lines {
+    position: absolute;
+    background-color: rgb(88, 204, 2);
+    height: 3px;
+    left: 10px;
+    border-radius: 2px;
+}
+
+.line1,
+.line2 {
+    width: 22px;
+}
+
+.line3 {
+    width: 17px;
+}
+
+.line1 {
+    top: 6px;
+}
+
+.line2 {
+    top: 14px;
+}
+
+.line3 {
+    top: 22px;
+}
+
+.holes {
+    position: absolute;
+    background-color: rgb(88, 204, 2);
+    width: 12px;
+    height: 10px;
+    left: -6px;
+    border-radius: 50%;
+}
+
+.hole1 {
+    top: 3px;
+}
+
+.hole2 {
+    top: 15px;
+}
+
+.hole3 {
+    top: 27px;
+}
+
+.dots {
+    position: absolute;
+    background-color: white;
+    width: 8px;
+    height: 4px;
+    top: 3px;
+    left: 1px;
+    border-radius: 25%;
+}
+
+/* owl */
+.owl {
+    z-index: 0;
+    position: fixed;
+    transition: all 0.25s ease-in-out;
+}
+
+.owl_1 {
+    bottom: 25px;
+    right: 0px;
+    transform: rotate(-20deg);
+}
+
+.owl_2 {
+    bottom: 25px;
+    right: 140px;
+}
+
+.head {
+    z-index: 2;
+    width: 30px;
+    height: 25px;
+    bottom: 12px;
+    position: absolute;
+    background-color: #F8BBD0;
+    border-radius: 50%;
+    transition: all 0.25s ease-in-out;
+}
+
+.head_1 {
+    transform: rotate(15deg);
+}
+
+.tufts {
+    z-index: 2;
+    width: 8px;
+    height: 15px;
+    bottom: 18px;
+    position: absolute;
+    background-color: #D81B60;
+    clip-path: ellipse(50% 45%);
+    transition: all 0.25s ease-in-out;
+}
+
+.tuft_r {
+    right: 0px;
+    transform: rotate(35deg);
+}
+
+.tuft_l {
+    left: 0px;
+    transform: rotate(-35deg);
+}
+
+.tuft_l-animate {
+    animation: tuft_l-animation 1s 1;
+}
+
+
+.tuft_r-animate {
+    animation: tuft_r-animation 1s 1;
+}
+
+.eye {
+    transition: all 0.75s ease-in-out;
+    z-index: 3;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    bottom: 6px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.eye_r {
+    left: -4px;
+}
+
+.eye_l {
+    right: -4px;
+}
+
+.iris {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: #AD1457;
+    border-radius: 50% / 50%;
+}
+
+.iris-animate {
+    animation: iris-animation 1s linear 1;
+}
+
+.pupil {
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    background-color: #3E2723;
+    border-radius: 3px;
+}
+
+.body {
+    width: 35px;
+    height: 60px;
+    position: absolute;
+    background-color: #F8BBD0;
+    clip-path: ellipse(50% 45%);
+    z-index: 1;
+}
+
+.body .belly {
+    width: 25px;
+    height: 50px;
+    position: absolute;
+    background-color: #FCE4EC;
+    clip-path: ellipse(50% 45%);
+}
+
+.wings {
+    z-index: 1;
+    width: 18px;
+    height: 40px;
+    position: absolute;
+    background-color: #F06292;
+    clip-path: ellipse(50% 40%);
+}
+
+.wing_l {
+    position: absolute;
+    bottom: 1px;
+}
+
+.wing_r {
+    position: absolute;
+    bottom: 1px;
+}
+
+.owl_1:hover {
+    transform: rotate(-45deg);
+    bottom: 30px;
+    right: 5px;
+}
+
+
+.owl_2:hover {
+    bottom: 50px;
+}
+
+.owl:hover .eye {
+    scale: 1.2;
+}
+
+.owl_1:hover .head_1 {
+    transform: rotate(45deg);
+}
+
+.owl:hover .tufts {
+    scale: 1.2;
+}
+
+/* .owl:hover .tuft_l {
+    animation: tuft_l-animation 0.75s linear infinite;
+}
+
+.owl:hover .tuft_r {
+    animation: tuft_r-animation 0.75s linear infinite;
+} */
+
+.owl:hover .head_2 {
+    animation: head-animation 6.00s linear infinite;
+}
+
+.owl:hover .wing_case_l {
+    animation: wing_l-animation 2.00s linear infinite;
+}
+
+.owl:hover .wing_case_r {
+    animation: wing_r-animation 2.00s linear infinite;
+}
+
+.wing_case {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: -45px;
+    height: 70px;
+    top: -48px;
+}
+
+.wing_case_l {
+    left: -10px;
+}
+
+.wing_case_r {
+    right: -10px;
+}
+
+/* Speech bubble */
+.speech-bubble a {
+    position: absolute;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.speech-bubble {
+    position: absolute;
+    margin: 6.8px auto;
+    padding: 13.6px;
+    width: 136px;
+    height: 54.4px;
+    border-radius: 4px;
+    transform: rotate(-4deg) rotateY(15deg);
+    background: rgb(64, 134, 10);
+    font: 27.2px/54.4px "Century Gothic", Verdana, sans-serif;
+    text-align: center;
+    color: white;
+    bottom: 65px;
+    right: -35px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.speech-bubble:before,
+.speech-bubble:after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+}
+
+.speech-bubble:after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    transform: rotate(2deg) translate(4.8px, -2.08px) scale(1.02);
+    background: rgb(88, 204, 2);
+}
+
+.speech-bubble:before {
+    border: solid 0 transparent;
+    border-right: solid 48px rgb(88, 204, 2);
+    border-bottom: solid 3.36px rgb(64, 134, 10);
+    bottom: 3.36px;
+    left: 17.6px;
+    width: 0;
+    height: 13.6px;
+    transform: rotate(45deg) skewX(75deg);
+}
+
+.owl_2:hover .speech-bubble {
+    opacity: 1;
+}
+
+/* Button arrow */
+.arrow {
+    position: absolute;
+    outline: orangered solid 1px;
+    height: 45px;
+    width: 45px;
+}
+
+.base {
+    position: absolute;
+    background-color: rgb(64, 134, 10);
+}
+
+.line_h {
+    width: 40px;
+}
+
+.line_h, .line_a, .line_b {
+    height: 6px;
+    border-radius: 30%;
+
+}
+
+.line_a , .line_b {
+    width: 30px;
+    right: 0px;
+}
+
+.line_a {
+    transform: rotate(35deg);
+    bottom: 28px;
+
+}
+.line_b {
+    transform: rotate(-35deg);
+    top: 28px;
+}
+
+/* menue icon */
+.menu_icon{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    right: 5px;
+    display: flex;
+    gap: 10px;
+    top: 50%;
+    transition: all 0ms ease-in-out;
+}
+
+.menu_icon canvas {
+    position: relative;
+    background-color: white;
+    width: 20%;
+    height: 100%;
+    border-radius: 5px;
+    transition: all 0.25s ease-in-out;
+    bottom: 0%;
+}
+
+.sidebar:hover .menu_icon canvas {
+   height: 0%;
+   bottom: -50%;
+}
