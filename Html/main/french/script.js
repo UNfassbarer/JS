@@ -119,7 +119,7 @@ function startExercise(exerciseNumber) {
           <label>
             <input type="radio" name="q${i + 1}" value="${a.text}" />
             <span class="answer-text">${a.text}</span>
-          </label><br />
+          </label>
         `).join("")}
       `;
       QuestionBox.appendChild(div);
