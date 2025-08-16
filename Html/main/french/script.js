@@ -12,6 +12,20 @@ function LoadJsonContent(callback) {
 
 // Selfmade functions to toggle page logic
 
+// Play a sound
+let soundPlaying = false;
+function PlaySound(sound,timeout) {
+  if (soundPlaying) return;
+  sound.currentTime = 0;
+  soundPlaying = true;
+  setTimeout(() => soundPlaying = false, 1000);
+  setTimeout(() => {sound.play()}, timeout);
+}
+const OchNe = new Audio("https://cdn.pixabay.com/download/audio/2025/01/19/audio_af5c830f07.mp3?filename=button-click-289742.mp3");
+
+// Event listeners for buttons
+document.getElementById("StartButton").addEventListener("click", () => {PlaySound(OchNe)});
+
 // Global variables
 const ExerciseBox = document.getElementById("exercise_box");
 const Sidebar = document.querySelector(".sidebar");
