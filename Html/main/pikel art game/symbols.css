@@ -9,7 +9,7 @@
     border: 3px solid rgba(0, 0, 0, 0);
     border-top: 3px solid var(--color);
     animation: spin linear infinite;
-    z-index: 0;
+    z-index: -2;
 }
 
 .L_Left {
@@ -25,6 +25,7 @@
     height: 30px;
     width: 30px;
     animation-duration: 2s;
+    rotate: 180deg;
 }
 
 .L_2 {
@@ -39,6 +40,7 @@
     height: 50px;
     width: 50px;
     animation-duration: 4s;
+    rotate: 180deg;
 }
 
 .L_4 {
@@ -53,6 +55,7 @@
     height: 70px;
     width: 70px;
     animation-duration: 2s;
+    rotate: 180deg;
 }
 
 .L_6 {
@@ -67,6 +70,7 @@
     height: 35px;
     width: 35px;
     animation-duration: 4s;
+    rotate: 180deg;
 }
 
 .L_8 {
@@ -81,6 +85,7 @@
     height: 55px;
     width: 55px;
     animation-duration: 6s;
+    rotate: 180deg;
 }
 
 .L_10 {
@@ -88,4 +93,11 @@
     height: 65px;
     width: 65px;
     animation-duration: 7s;
+}
+/*Universal shrink animation */
+@keyframes shrink {
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
 }
