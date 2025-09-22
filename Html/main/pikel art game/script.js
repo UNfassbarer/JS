@@ -1,17 +1,26 @@
+// Utility functions
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+// Universal event handler function
+const handleEvent = (element, action, event, callback) => {element[`${action}EventListener`](event, callback)};
+
+// Menu button actions
 const menu_actions = {
   NewGame: (el) => { console.log(el.id) },
   LoadGame: (el) => { console.log(el.id) },
   SaveGame: (el) => { console.log(el.id) },
   Settings: (el) => { console.log(el.id) },
-  Exit: (el) => { console.log(el.id) }
-}
-let counter = 0;
-function ButtonClick(el) {
-  counter === 0 ? menu_actions[el.id](el) : null;
-  counter < 30 ? LoadAnimation(el) : counter = 0;
+  Exit: (el) => { console.log(el.id), CloseMenu() }
 }
 
+// Button actions & Particle creation
+let counter = 0;
+function ButtonClick(el) { //Every Click creates particles
+  counter === 0 ? menu_actions[el.id](el) : null; // Call button action only once
+  counter < 30 ? LoadAnimation(el) : counter = 0; // Limit particle count & Load Animation
+}
+
+// Manage Particle Animation on button click
 function LoadAnimation(el) {
   const particle = document.createElement('div');
   const size = Math.floor(Math.random() * 20 + 5);
@@ -26,54 +35,48 @@ function LoadAnimation(el) {
   setTimeout(() => { particle.remove() }, 2000);
 }
 
+// Menu
+const symbols = document.getElementById("Menu_Loading_Animation");
+handleEvent(Menu, "add", "mouseenter", OpenMenu)
+
+// Resize animation for spining circles
+function resizeMenuAnimation(modifier, border) {
+  symbols.querySelectorAll("canvas").forEach(canvas => {
+    canvas.style.cssText = `
+        height: ${canvas.offsetHeight + modifier}px;
+        width: ${canvas.offsetWidth + modifier}px;
+        border-top: ${border}px solid hsl(${Math.random() * 90 + 180}, 70%, 60%);`;
+    modifier += modifier;
+  });
+}
+
+// Toggle hidden menu content
+const ToggleHiddenMenu = ()  => Menu.querySelectorAll("div").forEach(div => {div.classList.toggle("hiddenContent")});
+
+// Open and close menu
 let MenuOpen = false;
+let clos_menu = "90px"
 const Menu = document.getElementById("Menu_Container");
-Menu.addEventListener("mouseenter", OpenMenu)
+
+// Open Menu
 function OpenMenu() {
   if (!MenuOpen) {
     Menu.style.cssText = "height: 500px; width: 300px;";
-
-
-
-
-
-
-
-
-
-    // resize menu animation
-    let modifier = 50;
-    const symbols = document.getElementById("Menu_Loading_Animation");
-    symbols.querySelectorAll("canvas").forEach(canvas => {
-      canvas.style.cssText = `
-        height: ${canvas.offsetHeight + modifier}px;
-        width: ${canvas.offsetWidth + modifier}px;
-        border-top: 5px solid hsl(${Math.random() * 90 + 180}, 70%, 60%);`;
-      modifier += 50;
-    });
-
-
-
-
-
-
+    resizeMenuAnimation(4, 4);
     ToggleHiddenMenu();
+    symbols.style.animation = "resize 20s infinite";
     MenuOpen = true;
   }
 }
+// Close menu on exit click
 function CloseMenu() {
+  handleEvent(Menu, "remove", "mouseenter", OpenMenu)
+  setTimeout(() => { handleEvent(Menu, "add", "mouseenter", OpenMenu) }, 1500);
   setTimeout(() => {
-    let closed = "90px"
-    Menu.style.cssText = `height: ${closed}; width: ${closed};`;
+    Menu.style.cssText = `height: ${clos_menu}; width: ${clos_menu};`;
     ToggleHiddenMenu();
-  }, 200);
-  // const symbols = document.getElementById("Menu_Loading_Animation");
-  // symbols.style.animation = "shrink 0.75s forwards";
+    resizeMenuAnimation(-50, 2);
+  }, 500);
+  symbols.style.animation = "shrink 0.75s forwards";
   MenuOpen = false;
-}
-
-function ToggleHiddenMenu() {
-  Menu.querySelectorAll("div").forEach(div => {
-    div.classList.toggle("hiddenContent")
-  })
 }

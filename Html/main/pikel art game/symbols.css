@@ -94,10 +94,3 @@
     width: 65px;
     animation-duration: 7s;
 }
-/*Universal shrink animation */
-@keyframes shrink {
-    to {
-        transform: scale(0);
-        opacity: 0;
-    }
-}
