@@ -1,5 +1,6 @@
 body {
-  background: #222;
+  background-color: hsl(206, 70%, 60%);
+  transition: all 1s ease-in-out;
 }
 
 .hiddenContent {
@@ -17,29 +18,31 @@ body {
   text-align: center;
 }
 
+.centeredObject {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #Menu_Container {
-  --border-width: 3px;
-  border-radius: 12px;
-  z-index: 0;
-  /* so ::before stays behind */
-  border-radius: 15px;
   position: absolute;
+  z-index: 1;
+  border-radius: 15px;
   height: 90px;
   width: 90px;
   overflow: hidden;
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
   background: linear-gradient(135deg,
       rgba(0, 0, 0, 0.8),
       magenta,
       rgba(191, 0, 255, 0.2));
 }
 
-#Menu_Container::before {
+#Menu_Container::after {
   content: "";
   position: absolute;
   inset: 0;
-  /* shorthand for top/right/bottom/left: 0 */
-  padding: var(--border-width);
+  padding: 3px;
   border-radius: inherit;
   background: linear-gradient(60deg,
       hsl(224, 85%, 66%),
@@ -49,8 +52,7 @@ body {
       hsl(44, 85%, 66%),
       hsl(89, 85%, 66%),
       hsl(134, 85%, 66%),
-      hsl(179, 85%, 66%)
-      );
+      hsl(179, 85%, 66%));
   background-size: 300% 300%;
   animation: moveGradient 3s alternate infinite;
   mask:
@@ -61,8 +63,8 @@ body {
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  /* keep only the border area */
-  z-index: -1;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .Rotating_background {

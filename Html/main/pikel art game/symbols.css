@@ -9,7 +9,6 @@
     border: 3px solid rgba(0, 0, 0, 0);
     border-top: 3px solid var(--color);
     animation: spin linear infinite;
-    z-index: -2;
 }
 
 .L_Left {
