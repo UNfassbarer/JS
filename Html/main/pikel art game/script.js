@@ -6,8 +6,20 @@ const handleEvent = (element, action, event, callback) => element[`${action}Even
 
 // Clickevents for menu buttons
 document.querySelectorAll("#Menu_Content button").forEach((button) => {
-  handleEvent(button, "add", "click", () => ButtonClick(button));
+  // Handle normal clicks and mobile support
+  window.matchMedia("(pointer: coarse)").matches ?
+    handleEvent(button, "add", "touchstart", () => { menuButtonEvents(button) })
+    : handleEvent(button, "add", "click", () => { menuButtonEvents(button) });
 });
+
+function menuButtonEvents(button) {
+  ButtonClick(button)
+  // button.style.animation = "click-glow 1s ease";
+  // button.style.color = "white";
+  // button.querySelector("canvas").style.background = "linear-gradient(-90deg,rgb(27, 221, 255), rgb(0, 191, 255), rgb(236, 27, 255))"
+  // button.querySelector("canvas").style.width = "125px";
+}
+
 // Buttonclick toggle
 function toggleButtonPress(status) {
   document.getElementById("Menu_Content").querySelectorAll("button").forEach((button) => {
