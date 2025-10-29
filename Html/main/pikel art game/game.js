@@ -155,7 +155,6 @@ const groundObstacle = (deltaX) => {
     O_2_lastWidth = width;
 }
 
-
 let O_3_lastWidth = 0;
 let O_3_DeltaX = 0;
 const flyingIsland = (deltaX) => {
