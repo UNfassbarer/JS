@@ -25,24 +25,6 @@ document.querySelectorAll("#Menu_Content button").forEach((button) => {
 // Function to edit multible styles of one element at once
 const EditStyle = (element, styles) => Object.assign(element.style, styles);
 
-
-
-// Create rotating circles for menu
-const CircleBox = document.getElementById("Menu_Loading_Animation");
-let C_L = 30; //Circles left height & width
-let C_R = 25; //Circles right height & width
-let C_A = 4; //Animation interval in s
-for (let i = 0; i <= 10; i++) {
-  const circle = document.createElement("canvas");
-  circle.classList.add("Menu_Loading", "L_Left")
-  EditStyle(circle, { height: `${C_L}px`, width: `${C_L}px`, animationDuration: `${C_A}s` });
-  if (i % 2 === 0) circle.style.transform = "rotate(180deg)";
-  CircleBox.appendChild(circle);
-  C_L += 10;
-  C_A++;
-  if (C_A >= 8) C_A = 4;
-}
-
 // Buttonclick toggle
 function toggleButtonPress(status) {
   document.getElementById("Menu_Content").querySelectorAll("button").forEach((button) => {
