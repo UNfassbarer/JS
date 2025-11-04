@@ -78,7 +78,7 @@ class orb extends obstacle { }
 const spikePool = new ObjectPool(() => new spike(0, 0, 0, 0, 0), 50);
 const obstaclePool = new ObjectPool(() => new obstacle(0, 0, 0, 0, 0), 30);
 const icelandPool = new ObjectPool(() => new iceland(0, 0, 0, 0, 0), 20);
-const portalPool = new ObjectPool(() => new portal(0, 0, 0, 0, 0), 2);
+const portalPool = new ObjectPool(() => new portal(0, 0, 0, 0, 0), 10);
 const orbPool = new ObjectPool(() => new orb(0, 0, 0, 0, 0, 1), 20);
 
 // Keys
@@ -120,9 +120,18 @@ const heightOrb = 6;
 const objectSpeed = 1;
 const universalSize = player.height;
 
+let spawnedObject = null;
+let lastSpawnedObstacle = null;
+
 const groundSpike = () => {
+
+    // If there was a previous obstacle, add spacing
+    const lastObstacle = spikes[spikes.length - 1];
+    let O_2_DeltaX = 0;
+    if (lastObstacle) O_2_DeltaX = lastObstacle.width * getRandomInt(2, 3);
+
     const s_P = spikePool.get();
-    s_P.x = canvas.width;
+    s_P.x = canvas.width + O_2_DeltaX * widthSpike * 2;
     s_P.y = canvas.height - heightSpike;
     s_P.width = widthSpike;
     s_P.height = heightSpike;
@@ -150,8 +159,13 @@ const groundObstacle = () => {
     const x = canvas.width;
     const y = canvas.height - height;
 
+    // If there was a previous obstacle, add spacing
+    const lastObstacle = obstacles[obstacles.length - 1];
+    let O_2_DeltaX = 0;
+    if (lastObstacle) O_2_DeltaX = lastObstacle.width * getRandomInt(2, 3);
+
     const go_P = obstaclePool.get();
-    go_P.x = x;
+    go_P.x = x + O_2_DeltaX;
     go_P.y = y;
     go_P.width = width;
     go_P.height = height;
@@ -160,7 +174,7 @@ const groundObstacle = () => {
 
     if (spawnOrb) {
         if (getRandomInt(0, 2) === 2) {
-            temporatyOrbs(x, y, width);
+            temporatyOrbs(x + O_2_DeltaX, y, width);
             spawnOrb = false;
         }
     }
@@ -174,8 +188,12 @@ const flyingIsland = () => {
     const widthIceland = getRandomInt(player.height * 1.5, player.height * 3);
     const y = canvas.height - getRandomInt(player.height * 2, player.height * 3) - height;
 
+    const lastObstacle = icelands[icelands.length - 1];
+    let O_3_DeltaX = 0;
+    if (lastObstacle) O_3_DeltaX = lastObstacle.width * getRandomInt(2, 3);
+
     const fi_P = icelandPool.get();
-    fi_P.x = x;
+    fi_P.x = x + O_3_DeltaX;
     fi_P.y = y;
     fi_P.width = widthIceland;
     fi_P.height = height;
@@ -188,7 +206,7 @@ const flyingIsland = () => {
         // How much spikes aktually to spawn? 
         if (getRandomInt(1, 2) === 2) { // 1 spike
             const s_P = spikePool.get();
-            s_P.x = x + getRandomInt(0, widthIceland - widthSpike);
+            s_P.x = x + getRandomInt(0, widthIceland - widthSpike) + O_3_DeltaX;
             s_P.y = y + height;
             s_P.width = widthSpike;
             s_P.height = heightSpike;
@@ -200,7 +218,7 @@ const flyingIsland = () => {
             const count = getRandomInt(2, counterSpikes)
             for (let i = 0; i < count; i++) {
                 const s_P = spikePool.get();
-                s_P.x = xSpikes + deltaX;
+                s_P.x = xSpikes + deltaX + O_3_DeltaX;
                 s_P.y = y + height;
                 s_P.width = widthSpike;
                 s_P.height = heightSpike;
@@ -215,64 +233,54 @@ const flyingIsland = () => {
 }
 
 const groundPortals = (index) => {
+
+    if (portals[portals.length - 1]) return; // Only 2 portals at a time
+
     const height = 32;
     const width = 32;
+    let deltaX = index * getRandomInt(width * 3, width * 5);
     const x = canvas.width;
     const y = canvas.height - height;
+
     const p_P = portalPool.get();
-    p_P.x = x;
+    p_P.x = x + deltaX;
     p_P.y = y;
     p_P.width = width;
     p_P.height = height;
     p_P.dx = objectSpeed;
     p_P.id = index;
     portals.push(p_P);
+
     portalMap.set(index, p_P);
 }
 
-let spawnedObject = null;
-let lastSpawnedObstacle = null;
-let lastNum = null;
-let nextNum = 2; //Start with obstacle
-let portalCounter = 0;
-function spawnObject() {
-    switch (nextNum) {
-        case 1:
-            groundSpike();
-            spawnedObject = spikes[spikes.length - 1];
-            break;
-        case 2:
-            groundObstacle();
-            spawnedObject = obstacles[obstacles.length - 1];
-            break;
-        case 3:
-            groundPortals(portalCounter);
-            spawnedObject = portals[portals.length - 1];
-            portalCounter++;
-            break;
-        case 4:
-            flyingIsland();
-            spawnedObject = icelands[icelands.length - 1];
-            break;
-        default: console.log("Error in spawnObject switch");
-            break;
+function createMultibleObjects(func, a, b) {
+    if (getRandomInt(a, b) === b) { func(0) } else {
+        for (let i = 1; i <= getRandomInt(1, 3); i++) func();
     }
-    lastNum = nextNum;
-    if (lastNum === 1) nextNum = getRandomInt(1, 4);
-    if (lastNum === 2) nextNum = getRandomInt(1, 4);
-    if (lastNum === 3 && portalCounter === 1) { nextNum = 3 } else if (lastNum === 3) nextNum = getRandomInt(1, 4), portalCounter = 0;
-    if (lastNum === 4) nextNum = getRandomInt(1, 4);
+}
 
+let lastNum = null;
+function spawnObject() {
+    const ObjectNum = getRandomInt(1, 4);
+    if (ObjectNum === 1) createMultibleObjects(groundSpike, 0, 1), spawnedObject = spikes[spikes.length - 1];
+    if (ObjectNum === 2) createMultibleObjects(groundObstacle, 0, 1), spawnedObject = obstacles[obstacles.length - 1];
+    if (ObjectNum === 3) {
+        groundPortals(0);
+        groundPortals(1);
+        spawnedObject = portals[portals.length - 1];
+    }
+    if (ObjectNum === 4) createMultibleObjects(flyingIsland, 0, 1), spawnedObject = icelands[icelands.length - 1];
     if (spawnedObject) lastSpawnedObstacle = spawnedObject;
+    lastNum = ObjectNum;
 }
 
 // Lightweight distance check spawn only when there is enaught space
 function checkSpawnDistance() {
     if (!lastSpawnedObstacle || GameOver) return;
     const distanceToRight = canvas.width - (lastSpawnedObstacle.x + lastSpawnedObstacle.width);
-    const objectleftEdge = lastSpawnedObstacle.x + lastSpawnedObstacle.width < canvas.width;
     const spawnThreshold = 100; // 100px
-    if (distanceToRight >= spawnThreshold && objectleftEdge) spawnObject(), console.log("new spawn");
+    if (distanceToRight >= spawnThreshold) spawnObject(),console.log("test");
 }
 
 // Manage collisions & movements  
