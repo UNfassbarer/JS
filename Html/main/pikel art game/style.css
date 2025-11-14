@@ -226,11 +226,13 @@ ul {
 
 #gameInfo{
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 25px;
+  right: 25px;
+
   height: 15dvh;
   width: 25dvw;
   outline: #00c8ff 2px solid;
-  font-size: 1.5vw;
-  text-shadow: 0 0 5px black;
+  font-size: 2vw;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+  color: white;
 }

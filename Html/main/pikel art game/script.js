@@ -52,7 +52,7 @@ function ButtonClick(el) { //Every Click creates particles
     toggleButtonPress("none");
     setTimeout(() => { toggleButtonPress("auto") }, 750);
     menu_actions[el.id](el);
-    
+
     // Create particles with interval instead of recursion
     particleIntervalId = setInterval(() => {
       if (counter >= 15) {
@@ -175,4 +175,13 @@ function createStar() {
   setTimeout(() => star.remove(), 2500);
   // Increased delay from 10ms to 50ms to reduce DOM operations
   if (createStars) setTimeout(createStar, 50);
+}
+
+const Infobox = document.getElementById("gameInfo");
+
+let inGameTime = 0;
+function manageGameTime() {
+  if (GameOver) return;
+  setTimeout(() => { inGameTime++; manageGameTime(); }, 1000);
+  Infobox.querySelector("#survivedTime").innerHTML = inGameTime;
 }

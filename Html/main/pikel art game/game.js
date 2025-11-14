@@ -7,7 +7,6 @@ let imgCounter = 0;
 let GamesPlayed = 0;
 let GameOver = true;
 let DeathCounter = 0;
-const Infobox = document.getElementById("gameInfo");
 
 const playerImage = new Image();
 const structureImage = new Image();
@@ -28,7 +27,7 @@ function newGame() {
     if (GameOver) {
         GameOver = false;
         document.getElementById("gameOver").classList.add("hiddenContent");
-        updateInfoBox(GamesPlayed);
+        manageGameTime();
         createStars = false;
         canvas.classList.remove("hiddenContent");
         if (imgCounter === images.length) {
