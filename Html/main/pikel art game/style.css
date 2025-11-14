@@ -223,3 +223,14 @@ ul {
   left: 50%;
   transform: translate(-50%, -50%) rotate(12.5deg);
 }
+
+#gameInfo{
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  height: 15dvh;
+  width: 25dvw;
+  outline: #00c8ff 2px solid;
+  font-size: 1.5vw;
+  text-shadow: 0 0 5px black;
+}
