@@ -27,7 +27,11 @@ function newGame() {
     if (GameOver) {
         GameOver = false;
         document.getElementById("gameOver").classList.add("hiddenContent");
+
         manageGameTime();
+        GamesPlayed++;
+        updateGameStats("#gamesPlayed", GamesPlayed);
+
         createStars = false;
         canvas.classList.remove("hiddenContent");
         if (imgCounter === images.length) {
@@ -103,14 +107,14 @@ const frameDelay = 1000 / 60; // ~16.67ms per frame
 
 function gameLoop(currentTime) {
     const elapsed = currentTime - lastFrameTime;
-    
+
     // Only update if enough time has passed
     if (elapsed >= frameDelay) {
         lastFrameTime = currentTime - (elapsed % frameDelay);
         updateLogic();
         renderLogic();
     }
-    
+
     if (!GameOver) requestAnimationFrame(gameLoop);
 }
 
@@ -298,7 +302,7 @@ function checkSpawnDistance() {
 function updateLogic() {
 
     updatePlayer();// Move player first
-    
+
     // Only update arrays that have objects
     if (obstacles.length) updateObjects(obstacles);
     if (icelands.length) updateObjects(icelands);
@@ -306,7 +310,7 @@ function updateLogic() {
     if (spikes.length) updateObjects(spikes);
     if (orbs.length) updateObjects(orbs);
     if (portals.length) updatePortals();
-    
+
     checkSpawnDistance();
 }
 
@@ -388,7 +392,7 @@ function updateObjects(object) {
             const last = object[object.length - 1];
             object[i] = last;
             object.pop();
-            
+
             // Determine pool based on array reference instead of instanceof
             if (object === spikes) spikePool.release(o);
             else if (object === obstacles) obstaclePool.release(o);
@@ -469,7 +473,7 @@ function checkPlayerCollision(object, o, i) {
     if (
         (object === obstacles || object === icelands) &&
         player.dy > 0 &&
-        player.y + player.height > o.y && 
+        player.y + player.height > o.y &&
         player.y + player.height - player.dy <= o.y && // player's bottom was above obstacle's top last frame (AI improvement)
         player.x + player.width > o.x &&
         player.x < o.x + o.width
@@ -491,10 +495,11 @@ function checkPlayerCollision(object, o, i) {
 
 function resetGame() {
     DeathCounter++;
+    updateGameStats("#deaths", DeathCounter);
     GameOver = true;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     document.getElementById("gameOver").classList.toggle("hiddenContent")
-    
+
     // Return all objects to their pools
     obstacles.forEach(o => obstaclePool.release(o));
     spikes.forEach(o => spikePool.release(o));
@@ -502,7 +507,7 @@ function resetGame() {
     icelands.forEach(o => icelandPool.release(o));
     orbs.forEach(o => orbPool.release(o));
     portals.forEach(o => portalPool.release(o));
-    
+
     // Clear arrays
     obstacles = [];
     spikes = [];

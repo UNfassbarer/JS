@@ -177,11 +177,18 @@ function createStar() {
   if (createStars) setTimeout(createStar, 50);
 }
 
+// Game info box
 const Infobox = document.getElementById("gameInfo");
 
-let inGameTime = 0;
+// Manage game time display
 function manageGameTime() {
-  if (GameOver) return;
-  setTimeout(() => { inGameTime++; manageGameTime(); }, 1000);
-  Infobox.querySelector("#survivedTime").innerHTML = inGameTime;
+  const startTime = Date.now();
+  const interval = setInterval(function () {
+    if (GameOver) clearInterval(interval);
+    let elapsedTime = Date.now() - startTime;
+    updateGameStats("#survivedTime", (elapsedTime / 1000).toFixed(1) + "s");
+  }, 100);
 }
+
+// Manage played games & deaths
+function updateGameStats(Category, Value) { Infobox.querySelector(`${Category}`).innerHTML = Value; }
