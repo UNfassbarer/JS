@@ -228,15 +228,16 @@ ul {
   position: absolute;
   bottom: 25px;
   right: 25px;
-  width: auto;
-  height: auto;
+  width: 150px;
+  height: 140px;
   outline: #00c8ff 2px solid;
   font-size: 2vw;
   text-shadow: 0 0 5px rgb(0, 0, 0);
   color: white;
+  transition: width 1s ease-in-out;
+  font-size: clamp(1rem, 4vmin, 3rem);
 }
 
 #gameInfo div {
   margin: 10px;
-  font-size: clamp(1rem, 4vmin, 3rem);
 }

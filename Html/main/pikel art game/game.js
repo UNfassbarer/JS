@@ -1,4 +1,8 @@
-// Start Game
+const Infobox = document.getElementById("gameInfo");
+// Manage played games & deaths
+function updateGameStats(Category, Value) { Infobox.querySelector(`${Category}`).innerHTML = Value; }
+
+// Get canvas and context
 const canvas = document.getElementById("gameContainer");
 const ctx = canvas.getContext("2d");
 
@@ -7,6 +11,7 @@ let imgCounter = 0;
 let GamesPlayed = 0;
 let GameOver = true;
 let DeathCounter = 0;
+let PausedGame = false;
 
 const playerImage = new Image();
 const structureImage = new Image();
@@ -23,12 +28,27 @@ images.forEach((img, i) => {
     img.src = sources[i];
 });
 
+// Manage game time display
+let survivedTime = 0;
+let TimingInterval = null;
+function SetTimingInterval(previousTime) {
+    const startTime = Date.now();
+    TimingInterval = setInterval(function () {
+        if (GameOver) clearInterval(TimingInterval);
+        let elapsedTime = Date.now() - startTime;
+        survivedTime = (previousTime + (elapsedTime / 1000)).toFixed(2);
+        updateGameStats("#survivedTime", `${(survivedTime)}s`);
+    }, 100);
+}
+
 function newGame() {
     if (GameOver) {
         GameOver = false;
         document.getElementById("gameOver").classList.add("hiddenContent");
+        document.getElementById("gameInfo").classList.remove("hiddenContent");
 
-        manageGameTime();
+        SetTimingInterval(0);
+
         GamesPlayed++;
         updateGameStats("#gamesPlayed", GamesPlayed);
 
@@ -98,6 +118,7 @@ const orbPool = new ObjectPool(() => new orb(0, 0, 0, 0, 0), 8);
 
 // Keys
 let keys = {};
+let keysPrev = {};
 document.addEventListener("keydown", e => keys[e.code] = true);
 document.addEventListener("keyup", e => keys[e.code] = false);
 
@@ -106,15 +127,22 @@ let lastFrameTime = 0;
 const frameDelay = 1000 / 60; // ~16.67ms per frame
 
 function gameLoop(currentTime) {
-    const elapsed = currentTime - lastFrameTime;
-
-    // Only update if enough time has passed
-    if (elapsed >= frameDelay) {
-        lastFrameTime = currentTime - (elapsed % frameDelay);
-        updateLogic();
-        renderLogic();
+    // Pause functionality
+    if (keys["Escape"] && !keysPrev["Escape"]) {
+        PausedGame = !PausedGame;
+        clearInterval(TimingInterval);
+        if (!PausedGame) SetTimingInterval(Number(survivedTime));
     }
-
+    keysPrev = { ...keys };
+    if (!PausedGame) {
+        const elapsed = currentTime - lastFrameTime;
+        // Only update if enough time has passed
+        if (elapsed >= frameDelay) {
+            lastFrameTime = currentTime - (elapsed % frameDelay);
+            updateLogic();
+            renderLogic();
+        }
+    }
     if (!GameOver) requestAnimationFrame(gameLoop);
 }
 

@@ -176,19 +176,3 @@ function createStar() {
   // Increased delay from 10ms to 50ms to reduce DOM operations
   if (createStars) setTimeout(createStar, 50);
 }
-
-// Game info box
-const Infobox = document.getElementById("gameInfo");
-
-// Manage game time display
-function manageGameTime() {
-  const startTime = Date.now();
-  const interval = setInterval(function () {
-    if (GameOver) clearInterval(interval);
-    let elapsedTime = Date.now() - startTime;
-    updateGameStats("#survivedTime", (elapsedTime / 1000).toFixed(1) + "s");
-  }, 100);
-}
-
-// Manage played games & deaths
-function updateGameStats(Category, Value) { Infobox.querySelector(`${Category}`).innerHTML = Value; }
